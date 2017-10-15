@@ -22,7 +22,7 @@ public class Picture extends InteractableObject{
 		this.lblObject = new JLabel();
 		Game.initLabels(lblObject, this.objectName+"_default", null);
 		
-		this.iX = 38;
+		this.iX = 44;
 		this.iY = 341;
 		
 		this.setX(iX);
