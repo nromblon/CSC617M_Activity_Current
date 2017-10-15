@@ -1,14 +1,14 @@
 package com.elements;
 
 import java.awt.Color;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Queue;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.ScrollPaneConstants;
+import javax.imageio.ImageIO;
+import javax.swing.*;
 
 import com.characters.Character;
 import com.frame.Frame;
@@ -31,6 +31,7 @@ public class GameBar extends JPanel {
 	private JTextArea lblMessage;
 	private JScrollPane scrlMessage;
 
+	private JButton nextBtn;
 	private Queue<String> messageQueue;
 	
 	public GameBar(JPanel parent, Character player) {
@@ -43,18 +44,22 @@ public class GameBar extends JPanel {
 		this.lblGamebarOverlay = new JLabel();
 		Game.initLabels(this.lblGamebarOverlay, new ImageIcon("images/Gamebar_arcade.png"), null);
 
+		//TODO
 		this.messageQueue = new LinkedList<>();
 
 		this.add(scrlMessage);
 		this.add(lblMessageOverlay);
 		this.add(lblGamebarOverlay);
+		this.add(nextBtn);
+
+		this.setComponentZOrder(nextBtn,0);
 	}
 	
 	private void initComponents() {		
 		this.lblGamebarOverlay = new JLabel();
-		this.lblPlayer = new JLabel();		
-		
-		
+		this.lblPlayer = new JLabel();
+
+
 //		this.lblHealthBar = new JLabel();
 //		this.lblHealthBar.setBounds(117, 674, 329, 17);
 //		this.lblHealth = new JLabel();
@@ -92,18 +97,52 @@ public class GameBar extends JPanel {
 		this.scrlMessage.setLocation(offsetX, this.getHeight()-lblMessage.getHeight()-offsetY);
 		this.scrlMessage.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		this.scrlMessage.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-		this.lblMessage.setText("This is a system message.");
+//		this.lblMessage.setText("This is a system message.");
 
-	
+
+		this.nextBtn = new JButton();
+		Game.initButtons(nextBtn, "next", 1000, this.getHeight() - 48, true, new MouseListener() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				if(messageQueue.peek() != null) {
+					lblMessage.setText(messageQueue.remove());
+					if (messageQueue.peek() == null)
+						nextBtn.setVisible(false);
+				}
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+
+			}
+		});
+		this.nextBtn.setVisible(false);
+
 	}
 	
 	public void update() {
-
 
 		lblMessage.repaint();
 		lblMessage.revalidate();
 		scrlMessage.repaint();
 		scrlMessage.revalidate();
+		nextBtn.repaint();
+		nextBtn.revalidate();
 //		this.switchBullet();
 //		float percent = (float)this.player.getMaxHealth()/(float)this.player.getHealth();
 //		this.lblHealth.setSize(Math.round(this.getMaxHealthWidth()/percent), lblHealth.getHeight()); 
@@ -165,7 +204,12 @@ public class GameBar extends JPanel {
 	}
 
 	public void addMsgQueue(String message){
-		this.messageQueue.add(message);
+		if(lblMessage.getText().equals(""))
+			this.lblMessage.setText(message);
+		else {
+			this.messageQueue.add(message);
+			this.nextBtn.setVisible(true);
+		}
 	}
 
 	public void clearMsgQueue(){

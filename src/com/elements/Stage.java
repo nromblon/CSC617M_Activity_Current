@@ -216,7 +216,7 @@ public class Stage extends JPanel {
 	}
 
 	public void updateMessage(String text) {
-		this.getParent().getGamebar().getLblMessage().setText(text);
+		this.getParent().getGamebar().addMsgQueue(text);
 	}
 	
 	public String[][] getBlueprint() {
