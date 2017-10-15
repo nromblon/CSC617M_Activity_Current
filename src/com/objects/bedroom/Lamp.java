@@ -7,7 +7,7 @@ import com.objects.InteractableObject;
 public class Lamp extends InteractableObject{
 	
 	public Lamp() {
-		super(new String[]{"lights","light","bulb","lightbulb"});
+		super(new String[]{"lamp","nightlight","desk lamp","night light"});
 		this.viewResponse = "A "+this.objectName+".";
 		this.openResponse = "The "+this.objectName+" can't be opened.";
 		this.closeResponse = "The "+this.objectName+" can't be closed.";
@@ -46,8 +46,7 @@ public class Lamp extends InteractableObject{
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		this.getParent().lookupObject("LampLight").close();
 	}
 	@Override
 	public void update() {

@@ -7,7 +7,7 @@ import com.objects.InteractableObject;
 public class Cheese extends InteractableObject{
 	
 	public Cheese() {
-		super(new String[]{"coffee pot"});
+		super(new String[]{"cheese","queso","yellow thing"});
 		this.viewResponse = "A "+this.objectName+".";
 		this.openResponse = "The "+this.objectName+" can't be opened.";
 		this.closeResponse = "The "+this.objectName+" can't be closed.";

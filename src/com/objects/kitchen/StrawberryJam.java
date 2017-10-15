@@ -7,7 +7,7 @@ import com.objects.InteractableObject;
 public class StrawberryJam extends InteractableObject{
 	
 	public StrawberryJam() {
-		super(new String[]{"coffee pot"});
+		super(new String[]{"strawberry jam","jam","strawbery"});
 		this.viewResponse = "A "+this.objectName+".";
 		this.openResponse = "The "+this.objectName+" can't be opened.";
 		this.closeResponse = "The "+this.objectName+" can't be closed.";

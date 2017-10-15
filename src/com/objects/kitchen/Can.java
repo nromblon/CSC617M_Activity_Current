@@ -7,7 +7,7 @@ import com.objects.InteractableObject;
 public class Can extends InteractableObject{
 	
 	public Can() {
-		super(new String[]{"coffee pot"});
+		super(new String[]{"can","soda","softdrinks","softdrink","drink"});
 		this.viewResponse = "A "+this.objectName+".";
 		this.openResponse = "The "+this.objectName+" can't be opened.";
 		this.closeResponse = "The "+this.objectName+" can't be closed.";

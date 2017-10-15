@@ -88,12 +88,13 @@ public class Controls extends JPanel {
             	break;
 
             case VIEW: o.view(); break;
-            case TAKE:
-            	if(!o.isTaken())
-            		o.take();
-            	break;
             case OPEN: o.open(); break;
-            case CLOSE: o.close(); break;
+			case TAKE:
+				if(!o.isTaken())
+					o.take();
+				break;
+
+			case CLOSE: o.close(); break;
             case USE: o.use(); break;
             default: break;
         }
@@ -107,13 +108,11 @@ public class Controls extends JPanel {
 		Stage stage = player.getParent();
 		Action[] actions = ActionParser.parse(strAction,stage);
 
-
 		for (Action action : actions) {
 			if(action.getObject().getTarget() != null)
 		  	  actionQueue.add(new Action(Commands.MOVE,action.getObject().getTarget()));
             actionQueue.add(action);
         }
-
 
 	}
 	

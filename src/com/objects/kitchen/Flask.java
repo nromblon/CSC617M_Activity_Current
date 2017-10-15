@@ -7,7 +7,7 @@ import com.objects.InteractableObject;
 public class Flask extends InteractableObject{
 	
 	public Flask() {
-		super(new String[]{"coffee pot"});
+		super(new String[]{"flask","science bottle","potion","volumetric flask"});
 		this.viewResponse = "A "+this.objectName+".";
 		this.openResponse = "The "+this.objectName+" can't be opened.";
 		this.closeResponse = "The "+this.objectName+" can't be closed.";

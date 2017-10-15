@@ -7,7 +7,7 @@ import com.objects.InteractableObject;
 public class WaterBottle extends InteractableObject{
 	
 	public WaterBottle() {
-		super(new String[]{"coffee pot"});
+		super(new String[]{"water bottle","water","bottle"});
 		this.viewResponse = "A "+this.objectName+".";
 		this.openResponse = "The "+this.objectName+" can't be opened.";
 		this.closeResponse = "The "+this.objectName+" can't be closed.";

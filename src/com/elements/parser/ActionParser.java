@@ -3,6 +3,7 @@ package com.elements.parser;
 import com.elements.Stage;
 import com.objects.InteractableObject;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ActionParser {
 
@@ -20,12 +21,21 @@ public class ActionParser {
 
 
     public static Action[] parse(String input, Stage stage){
+        //splits input into tokens
         String[] tokens = input.split(" ");
+        //Removes empty character and null from String array
+        List<String> tokenTemp = new ArrayList<>();
+        for(String s : tokens) {
+            if(s != null && s.length() > 0) {
+               tokenTemp.add(s);
+            }
+        }
+        tokens = tokenTemp.toArray(new String[tokenTemp.size()]);
 
         ArrayList<Action> actions = new ArrayList<>();
         Commands cmd = null;
         InteractableObject obj = null;
-
+        //Parsing process
         for(index=0; index<tokens.length;index++){
             System.out.println("token[#]: "+index+" -- "+tokens[index]);
             if(cmd == null)
@@ -42,12 +52,6 @@ public class ActionParser {
                     obj = stage.slookupObject(index, tokens);
                     System.out.println("ppost search: "+ index);
                 }
-//                else
-//                    if(Linker.exists(tokens[index])) {
-//                        actions.add(new Action(cmd, obj));
-//                        cmd = null;
-//                        obj = null;
-//                    }
             }
 
         }

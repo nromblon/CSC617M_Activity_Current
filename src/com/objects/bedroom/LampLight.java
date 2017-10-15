@@ -8,7 +8,7 @@ import com.objects.InteractableObject;
 public class LampLight extends InteractableObject{
 	
 	public LampLight() {
-		super(new String[]{"lamplight"});
+		super(new String[]{"lamplight","lamp light"});
 		this.viewResponse = "A "+this.objectName+".";
 		this.openResponse = "The "+this.objectName+" can't be opened.";
 		this.closeResponse = "The "+this.objectName+" can't be closed.";

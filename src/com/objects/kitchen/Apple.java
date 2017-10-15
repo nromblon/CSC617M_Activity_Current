@@ -7,7 +7,7 @@ import com.objects.InteractableObject;
 public class Apple extends InteractableObject{
 	
 	public Apple() {
-		super(new String[]{"coffee pot"});
+		super(new String[]{"apple","fruit","red fruit"});
 		this.viewResponse = "A "+this.objectName+".";
 		this.openResponse = "The "+this.objectName+" can't be opened.";
 		this.closeResponse = "The "+this.objectName+" can't be closed.";

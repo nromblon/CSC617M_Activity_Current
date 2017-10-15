@@ -8,7 +8,7 @@ import com.objects.InteractableObject;
 public class Whiteboard extends InteractableObject{
 	
 	public Whiteboard() {
-		super(new String[]{"stove"});
+		super(new String[]{"whiteboard","White board","plans","blueprint","plan"});
 		this.viewResponse = "A "+this.objectName+".";
 		this.openResponse = "The "+this.objectName+" can't be opened.";
 		this.closeResponse = "The "+this.objectName+" can't be closed.";

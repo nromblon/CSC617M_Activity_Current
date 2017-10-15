@@ -8,7 +8,7 @@ import com.objects.InteractableObject;
 public class Table extends InteractableObject{
 	
 	public Table() {
-		super(new String[]{"right table","dining table","main table"});
+		super(new String[]{"table","right table","dining table","main table"});
 		this.viewResponse = "A "+this.objectName+".";
 		this.openResponse = "The "+this.objectName+" can't be opened.";
 		this.closeResponse = "The "+this.objectName+" can't be closed.";
