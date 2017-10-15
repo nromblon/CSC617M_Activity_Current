@@ -25,10 +25,12 @@ public abstract class OverlayObject extends JPanel implements MouseListener {
 	}
 	
 	public void open() {
+		player.setIsInOverlay(true);
 		this.setVisible(true);
 	}
 	
 	public void close() {
+		player.setIsInOverlay(false);
 		this.setVisible(false);
 	}
 	

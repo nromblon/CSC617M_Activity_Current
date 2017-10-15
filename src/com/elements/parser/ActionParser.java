@@ -30,20 +30,26 @@ public class ActionParser {
             System.out.println("token[#]: "+index+" -- "+tokens[index]);
             if(cmd == null)
                 cmd = Commands.lookup(tokens[index]);
+            else if(Linker.exists(tokens[index])) {
+                if(cmd != null && obj != null)
+                    actions.add(new Action(cmd, obj));
+                cmd = null;
+                obj = null;
+            }
             else{
                 if(obj == null) {
                     System.out.println("pre search: "+ index);
                     obj = stage.slookupObject(index, tokens);
                     System.out.println("ppost search: "+ index);
                 }
-                else
-                    if(Linker.exists(tokens[index])) {
-                        actions.add(new Action(cmd, obj));
-                        cmd = null;
-                        obj = null;
-                    }
-
+//                else
+//                    if(Linker.exists(tokens[index])) {
+//                        actions.add(new Action(cmd, obj));
+//                        cmd = null;
+//                        obj = null;
+//                    }
             }
+
         }
 
         if(cmd != null && obj != null)

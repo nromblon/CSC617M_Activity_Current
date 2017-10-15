@@ -37,6 +37,8 @@ public abstract class Character {
 	
 	protected boolean isUp;
 	protected boolean isDown;
+
+	protected boolean isInOverlay;
 	
 	protected JLabel lblCharacter;
 	protected Stage parent;
@@ -55,7 +57,8 @@ public abstract class Character {
 		
 		
 		this.name = "Undefined";
-		
+
+		this.isInOverlay = false;
 		
 		this.direction = 1;
 		this.iX = 0;
@@ -201,12 +204,16 @@ public abstract class Character {
 	 * @return
 	 */
 	public boolean isBusy() {
-		if(isMovingTo)
+		if(isMovingTo | isInOverlay)
 			return true;
 		else
 			return false;
 	}
-	
+
+	public void setIsInOverlay(boolean isInOverlay){
+		this.isInOverlay = isInOverlay;
+	}
+
 	public void continueAction() {
 		if(isMovingTo){
 			this.moveTo(moveToObject);

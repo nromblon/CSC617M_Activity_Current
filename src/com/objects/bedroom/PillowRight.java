@@ -54,7 +54,10 @@ public class PillowRight extends InteractableObject{
 	}
 	@Override
 	public void take() {
-		this.lblObject.setVisible(false);
+		if(!isTaken()) {
+			this.setTaken(true);
+			this.lblObject.setVisible(false);
+		}
 	}
 	@Override
 	public void use() {

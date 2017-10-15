@@ -82,9 +82,16 @@ public class Controls extends JPanel {
 	public void processAction(Action a){
         InteractableObject o = a.getObject();
 	    switch(a.getCommand()){
-            case MOVE: player.moveTo(o); break;
+            case MOVE:
+            	if(!o.isTaken())
+            		player.moveTo(o);
+            	break;
+
             case VIEW: o.view(); break;
-            case TAKE: o.take(); break;
+            case TAKE:
+            	if(!o.isTaken())
+            		o.take();
+            	break;
             case OPEN: o.open(); break;
             case CLOSE: o.close(); break;
             case USE: o.use(); break;

@@ -58,9 +58,11 @@ public class Key extends InteractableObject{
 	}
 	@Override
 	public void take() {
-		this.setTaken(true);
-		this.getParent().getParent().getInventory().addItem(this);
-		this.lblObject.setIcon(this.iiTaken);
+		if(!isTaken()) {
+			this.setTaken(true);
+			this.getParent().getParent().getInventory().addItem(this);
+			this.lblObject.setIcon(this.iiTaken);
+		}
 	}
 	@Override
 	public void use() {

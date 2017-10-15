@@ -56,8 +56,11 @@ public class Picture extends InteractableObject{
 	}
 	@Override
 	public void take() {
-		this.getParent().getParent().getInventory().addItem(this);
-		this.lblObject.setVisible(false);
+		if(!isTaken()) {
+			this.setTaken(true);
+			this.getParent().getParent().getInventory().addItem(this);
+			this.lblObject.setVisible(false);
+		}
 	}
 	@Override
 	public void use() {
