@@ -24,7 +24,7 @@ public class BathroomDoor extends InteractableObject{
 		this.lblObject = new JLabel();
 		Game.initLabels(lblObject, this.objectName+"_default", null);
 		
-		this.iX = Stage.CENTER_WIDTH+(Stage.CENTER_WIDTH/2)-this.lblObject.getWidth()/2;
+		this.iX = 839;
 		this.iY = Stage.FLOOR-this.lblObject.getHeight();
 		
 		this.setX(iX);

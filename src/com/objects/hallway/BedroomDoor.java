@@ -24,7 +24,7 @@ public class BedroomDoor extends InteractableObject{
 		this.lblObject = new JLabel();
 		Game.initLabels(lblObject, this.objectName+"_default", null);
 		
-		this.iX = Stage.CENTER_WIDTH-this.lblObject.getWidth()/2;
+		this.iX = 632;
 		this.iY = Stage.FLOOR-this.lblObject.getHeight();
 		
 		this.setX(iX);

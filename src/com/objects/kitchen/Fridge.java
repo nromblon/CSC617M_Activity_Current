@@ -1,5 +1,6 @@
 package com.objects.kitchen;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import com.elements.Game;
 import com.elements.Stage;
@@ -14,6 +15,8 @@ public class Fridge extends InteractableObject{
 		this.closeResponse = "The "+this.objectName+" can't be closed.";
 		this.objectName = this.getClass().getSimpleName();
 		this.initComponents();
+		
+		this.setOpened(false);
 	}
 	private void initComponents() {
 
@@ -27,9 +30,6 @@ public class Fridge extends InteractableObject{
 		
 		this.setX(iX);
 		this.setY(iY);
-//		this.iiOpened = new ImageIcon("images/"+this.objectName+"_opened.png");
-//		this.iiClosed = new ImageIcon("images/"+this.objectName+"_closed.png");
-//		this.iiViewed = new ImageIcon("images/"+this.objectName+"_viewed.png");
 		
 		this.setCenterX(this.lblObject.getWidth()/2);
 		this.setCenterY(this.lblObject.getHeight()/2);
@@ -43,13 +43,19 @@ public class Fridge extends InteractableObject{
 
 	@Override
 	public void open() {
-		// TODO Auto-generated method stub
-		
+		if(!this.isOpened()) {
+			this.setOpened(true);
+			this.lblObject.setIcon(this.getIiOpened());
+			this.getParent().lookupObject("FridgeDoor").open();
+		}
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
+		if(this.isOpened) {
+			this.setOpened(false);
+			this.getParent().lookupObject("FridgeDoor").close();
+		}
 		
 	}
 	@Override

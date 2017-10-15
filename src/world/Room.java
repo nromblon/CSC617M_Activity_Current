@@ -43,11 +43,18 @@ import com.objects.bedroom.TopDrawer;
 import com.objects.bedroom.Vault;
 import com.objects.hallway.BathroomDoor;
 import com.objects.hallway.BedroomDoor;
+import com.objects.hallway.Bomb;
 import com.objects.hallway.KitchenDoor;
+import com.objects.hallway.Whiteboard;
+import com.objects.kitchen.Apple;
 import com.objects.kitchen.Blender;
+import com.objects.kitchen.Can;
+import com.objects.kitchen.Cheese;
 import com.objects.kitchen.CoffeePot;
 import com.objects.kitchen.Dishes;
+import com.objects.kitchen.Flask;
 import com.objects.kitchen.Fridge;
+import com.objects.kitchen.FridgeDoor;
 import com.objects.kitchen.Garbage;
 import com.objects.kitchen.Goblet;
 import com.objects.kitchen.HallwayKitchenDoor;
@@ -61,9 +68,11 @@ import com.objects.kitchen.Mixer;
 import com.objects.kitchen.Mug;
 import com.objects.kitchen.Pot;
 import com.objects.kitchen.Stove;
+import com.objects.kitchen.StrawberryJam;
 import com.objects.kitchen.Table;
 import com.objects.kitchen.ToolBox;
 import com.objects.kitchen.Tumbler;
+import com.objects.kitchen.WaterBottle;
 
 public class Room extends GameWorld {
 	public static final int INDEX_HALLWAY = 0;
@@ -96,6 +105,8 @@ public class Room extends GameWorld {
 		 * ROOM 0 :: HALLWAY
 		 */		
 		ArrayList<InteractableObject> objects = new ArrayList<InteractableObject>();
+		objects.add(new Bomb());
+		objects.add(new Whiteboard());
 		objects.add(new KitchenDoor());
 		objects.add(new BedroomDoor());
 		objects.add(new BathroomDoor());
@@ -115,7 +126,19 @@ public class Room extends GameWorld {
 		objects.add(new ToolBox());
 		objects.add(new Garbage());
 		objects.add(new KitchenWindow());
+		
+		objects.add(new FridgeDoor());
+		
+
+		objects.add(new Cheese());
+		objects.add(new Apple());
+		objects.add(new Can());
+		objects.add(new WaterBottle());
+		objects.add(new Flask());
+		objects.add(new StrawberryJam());
+		
 		objects.add(new Fridge());
+		
 		objects.add(new Goblet());
 		objects.add(new Blender());
 		objects.add(new Tumbler());

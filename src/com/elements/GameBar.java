@@ -3,11 +3,8 @@ package com.elements;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Queue;
-import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import com.characters.Character;
@@ -18,12 +15,6 @@ public class GameBar extends JPanel {
 	
 	private JPanel parent;
 	private Character player;
-	
-//	private JLabel lblHealthBar;
-//	private JLabel lblHealth;
-
-//	private JLabel lblMagicBar;
-//	private JLabel lblMagic;
 	
 	private JLabel lblGamebarOverlay;
 	private JLabel lblPlayer;
@@ -47,10 +38,10 @@ public class GameBar extends JPanel {
 		//TODO
 		this.messageQueue = new LinkedList<>();
 
+		this.add(nextBtn);
 		this.add(scrlMessage);
 		this.add(lblMessageOverlay);
 		this.add(lblGamebarOverlay);
-		this.add(nextBtn);
 
 		this.setComponentZOrder(nextBtn,0);
 	}
@@ -59,19 +50,6 @@ public class GameBar extends JPanel {
 		this.lblGamebarOverlay = new JLabel();
 		this.lblPlayer = new JLabel();
 
-
-//		this.lblHealthBar = new JLabel();
-//		this.lblHealthBar.setBounds(117, 674, 329, 17);
-//		this.lblHealth = new JLabel();
-//		this.lblHealth.setBounds(0, 0, lblHealthBar.getWidth(), lblHealthBar.getHeight());
-//		this.lblMagicBar = new JLabel();
-//		Game.initLabel(this.lblMagicBar, Game.fntGothamLight12, Color.WHITE, lblHealthBar.getX()+7, 695, 295, 9);
-//		this.lblMagic = new JLabel();
-//		Game.initLabel(this.lblMagic, Game.fntGothamLight12, Game.clrTurquoise, 0, 0, lblMagicBar.getWidth(), lblMagicBar.getHeight());
-//		
-//		Game.initLabels(this.lblHealthBar, "Health_bg_1", null);
-//		Game.initLabels(this.lblHealth, "Health_points_1", null);
-//		this.lblHealth.setHorizontalAlignment(JLabel.RIGHT);
 		Game.initLabels(this.lblGamebarOverlay, new ImageIcon("images/Gamebar_versus_player1.png"), null);
 		Game.initLabels(this.lblPlayer, this.player.getName()+"_playerOverlay_1", null);			
 		this.lblPlayer.setLocation(30, 658);
@@ -143,43 +121,8 @@ public class GameBar extends JPanel {
 		scrlMessage.revalidate();
 		nextBtn.repaint();
 		nextBtn.revalidate();
-//		this.switchBullet();
-//		float percent = (float)this.player.getMaxHealth()/(float)this.player.getHealth();
-//		this.lblHealth.setSize(Math.round(this.getMaxHealthWidth()/percent), lblHealth.getHeight()); 
-//		
-//		percent = (float)this.player.getMaxMagic()/(float)this.player.getMagic();
-//		this.lblMagic.setSize(Math.round(this.getMaxMagicWidth()/percent), lblMagic.getHeight()); 
 	}
 	
-//	public void switchBullet() {
-//		this.deselectAll();
-//		switch(this.player.getShotType()) {
-//			case 0:
-//				this.lblBullet1.setIcon(this.iiBullet1On);
-//				break;
-//			case 1:
-//				this.lblBullet2.setIcon(this.iiBullet2On);
-//				break;
-//			case 2:
-//				this.lblBullet3.setIcon(this.iiBullet3On);
-//				break;
-//			case 3:
-//				this.lblBullet4.setIcon(this.iiBullet4On);
-//				break;
-//		}
-//	}
-	
-//	public void deselectAll() {
-////		this.lblBullet1.setIcon(this.iiBullet1Off);
-////		this.lblBullet2.setIcon(this.iiBullet2Off);
-////		this.lblBullet3.setIcon(this.iiBullet3Off);
-////		this.lblBullet4.setIcon(this.iiBullet4Off);
-//		
-//		this.lblBullet1.setIcon(this.iiBullet1Able);
-//		this.lblBullet2.setIcon(this.iiBullet2Able);
-//		this.lblBullet3.setIcon(this.iiBullet3Able);
-//		this.lblBullet4.setIcon(this.iiBullet4Able);
-//	}
 	public JPanel getParent() {
 		return parent;
 	}
@@ -187,13 +130,6 @@ public class GameBar extends JPanel {
 	public void setParent(JPanel parent) {
 		this.parent = parent;
 	}
-	
-//	public int getMaxHealthWidth() {
-//		return this.lblHealthBar.getWidth();
-//	}
-//	public int getMaxMagicWidth() {
-//		return this.lblMagicBar.getWidth();
-//	}
 
 	public JTextArea getLblMessage() {
 		return lblMessage;
