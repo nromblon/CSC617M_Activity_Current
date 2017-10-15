@@ -1,0 +1,345 @@
+package world;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingWorker;
+import javax.swing.Timer;
+
+import com.characters.Character;
+import com.elements.BathroomNoteOverlay;
+import com.elements.Controls;
+import com.elements.Game;
+import com.elements.GameBar;
+import com.elements.Inventory;
+import com.elements.OverlayObject;
+import com.elements.SinkTopView;
+import com.elements.Stage;
+import com.elements.VaultPassword;
+import com.elements.parser.Action;
+import com.screens.CharacterSelect;
+
+
+public abstract class GameWorld extends World {
+	private static final long serialVersionUID = 1L;
+	public static boolean IS_PAUSED;
+
+	
+	protected JFrame parent;
+	
+	protected Controls controls;
+	protected Inventory inventory;
+	
+	protected VaultPassword vault;
+	protected SinkTopView sink;
+	protected BathroomNoteOverlay note;
+	
+	protected Timer gameTimer;
+	
+	protected JLabel lblResult;
+	protected JButton btnCharacterSelect;
+	
+	protected ImageIcon iiResultWin;
+	protected ImageIcon iiResultLose;
+	
+	protected SwingWorker<Void, Object> swMoveListener;
+	protected abstract void startWorld();
+	protected ArrayList<OverlayObject> listOverlay;
+	/**
+	 * @param parent
+	 * @param player
+	 */
+	public GameWorld(JFrame parent, Character player) {
+		super(parent, player);
+		this.parent = parent;
+		this.isActive = true;
+		IS_PAUSED = false;
+		
+		this.player = player;
+		this.stageIndex = 0;
+		this.stages = new ArrayList<Stage>();
+		this.gameTimer = new Timer(0, this);	
+
+		this.initComponents();
+
+		this.swMoveListener = new MovementListener(this);
+		this.gamebar = new GameBar(this, this.player);
+		this.vault = new VaultPassword(this, this.player);
+
+		this.sink = new SinkTopView(this, this.player);
+		this.note = new BathroomNoteOverlay(this, this.player);
+		
+		this.controls = new Controls(this, this.player);
+		this.inventory = new Inventory(this, this.player);
+//		controls.setBounds(0, 0, controls.getWidth(), controls.getHeight());
+		
+		this.listOverlay = new ArrayList<OverlayObject>();
+		listOverlay.add(vault);
+		listOverlay.add(sink);
+		listOverlay.add(note);
+		
+		
+		this.add(btnCharacterSelect);
+		this.add(inventory);
+		this.add(controls);
+		
+
+		this.add(vault);
+		this.add(sink);
+		this.add(note);
+		
+		this.add(lblResult);
+		
+		this.add(gamebar);		
+
+	}	
+	
+	private void initComponents() {
+		Game.initPanel(this, Color.GRAY, 0, 0, Game.MAX_WIDTH, Game.MAX_WIDTH);
+		
+		this.iiResultLose = new ImageIcon("images/Result_Lose.png");
+		this.iiResultWin = new ImageIcon("images/Result_Win.png");
+		this.lblResult = new JLabel();
+		this.lblResult.setVisible(false);
+		
+		Game.initLabels(lblResult, iiResultWin, null);
+		
+		
+		this.btnCharacterSelect = new JButton("BACK");
+		Game.initButtons(this.btnCharacterSelect, Game.clrTransparent, (Stage.MAX_WIDTH-180)/2, Stage.MAX_HEIGHT-200, 180, 50, this);
+		this.btnCharacterSelect.setFont(Game.fntGothamLight20);
+		this.btnCharacterSelect.setVisible(false);
+		
+		this.setVisible(true);
+//		this.setFocusable(true);
+		
+//    	this.addKeyListener(new TAdapter());	
+//    	this.addKeyListener(new SAdapter());	
+	}
+	
+	protected void paintComponent(Graphics g) {
+		g.setColor( getBackground() );
+		g.fillRect(0, 0, getWidth(), getHeight());
+		super.paintComponent(g);
+	}
+	
+	public void closeAllOverlays() {
+		int size = listOverlay.size();
+		for(int i = 0; i < size; i++) {
+			listOverlay.get(i).close();
+		}
+	}
+	
+	public void openOverlaySink() {
+		this.closeAllOverlays();
+		this.sink.open();
+	}
+	
+	public void openOverlayVault() {
+		this.closeAllOverlays();
+		this.vault.open();
+	}
+	
+	public void openOverlayNote() {
+		this.closeAllOverlays();
+		this.note.open();
+	}
+	
+	class MovementListener extends SwingWorker<Void, Object> {
+		private Timer moveTimer;
+		private World world;
+		public MovementListener(World world) {
+			this.world = world;
+			this.moveTimer = new Timer(0, new MoveListener());
+			this.moveTimer.start();
+		}
+		private class MoveListener implements ActionListener {			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(!IS_PAUSED) {
+//					requestFocus(true);
+					if(player.isBusy()) {
+						player.continueAction();
+					}
+					player.move();
+					if(!player.isUp()) {
+						gravity(player);
+					}		
+					player.getLblCharacter().setLocation(player.getX()-player.getCenterX(), player.getY()-player.getLblCharacter().getHeight());							
+					
+					if(!isActive)
+						   moveTimer.stop();
+				}
+			}
+		}
+		public Timer getMoveTimer() {
+			return moveTimer;
+		}
+		@Override
+		public Void doInBackground() {
+			return null;
+		}
+	   @Override
+	   protected void done() {
+	   }
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		gamebar.update();
+//		gamebar.update(stage.getEnemies().get(0));
+//		spellbook.setLocation(player.getLblCharacter().getX()+player.getLblCharacter().getWidth()/2-spellbook.getWidth()/2, player.getLblCharacter().getY()-spellbook.getHeight());
+//		spellbook.cast();
+		this.update();
+		repaint();
+		revalidate();
+	}
+	
+	public void update() {
+		// TODO END Update
+
+		if(!player.isBusy()){
+			Action a = controls.getActionQueue().poll();
+			if(a != null){
+				controls.processAction(a);
+			}
+		}
+
+	}
+
+	public void pause() {
+		IS_PAUSED = !IS_PAUSED;
+	}
+	
+	public void endWorld(boolean isWin) {
+		this.isActive = false;
+
+		this.gameTimer.stop();
+		if(isWin) {
+			this.btnCharacterSelect.setForeground(Color.WHITE);
+			this.btnCharacterSelect.setBackground(Color.BLACK);
+			this.lblResult.setIcon(this.iiResultWin);
+			Game.M.play("win.wav", 0);
+		}
+		else {
+			this.btnCharacterSelect.setForeground(Color.BLACK);
+			this.btnCharacterSelect.setBackground(Color.WHITE);
+			
+			this.lblResult.setIcon(this.iiResultLose);
+			Game.M.play("lose.wav", 0);
+		}
+		this.btnCharacterSelect.setVisible(true);
+		this.lblResult.setVisible(true);
+	}
+
+
+	public void updateMessage(String text) {
+		this.getGamebar().getLblMessage().setText(text);
+	}
+	public void toCharacterSelect() {
+		this.isActive = false;
+		if(this.gameTimer.isRunning())
+			this.gameTimer.stop();
+		Game.M.stop();
+		this.parent.add(new CharacterSelect(this.parent));
+		this.parent.remove(this);
+		
+	}
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		if(e.getSource() == this.btnCharacterSelect) {
+			this.toCharacterSelect();
+		}
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		
+	}
+
+	public Character getPlayer() {
+		return player;
+	}
+
+	public void setPlayer(Character player) {
+		this.player = player;
+	}
+
+	public ArrayList<Stage> getStages() {
+		return stages;
+	}
+
+	public void setStages(ArrayList<Stage> stages) {
+		this.stages = stages;
+	}
+
+	public Stage getStage() {
+		return stage;
+	}
+
+	public void setStage(Stage stage) {
+		this.stage = stage;
+	}
+
+	public GameBar getGamebar() {
+		return gamebar;
+	}
+
+	public void setGamebar(GameBar gamebar) {
+		this.gamebar = gamebar;
+	}
+
+	public Timer getGameTimer() {
+		return gameTimer;
+	}
+
+	public void setGameTimer(Timer gameTimer) {
+		this.gameTimer = gameTimer;
+	}
+	public Inventory getInventory() {
+		return inventory;
+	}
+	public void setInventory(Inventory inventory) {
+		this.inventory = inventory;
+	}
+	public VaultPassword getVault() {
+		return vault;
+	}
+	public void setVault(VaultPassword vault) {
+		this.vault = vault;
+	}
+	public SinkTopView getSink() {
+		return sink;
+	}
+	public void setSink(SinkTopView sink) {
+		this.sink = sink;
+	}
+}
