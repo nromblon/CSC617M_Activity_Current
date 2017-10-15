@@ -8,7 +8,11 @@ public class StrawberryJam extends InteractableObject{
 	
 	public StrawberryJam() {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		super(new String[]{"strawberry jam"});
+=======
+		super(new String[]{"strawberry jam","jam","strawbery"});
+>>>>>>> 094f6a93e5f4535684efc1fdcd1d4ec3256304f2
 =======
 		super(new String[]{"strawberry jam","jam","strawbery"});
 >>>>>>> 094f6a93e5f4535684efc1fdcd1d4ec3256304f2

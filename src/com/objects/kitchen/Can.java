@@ -8,7 +8,11 @@ public class Can extends InteractableObject{
 	
 	public Can() {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		super(new String[]{"can", "red can", "softdrinks", "softdrink", "coke", "coke can"});
+=======
+		super(new String[]{"can","soda","softdrinks","softdrink","drink"});
+>>>>>>> 094f6a93e5f4535684efc1fdcd1d4ec3256304f2
 =======
 		super(new String[]{"can","soda","softdrinks","softdrink","drink"});
 >>>>>>> 094f6a93e5f4535684efc1fdcd1d4ec3256304f2

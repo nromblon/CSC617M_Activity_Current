@@ -8,7 +8,11 @@ public class Cheese extends InteractableObject{
 	
 	public Cheese() {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		super(new String[]{"cheese"});
+=======
+		super(new String[]{"cheese","queso","yellow thing"});
+>>>>>>> 094f6a93e5f4535684efc1fdcd1d4ec3256304f2
 =======
 		super(new String[]{"cheese","queso","yellow thing"});
 >>>>>>> 094f6a93e5f4535684efc1fdcd1d4ec3256304f2

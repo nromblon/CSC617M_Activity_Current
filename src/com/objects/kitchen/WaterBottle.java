@@ -8,7 +8,11 @@ public class WaterBottle extends InteractableObject{
 	
 	public WaterBottle() {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		super(new String[]{"water", "water bottle", "bottle", "mineral water", "blue bottle"});
+=======
+		super(new String[]{"water bottle","water","bottle"});
+>>>>>>> 094f6a93e5f4535684efc1fdcd1d4ec3256304f2
 =======
 		super(new String[]{"water bottle","water","bottle"});
 >>>>>>> 094f6a93e5f4535684efc1fdcd1d4ec3256304f2
