@@ -8,15 +8,8 @@ import com.objects.InteractableObject;
 public class Flask extends InteractableObject{
 	
 	public Flask() {
-<<<<<<< HEAD
-<<<<<<< HEAD
-		super(new String[]{"flask", "erlenmeyer flask", "glass jar", "glass"});
-=======
 		super(new String[]{"flask","science bottle","potion","volumetric flask"});
->>>>>>> 094f6a93e5f4535684efc1fdcd1d4ec3256304f2
-=======
-		super(new String[]{"flask","science bottle","potion","volumetric flask"});
->>>>>>> 094f6a93e5f4535684efc1fdcd1d4ec3256304f2
+
 		this.viewResponse = "A "+this.objectName+".";
 		this.openResponse = "The "+this.objectName+" can't be opened.";
 		this.closeResponse = "The "+this.objectName+" can't be closed.";
