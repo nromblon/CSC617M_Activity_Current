@@ -3,7 +3,6 @@
 *.xml
 *.prefs
 .project
-*.png
 *.class
 *.iml
 out/production/CSC617M Activity Current/com/music/lose.wav
