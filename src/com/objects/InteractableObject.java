@@ -1,15 +1,9 @@
 package com.objects;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.Timer;
-
 import com.elements.Stage;
 
-import world.GameWorld;
 import com.characters.Character;
 /**
  * Parent class of all game objects that the player can interact with.

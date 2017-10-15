@@ -2,19 +2,14 @@ package com.objects.bedroom;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.Timer;
-
 import com.elements.Game;
 import com.elements.Stage;
 import com.objects.InteractableObject;
 
-import world.GameWorld;
-import world.Room;
-
 public class Vault extends InteractableObject{
 	
 	public Vault() {
-		super(new String[]{"vault0"});
+		super(new String[]{"vault"});
 		this.viewResponse = "A "+this.objectName+".";
 		this.openResponse = "The "+this.objectName+" can't be opened.";
 		this.closeResponse = "The "+this.objectName+" can't be closed.";

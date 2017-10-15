@@ -5,7 +5,6 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Rectangle;
-import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
@@ -25,7 +24,6 @@ import javax.swing.border.LineBorder;
 import com.music.Music;
 import com.override.CustomScrollBarUISky;
 import com.screens.CharacterSelect;
-import com.screens.Splash;
 
 public class Game extends JFrame implements MouseListener {
 	private static final long serialVersionUID = 1L;

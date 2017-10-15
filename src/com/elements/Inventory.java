@@ -1,25 +1,15 @@
 package com.elements;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
-import java.util.Random;
-
 import javax.swing.BoxLayout;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
-import javax.swing.Timer;
-
 import com.characters.Character;
 
 import com.frame.Frame;
@@ -204,18 +194,18 @@ public class Inventory extends JPanel implements MouseListener {
 		player.stop();
 	}
 	
-	public void startAction() {
-		String strAction = "item";
-//		this.getParent().updateMessage(strAction);
-//		if(strAction.length() > 1) {
-//			action(strAction);
-//			this.strControlLog.add(strAction);
-			
-//			pnlInventory.add(createItem(strAction, pnlInventory), null, 0);
-//			txtfControls.setText("");
-//		}
-
-	}
+//	public void startAction() {
+////		String strAction = "item";
+////		this.getParent().updateMessage(strAction);
+////		if(strAction.length() > 1) {
+////			action(strAction);
+////			this.strControlLog.add(strAction);
+//			
+////			pnlInventory.add(createItem(strAction, pnlInventory), null, 0);
+////			txtfControls.setText("");
+////		}
+//
+//	}
 	
 	public void addItem(InteractableObject item) {
 		pnlInventory.add(createItem(item, pnlInventory), null, 0);
@@ -232,9 +222,6 @@ public class Inventory extends JPanel implements MouseListener {
 	}
 
 	public Component searchItem(String text) {
-		int size = this.pnlInventory.getComponentCount();
-		JLabel label;
-		JLabel parent;
 		for(Component component : pnlInventory.getComponents()) {
 			if(text == component.getName()){
 				return component;
@@ -296,27 +283,6 @@ public class Inventory extends JPanel implements MouseListener {
 		labelBorder.setName(item.getObjectName());
 		labelBorder.addMouseListener(this);
 		return labelBorder;
-	}
-	
-	private class TAdapter extends KeyAdapter implements ActionListener {
-		public void keyPressed(KeyEvent e) {
-			switch (e.getKeyCode()) {
-			case KeyEvent.VK_ENTER:
-				startAction();
-				break;
-			}		
-			
-		}
-		public void keyReleased(KeyEvent e) {
-			switch (e.getKeyCode()) {
-			case KeyEvent.VK_ENTER:
-				break;
-			}	
-		}
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			
-		}		
 	}
 	
 	public GameWorld getParent() {
@@ -399,6 +365,10 @@ public class Inventory extends JPanel implements MouseListener {
 			
 			if(name.equals("BathroomNote")) {
 				this.getParent().openOverlayNote();
+			}
+			
+			if(name.equals("Picture")) {
+				this.getParent().openSliderGame();
 			}
 		}
 	}

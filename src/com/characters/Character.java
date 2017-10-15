@@ -1,39 +1,15 @@
 package com.characters;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.Timer;
-
 import com.elements.Game;
 import com.elements.Stage;
 import com.objects.InteractableObject;
 
 import world.GameWorld;
-import world.World;
 
 public abstract class Character {
-	
-//	protected boolean isOpeningNextDoor;
-//	protected boolean isOpeningPrevDoor;
-	
 	protected String name;
-//	protected boolean isInvulnerable;
-//	protected int skillCost;
-//	protected ArrayList<Character> enemies;
-//	protected ArrayList<Projectile> projectiles;
-//	protected ArrayList<Skill> skills;
-//	protected int shotType;
-	
-//	protected int maxHealth;
-//	protected int maxMagic;
-//	protected int health;
-//	protected int magic;
-//	protected int magicGain;
-//	protected int magicDamage;
 	protected int direction;
 	
 	protected int iX;
@@ -50,14 +26,6 @@ public abstract class Character {
 	protected int maxJumpHeight;
 	protected int jumpSpan;
 	
-//	protected int maxBullets;
-//	protected int bulletSpeed;
-//	protected int bulletInterval;
-
-	/*
-	 * Status effect variables 
-	 */	
-//	protected boolean isStunned;
 
 	protected boolean isMovingTo;
 	protected InteractableObject moveToObject;
@@ -67,14 +35,8 @@ public abstract class Character {
 	protected boolean movUp;
 	protected boolean movDown;
 	
-//	protected boolean atkShoot;	
 	protected boolean isUp;
 	protected boolean isDown;
-	
-//	protected Timer tmrShoot;
-//	protected Timer tmrMagicGain;
-//	protected Timer tmrIconBlink;
-//	protected Timer tmrStun;
 	
 	protected JLabel lblCharacter;
 	protected Stage parent;
@@ -83,54 +45,31 @@ public abstract class Character {
 	protected ImageIcon iiDmgLeft;
 	protected ImageIcon iiDmgRight;
 	protected ImageIcon iiMovLeft;
-	protected ImageIcon iiMovLeft1;
-	protected ImageIcon iiMovLeft2;
 	protected ImageIcon iiMovRight;
-	protected ImageIcon iiMovRight1;
-	protected ImageIcon iiMovRight2;
 	protected ImageIcon iiMovUp;
 	protected ImageIcon iiMovDown;
 	
 	protected ImageIcon iiBullet;
 	
-//	public abstract void cast();
 	public Character() {
 		
-//		this.isOpeningNextDoor = false;
-//		this.isOpeningPrevDoor = false;
 		
 		this.name = "Undefined";
-//		this.maxHealth = 2000;
-//		this.maxMagic = 300;
-//		this.health = this.maxHealth;
-//		this.magic = this.maxMagic;
-//		this.shotType = 0;
-//		this.skillCost = this.maxMagic/2;
-		
-//		this.isStunned = false;
-//		this.isInvulnerable = false;
 		
 		
 		this.direction = 1;
-//		this.magicGain = 1;
-//		this.magicDamage = 1;
-		
 		this.iX = 0;
 		this.iY = 0;
 		
 		this.x = this.iX;
 		this.y = this.iY;
 		
-		this.stepWidth = 2;
+		this.stepWidth = 3;
 		this.jumpHeight = 2;
 		this.jumpSpan = 0;
 		this.weight = 2;
 		
 		this.maxJumpHeight = 100;
-//		this.maxBullets = 10;
-//		this.bulletSpeed = 5;
-//		this.bulletInterval = 1;
-		
 		this.isAlive = true;
 
 		this.movLeft = false;
@@ -139,20 +78,10 @@ public abstract class Character {
 		this.movDown = false;
 		this.isMovingTo = false;
 		
-//		this.atkShoot = false;
-		
 		this.isUp = false;
 		this.isDown = false;
 		
-//		this.projectiles = new ArrayList<Projectile>();
-//		this.enemies = new ArrayList<Character>();
 		this.lblCharacter = new JLabel();
-		
-//		this.tmrShoot = new Timer(bulletInterval*100, new ShootTimer());
-//		this.tmrMagicGain = new Timer(1000, new MagicGainTimer());
-//		this.tmrIconBlink = new Timer(100, new BlinkTimer());
-		
-//		this.tmrMagicGain.start();
 	}
 
 	
@@ -436,37 +365,6 @@ public abstract class Character {
 		}
 	}
 	
-//	public void damage(int damage) {
-//		if(!isInvulnerable) {
-//			this.setHealth(this.getHealth()-damage);
-//			this.setCharacterImage(this.getName()+"_damage");
-//			if(!tmrIconBlink.isRunning()) {
-//				tmrIconBlink.start();
-//			}
-//		}
-//	}
-//	public void stun(int miliseconds) {
-//		
-//		setStunned(true);
-//		this.tmrStun = new Timer(miliseconds, new StunTimer());
-//		this.tmrStun.start();
-//		
-//	}
-//	public void replenishAll() {
-//		this.replenishHealth();
-//		this.replenishMagic();
-//	}
-//	
-//	public void replenishHealth() {
-//		this.setHealth(this.maxHealth);
-//	}
-//	
-//	public void replenishMagic() {
-//		this.setMagic(this.maxMagic);
-//	}
-	
-	
-
 	public int getiX() {
 		return iX;
 	}
@@ -826,77 +724,4 @@ public abstract class Character {
 	public void setParent(Stage parent) {
 		this.parent = parent;
 	}
-
-//	public int getShotType() {
-//		return shotType;
-//	}
-
-//	public void setShotType(int shotType) {
-//		if(shotType > Projectile.PROJECTILE_COUNT) {
-//			shotType = 0;
-//		}
-//		this.shotType = shotType;
-//	}
-
-	public ImageIcon getIiMovLeft1() {
-		return iiMovLeft1;
-	}
-
-	public void setIiMovLeft1(ImageIcon iiMovLeft1) {
-		this.iiMovLeft1 = iiMovLeft1;
-	}
-
-	public ImageIcon getIiMovLeft2() {
-		return iiMovLeft2;
-	}
-
-	public void setIiMovLeft2(ImageIcon iiMovLeft2) {
-		this.iiMovLeft2 = iiMovLeft2;
-	}
-
-	public ImageIcon getIiMovRight1() {
-		return iiMovRight1;
-	}
-
-	public void setIiMovRight1(ImageIcon iiMovRight1) {
-		this.iiMovRight1 = iiMovRight1;
-	}
-
-	public ImageIcon getIiMovRight2() {
-		return iiMovRight2;
-	}
-
-	public void setIiMovRight2(ImageIcon iiMovRight2) {
-		this.iiMovRight2 = iiMovRight2;
-	}
-//	public boolean isStunned() {
-//		return isStunned;
-//	}
-//	public void setStunned(boolean isStunned) {
-//		this.isStunned = isStunned;
-//	}
-//	public boolean isInvulnerable() {
-//		return isInvulnerable;
-//	}
-//	public void setInvulnerable(boolean isInvulnerable) {
-//		this.isInvulnerable = isInvulnerable;
-//	}
-//	public int getSkillCost() {
-//		return skillCost;
-//	}
-//	public void setSkillCost(int skillCost) {
-//		this.skillCost = skillCost;
-//	}
-//	public boolean isOpeningNextDoor() {
-//		return isOpeningNextDoor;
-//	}
-//	public void setOpeningNextDoor(boolean isOpeningNextDoor) {
-//		this.isOpeningNextDoor = isOpeningNextDoor;
-//	}
-//	public boolean isOpeningPrevDoor() {
-//		return isOpeningPrevDoor;
-//	}
-//	public void setOpeningPrevDoor(boolean isOpeningPrevDoor) {
-//		this.isOpeningPrevDoor = isOpeningPrevDoor;
-//	}
 }

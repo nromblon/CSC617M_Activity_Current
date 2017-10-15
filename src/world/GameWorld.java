@@ -4,8 +4,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
@@ -13,21 +11,21 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.SwingWorker;
 import javax.swing.Timer;
 
 import com.characters.Character;
-import com.elements.BathroomNoteOverlay;
 import com.elements.Controls;
 import com.elements.Game;
 import com.elements.GameBar;
 import com.elements.Inventory;
-import com.elements.OverlayObject;
-import com.elements.SinkTopView;
 import com.elements.Stage;
-import com.elements.VaultPassword;
 import com.elements.parser.Action;
+import com.overlay.BathroomNoteOverlay;
+import com.overlay.OverlayObject;
+import com.overlay.SinkTopView;
+import com.overlay.SliderGame;
+import com.overlay.VaultPassword;
 import com.screens.CharacterSelect;
 
 
@@ -44,6 +42,7 @@ public abstract class GameWorld extends World {
 	protected VaultPassword vault;
 	protected SinkTopView sink;
 	protected BathroomNoteOverlay note;
+	protected SliderGame sliderGame;
 	
 	protected Timer gameTimer;
 	
@@ -73,7 +72,7 @@ public abstract class GameWorld extends World {
 
 		this.initComponents();
 
-		this.swMoveListener = new MovementListener(this);
+		this.swMoveListener = new MovementListener();
 		this.gamebar = new GameBar(this, this.player);
 		this.vault = new VaultPassword(this, this.player);
 
@@ -82,9 +81,14 @@ public abstract class GameWorld extends World {
 		
 		this.controls = new Controls(this, this.player);
 		this.inventory = new Inventory(this, this.player);
+		
+
+		this.sliderGame = new SliderGame(this, this.player);
 //		controls.setBounds(0, 0, controls.getWidth(), controls.getHeight());
 		
 		this.listOverlay = new ArrayList<OverlayObject>();
+
+		listOverlay.add(sliderGame);
 		listOverlay.add(vault);
 		listOverlay.add(sink);
 		listOverlay.add(note);
@@ -95,6 +99,7 @@ public abstract class GameWorld extends World {
 		this.add(controls);
 		
 
+		this.add(sliderGame);		
 		this.add(vault);
 		this.add(sink);
 		this.add(note);
@@ -155,12 +160,15 @@ public abstract class GameWorld extends World {
 		this.closeAllOverlays();
 		this.note.open();
 	}
+
+	public void openSliderGame() {
+		this.closeAllOverlays();
+		this.sliderGame.open();
+	}
 	
 	class MovementListener extends SwingWorker<Void, Object> {
 		private Timer moveTimer;
-		private World world;
-		public MovementListener(World world) {
-			this.world = world;
+		public MovementListener() {
 			this.moveTimer = new Timer(0, new MoveListener());
 			this.moveTimer.start();
 		}

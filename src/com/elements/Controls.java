@@ -10,14 +10,11 @@ import java.awt.event.KeyListener;
 import java.util.*;
 
 import javax.swing.BoxLayout;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
-import javax.swing.Timer;
-
 import com.characters.Character;
 import com.elements.parser.Action;
 import com.elements.parser.ActionParser;
@@ -153,7 +150,6 @@ public class Controls extends JPanel {
 			switch (e.getKeyCode()) {
 			case KeyEvent.VK_ENTER:
 				startAction();
-				getParent().getInventory().startAction();
 				break;
 			}		
 			

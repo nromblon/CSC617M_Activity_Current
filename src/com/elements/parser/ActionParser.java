@@ -2,8 +2,6 @@ package com.elements.parser;
 
 import com.elements.Stage;
 import com.objects.InteractableObject;
-import world.GameWorld;
-
 import java.util.ArrayList;
 
 public class ActionParser {

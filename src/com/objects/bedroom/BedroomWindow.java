@@ -1,15 +1,8 @@
 package com.objects.bedroom;
 
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.Timer;
-
 import com.elements.Game;
-import com.elements.Stage;
 import com.objects.InteractableObject;
-
-import world.GameWorld;
-import world.Room;
 
 public class BedroomWindow extends InteractableObject{
 	

@@ -1,14 +1,9 @@
 package com.objects.kitchen;
 
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.Timer;
-
 import com.elements.Game;
 import com.elements.Stage;
 import com.objects.InteractableObject;
-
-import world.GameWorld;
 
 public class Garbage extends InteractableObject{
 	
@@ -27,7 +22,7 @@ public class Garbage extends InteractableObject{
 		this.lblObject = new JLabel();
 		Game.initLabels(lblObject, this.objectName+"_default", null);
 		
-		this.iX = 341;
+		this.iX = 356;
 		this.iY = Stage.FLOOR-this.lblObject.getHeight();
 		
 		this.setX(iX);

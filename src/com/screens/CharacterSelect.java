@@ -124,7 +124,6 @@ public class CharacterSelect extends JPanel implements ActionListener, MouseList
 	}
 	
 	public void initComponents() {
-		int offsetX = 8;
 		int offsetY = 14;
 		
 		Game.initPanel(this, Color.GRAY, 0, 0, Game.MAX_WIDTH, Game.MAX_WIDTH);
@@ -188,7 +187,6 @@ public class CharacterSelect extends JPanel implements ActionListener, MouseList
 //		this.btnChara11 = new JButton();
 //		this.btnChara12 = new JButton();
 		
-		offsetX = 8;
 		offsetY = 8;
 		
 //		Game.initButtons(this.btnChara1, "Chara1", 39, 36, true, this);
