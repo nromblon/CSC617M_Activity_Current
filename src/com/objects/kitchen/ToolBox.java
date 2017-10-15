@@ -42,8 +42,17 @@ public class ToolBox extends InteractableObject{
 
 	@Override
 	public void open() {
-		// TODO Auto-generated method stub
-		
+		if(this.getParent().lookupObject("ToolBoxKey").isTaken() &&
+				!this.getParent().lookupObject("ToolBoxKey").isUsed()) {
+			this.getParent().lookupObject("ToolBoxKey").use();
+			this.getParent().updateMessage("It's locked. I used the toolbox key.");
+			this.getParent().updateMessage("There's a car battery inside. It might be useful, I should take it.");
+			this.setTaken(true);
+			this.getParent().getParent().getInventory().addItem(this.getParent().lookupObject("CarBattery"));
+		}
+		else {
+			this.getParent().updateMessage("It's locked.");
+		}
 	}
 
 	@Override

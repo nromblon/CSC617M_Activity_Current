@@ -59,15 +59,7 @@ public abstract class InteractableObject {
 	public String closeResponse = "";
 	
 	protected String objectName;
-//	private float objectHealth;
 	
-//	public abstract void attacked();
-//	public abstract void evaded();
-//	public abstract void talked();
-
-//	public abstract void used();
-//	public abstract void opened();
-//	public abstract void closed();
 	public abstract void update();
 	
 	public abstract void view();
@@ -79,36 +71,12 @@ public abstract class InteractableObject {
 	public InteractableObject(String[] synonyms) {
 		this.synonyms = synonyms;
 		this.setTarget(this);
-//		this.isUp = false;
-//		this.isDown = false;
-//		this.spawnTime = 0;
-//		this.weight = 2;
 	}
 	
 	public void spawn() {
-//		this.tmrSpawn.start();
-
 		lblObject.setVisible(true);
 		lblObject.setLocation(iX, iY);
 	}
-	
-//	public class SpawnTimer implements ActionListener {
-//		
-//		@Override
-//		public void actionPerformed(ActionEvent e) {
-//			lblObject.setVisible(true);
-////			setAlive(true);
-////			replenishAll();
-//			getLblObject().setLocation(iX, iY);
-////			tmrLife.start();
-////			tmrAttack.start();
-////			tmrSpawn.stop();
-//		}
-//	}
-	
-//	public void setDown(boolean isDown) {
-//		this.isDown = isDown;
-//	}
 	
 	public Character getPlayer() {
 		return this.parent.getParent().getPlayer();

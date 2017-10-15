@@ -8,7 +8,7 @@ import com.objects.InteractableObject;
 public class Bomb extends InteractableObject{
 	
 	public Bomb() {
-		super(new String[]{"stove"});
+		super(new String[]{"bomb","explosives","explosive"});
 		this.viewResponse = "A "+this.objectName+".";
 		this.openResponse = "The "+this.objectName+" can't be opened.";
 		this.closeResponse = "The "+this.objectName+" can't be closed.";

@@ -8,7 +8,7 @@ import com.objects.InteractableObject;
 public class BedroomLight extends InteractableObject{
 	
 	public BedroomLight() {
-		super(new String[]{"lights","light","bulb","lightbulb"});
+		super(new String[]{"hanging lamp","ceiling lamp","lights","light","bulb","lightbulb"});
 		this.viewResponse = "A "+this.objectName+".";
 		this.openResponse = "The "+this.objectName+" can't be opened.";
 		this.closeResponse = "The "+this.objectName+" can't be closed.";

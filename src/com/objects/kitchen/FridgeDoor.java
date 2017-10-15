@@ -9,7 +9,7 @@ import com.objects.InteractableObject;
 public class FridgeDoor extends InteractableObject{
 	
 	public FridgeDoor() {
-		super(new String[]{"fridge","refrigerator","freezer"});
+		super(new String[]{"fridge", "fridge door"});
 		this.viewResponse = "A "+this.objectName+".";
 		this.openResponse = "The "+this.objectName+" can't be opened.";
 		this.closeResponse = "The "+this.objectName+" can't be closed.";
@@ -46,11 +46,13 @@ public class FridgeDoor extends InteractableObject{
 
 	@Override
 	public void open() {
+		this.setOpened(true);
 		this.lblObject.setVisible(false);
 	}
 
 	@Override
 	public void close() {
+		this.setOpened(false);
 		this.lblObject.setVisible(true);
 	}
 	@Override

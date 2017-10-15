@@ -7,7 +7,7 @@ import com.objects.InteractableObject;
 public class Mixer extends InteractableObject{
 	
 	public Mixer() {
-		super(new String[]{"mixer"});
+		super(new String[]{"mixer","whisker"});
 		this.viewResponse = "A "+this.objectName+".";
 		this.openResponse = "The "+this.objectName+" can't be opened.";
 		this.closeResponse = "The "+this.objectName+" can't be closed.";

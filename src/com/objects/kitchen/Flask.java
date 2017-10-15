@@ -1,5 +1,6 @@
 package com.objects.kitchen;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import com.elements.Game;
 import com.objects.InteractableObject;
@@ -7,7 +8,11 @@ import com.objects.InteractableObject;
 public class Flask extends InteractableObject{
 	
 	public Flask() {
-		super(new String[]{"coffee pot"});
+<<<<<<< HEAD
+		super(new String[]{"flask", "erlenmeyer flask", "glass jar", "glass"});
+=======
+		super(new String[]{"flask","science bottle","potion","volumetric flask"});
+>>>>>>> 094f6a93e5f4535684efc1fdcd1d4ec3256304f2
 		this.viewResponse = "A "+this.objectName+".";
 		this.openResponse = "The "+this.objectName+" can't be opened.";
 		this.closeResponse = "The "+this.objectName+" can't be closed.";
@@ -28,6 +33,7 @@ public class Flask extends InteractableObject{
 //		this.iiOpened = new ImageIcon("images/"+this.objectName+"_opened.png");
 //		this.iiClosed = new ImageIcon("images/"+this.objectName+"_closed.png");
 //		this.iiViewed = new ImageIcon("images/"+this.objectName+"_viewed.png");
+		this.iiInventory = new ImageIcon("images/"+this.objectName+".png");
 		
 		this.setCenterX(this.lblObject.getWidth()/2);
 		this.setCenterY(this.lblObject.getHeight()/2);
@@ -52,12 +58,16 @@ public class Flask extends InteractableObject{
 	}
 	@Override
 	public void update() {
-//		System.out.println("Drawer update");
+
 	}
 	@Override
 	public void take() {
-		// TODO Auto-generated method stub
-		
+		if(!isTaken() &&
+				this.getParent().lookupObject("FridgeDoor").isOpened()) {
+			this.setTaken(true);
+			this.getParent().getParent().getInventory().addItem(this);
+			this.lblObject.setVisible(false);
+		}
 	}
 	@Override
 	public void use() {

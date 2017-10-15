@@ -194,31 +194,13 @@ public class Inventory extends JPanel implements MouseListener {
 		player.stop();
 	}
 	
-//	public void startAction() {
-////		String strAction = "item";
-////		this.getParent().updateMessage(strAction);
-////		if(strAction.length() > 1) {
-////			action(strAction);
-////			this.strControlLog.add(strAction);
-//			
-////			pnlInventory.add(createItem(strAction, pnlInventory), null, 0);
-////			txtfControls.setText("");
-////		}
-//
-//	}
-	
 	public void addItem(InteractableObject item) {
 		pnlInventory.add(createItem(item, pnlInventory), null, 0);
 		
 	}
 	
 	public void removeItem(InteractableObject item) {
-//		int index = this.listInventory.indexOf(item.getObjectName());
-//		System.out.println(index + ": "+item.getObjectName());
-//		System.out.println(listInventory.get(index));
 		this.pnlInventory.remove(searchItem(item.getObjectName()));
-//		this.listInventory.remove(index);
-
 	}
 
 	public Component searchItem(String text) {

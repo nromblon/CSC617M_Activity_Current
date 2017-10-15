@@ -8,7 +8,7 @@ import com.objects.InteractableObject;
 public class Sink extends InteractableObject{
 	
 	public Sink() {
-		super(new String[]{"sink"});
+		super(new String[]{"sink","faucet","hydrant","spigot","spout"});
 		this.viewResponse = "A "+this.objectName+".";
 		this.openResponse = "The "+this.objectName+" can't be opened.";
 		this.closeResponse = "The "+this.objectName+" can't be closed.";

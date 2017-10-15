@@ -35,13 +35,12 @@ public class Goblet extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		this.getParent().updateMessage("Theres a key inside.");
+		this.getParent().lookupObject("ToolBoxKey").take();
 	}
 
 	@Override
 	public void open() {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -52,7 +51,7 @@ public class Goblet extends InteractableObject{
 	}
 	@Override
 	public void update() {
-//		System.out.println("Drawer update");
+
 	}
 	@Override
 	public void take() {

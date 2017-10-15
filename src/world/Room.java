@@ -49,6 +49,7 @@ import com.objects.hallway.Whiteboard;
 import com.objects.kitchen.Apple;
 import com.objects.kitchen.Blender;
 import com.objects.kitchen.Can;
+import com.objects.kitchen.CarBattery;
 import com.objects.kitchen.Cheese;
 import com.objects.kitchen.CoffeePot;
 import com.objects.kitchen.Dishes;
@@ -71,6 +72,7 @@ import com.objects.kitchen.Stove;
 import com.objects.kitchen.StrawberryJam;
 import com.objects.kitchen.Table;
 import com.objects.kitchen.ToolBox;
+import com.objects.kitchen.ToolBoxKey;
 import com.objects.kitchen.Tumbler;
 import com.objects.kitchen.WaterBottle;
 
@@ -140,6 +142,9 @@ public class Room extends GameWorld {
 		objects.add(new Fridge());
 		
 		objects.add(new Goblet());
+		objects.add(new ToolBoxKey());
+		objects.add(new CarBattery());
+		
 		objects.add(new Blender());
 		objects.add(new Tumbler());
 		objects.add(new Dishes());
