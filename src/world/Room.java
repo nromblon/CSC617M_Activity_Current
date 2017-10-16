@@ -109,8 +109,8 @@ public class Room extends GameWorld {
 
 	private String[][] basic;
 	
-	public Room(JFrame parent, Character player) {
-		super(parent, player);
+	public Room(JFrame parent, Character player, boolean isRight) {
+		super(parent, player, isRight);
 
 		this.initBlueprints();
 		

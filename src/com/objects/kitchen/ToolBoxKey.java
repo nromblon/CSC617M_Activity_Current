@@ -62,7 +62,7 @@ public class ToolBoxKey extends InteractableObject{
 	}
 	@Override
 	public void use() {
-		this.getParent().getParent().getInventory().removeItem(this);
+
 	}
 
 }

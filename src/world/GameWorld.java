@@ -25,6 +25,7 @@ import com.elements.parser.Action;
 import com.objects.bedroom.PictureNote;
 import com.overlay.AcidRecipeOverlay;
 import com.overlay.BathroomNoteOverlay;
+import com.overlay.BombClueOverlay;
 import com.overlay.BombWiring;
 import com.overlay.MedicineCabinet;
 import com.overlay.OverlayObject;
@@ -54,6 +55,7 @@ public abstract class GameWorld extends World {
 	protected MedicineCabinet medicineCabinet;
 	protected PictureNoteOverlay pictureNote;
 	protected AcidRecipeOverlay acidRecipe;
+	protected BombClueOverlay bombClue;
 	
 	protected Timer gameTimer;
 	
@@ -62,7 +64,7 @@ public abstract class GameWorld extends World {
 	
 	protected ImageIcon iiResultWin;
 	protected ImageIcon iiResultLose;
-	
+	protected boolean isRight;
 	protected SwingWorker<Void, Object> swMoveListener;
 	protected abstract void startWorld();
 	protected ArrayList<OverlayObject> listOverlay;
@@ -70,7 +72,7 @@ public abstract class GameWorld extends World {
 	 * @param parent
 	 * @param player
 	 */
-	public GameWorld(JFrame parent, Character player) {
+	public GameWorld(JFrame parent, Character player, boolean isRight) {
 		super(parent, player);
 		this.parent = parent;
 		this.isActive = true;
@@ -80,7 +82,7 @@ public abstract class GameWorld extends World {
 		this.stageIndex = 0;
 		this.stages = new ArrayList<Stage>();
 		this.gameTimer = new Timer(0, this);	
-
+		this.setRight(isRight);
 		this.initComponents();
 
 		this.swMoveListener = new MovementListener();
@@ -99,7 +101,8 @@ public abstract class GameWorld extends World {
 		this.bombWiring = new BombWiring(this, this.player);
 		this.pictureNote = new PictureNoteOverlay(this, this.player);
 		this.acidRecipe = new AcidRecipeOverlay(this, this.player);
-
+		this.bombClue = new BombClueOverlay(this, this.player, this.isRight);
+		
 //		controls.setBounds(0, 0, controls.getWidth(), controls.getHeight());
 		
 		this.listOverlay = new ArrayList<OverlayObject>();
@@ -112,6 +115,7 @@ public abstract class GameWorld extends World {
 		listOverlay.add(medicineCabinet);
 		listOverlay.add(bombWiring);
 		listOverlay.add(acidRecipe);
+		listOverlay.add(bombClue);
 		
 		this.add(btnCharacterSelect);
 		this.add(instructions);
@@ -128,8 +132,7 @@ public abstract class GameWorld extends World {
 		this.add(note);
 		this.add(bombWiring);
 		this.add(medicineCabinet);
-		
-		
+		this.add(bombClue);	
 		this.add(gamebar);		
 
 	}	
@@ -388,5 +391,13 @@ public abstract class GameWorld extends World {
 	}
 	public void setSink(SinkTopView sink) {
 		this.sink = sink;
+	}
+	
+	public boolean isRight() {
+		return isRight;
+	}
+
+	public void setRight(boolean isRight) {
+		this.isRight = isRight;
 	}
 }
