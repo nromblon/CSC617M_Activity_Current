@@ -86,29 +86,42 @@ public class Controls extends JPanel {
 
 
 	public void processAction(Action a){
-        InteractableObject o = a.getObject();
-	    switch(a.getCommand()){
-            case MOVE:
-            	if(!o.isTaken())
-            		player.moveTo(o);
-            	break;
+		if(a.getCommand().equals(Commands.ERROR))
+			getParent().updateMessage("I don't know what you mean.");
+		else {
+			InteractableObject o = a.getObject();
+			switch (a.getCommand()) {
+				case MOVE:
+					if (!o.isTaken())
+						player.moveTo(o);
+					break;
 
-            case VIEW: o.view(); break;
-            case OPEN: o.open(); break;
-			case TAKE:
-				if(!o.isTaken())
-					o.take();
-				break;
+				case VIEW:
+					o.view();
+					break;
+				case OPEN:
+					o.open();
+					break;
+				case TAKE:
+					if (!o.isTaken())
+						o.take();
+					break;
 
-			case CLOSE: o.close(); break;
-            case USE: o.use(); break;
-            default: break;
-        }
+				case CLOSE:
+					o.close();
+					break;
+				case USE:
+					o.use();
+					break;
+				default:
+					break;
+			}
 //		if(a.getCommand() != Commands.MOVE && !this.getParent().getGamebar().getMessageQueue().isEmpty())
-		if(a.getCommand() != Commands.MOVE && !actionQueue.isEmpty())
+			if (a.getCommand() != Commands.MOVE && !actionQueue.isEmpty())
 				player.setInAction(true);
-	    if(actionQueue.isEmpty())
-	    	player.getParent().getParent().getGamebar().getNextBtn().setVisible(false);
+			if (actionQueue.isEmpty())
+				player.getParent().getParent().getGamebar().getNextBtn().setVisible(false);
+		}
     }
 
 	public void action(String strAction) {
@@ -120,7 +133,7 @@ public class Controls extends JPanel {
 		Action[] actions = ActionParser.parse(strAction,stage);
 
 		for (Action action : actions) {
-			if(action.getObject().getTarget() != null)
+			if(!action.getCommand().equals(Commands.ERROR) && action.getObject().getTarget() != null)
 		  	  actionQueue.add(new Action(Commands.MOVE,action.getObject().getTarget()));
             actionQueue.add(action);
             getParent().getGamebar().getNextBtn().setVisible(true);

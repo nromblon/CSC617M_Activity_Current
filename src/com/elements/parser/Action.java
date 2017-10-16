@@ -12,6 +12,10 @@ public class Action {
         this.object = target;
     }
 
+    public Action(){
+        this.command = Commands.ERROR;
+    }
+
     public Commands getCommand() {
         return command;
     }

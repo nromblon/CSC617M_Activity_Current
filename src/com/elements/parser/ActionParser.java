@@ -43,6 +43,8 @@ public class ActionParser {
             else if(Linker.exists(tokens[index])) {
                 if(cmd != null && obj != null)
                     actions.add(new Action(cmd, obj));
+                else
+                    actions.add(new Action());
                 cmd = null;
                 obj = null;
             }
@@ -58,6 +60,8 @@ public class ActionParser {
 
         if(cmd != null && obj != null)
             actions.add(new Action(cmd,obj));
+        else
+            actions.add(new Action());
 
         Action[] a = new Action[actions.size()] ;
         a = actions.toArray(a);

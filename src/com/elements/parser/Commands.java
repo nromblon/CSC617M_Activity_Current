@@ -5,9 +5,9 @@ public enum Commands {
     OPEN (new String[]{"open","switch","turn"}),
     CLOSE (new String[]{"close"}),
     TAKE (new String[]{"take","pick"}),
-    USE (new String[]{"use"}),
-    MOVE (new String[]{"move","go","goto"});
-
+    USE (new String[]{"use","enter"}),
+    MOVE (new String[]{"move","go","goto"}),
+    ERROR (new String[]{"error"});
     protected String[] synonyms;
 
     Commands(String[] synonyms){
