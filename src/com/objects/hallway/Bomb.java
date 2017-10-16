@@ -1,12 +1,16 @@
 package com.objects.hallway;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import com.elements.Game;
 import com.elements.Stage;
 import com.objects.InteractableObject;
 
 public class Bomb extends InteractableObject{
-	
+
+	private String[] responses = new String[]{""};
+	private static int resCount = 0;
+
 	public Bomb() {
 		super(new String[]{"bomb","explosives","explosive"});
 		this.viewResponse = "A "+this.objectName+".";
@@ -14,6 +18,8 @@ public class Bomb extends InteractableObject{
 		this.closeResponse = "The "+this.objectName+" can't be closed.";
 		this.objectName = this.getClass().getSimpleName();
 		this.initComponents();
+		
+		this.setOpened(false);
 	}
 	private void initComponents() {
 
@@ -26,7 +32,7 @@ public class Bomb extends InteractableObject{
 		
 		this.setX(iX);
 		this.setY(iY);
-//		this.iiOpened = new ImageIcon("images/"+this.objectName+"_opened.png");
+		this.iiOpened = new ImageIcon("images/"+this.objectName+"_opened.png");
 //		this.iiClosed = new ImageIcon("images/"+this.objectName+"_closed.png");
 //		this.iiViewed = new ImageIcon("images/"+this.objectName+"_viewed.png");
 		
@@ -36,13 +42,23 @@ public class Bomb extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+//		if(getParent().getParent().getInventory().searchIfItemExists())
 	}
 
 	@Override
 	public void open() {
-		// TODO Auto-generated method stub
+		if(this.isOpened()) {
+			this.getParent().getParent().openBombWiring();
+		}
+		else if(this.getParent().getParent().getInventory().searchIfItemExists("Wrench")) {
+			this.setOpened(true);
+			this.lblObject.setIcon(this.getIiOpened());
+			this.getParent().getParent().getInventory().removeItem("Wrench");
+			this.getParent().updateMessage("There, that should do it.");
+		}
+		else {
+			this.getParent().updateMessage("I'll need a wrench if I want to look inside.");	
+		}
 		
 	}
 
@@ -53,7 +69,7 @@ public class Bomb extends InteractableObject{
 	}
 	@Override
 	public void update() {
-//		System.out.println("Drawer update");
+
 	}
 	@Override
 	public void take() {

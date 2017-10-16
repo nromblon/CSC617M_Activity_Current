@@ -22,8 +22,10 @@ import com.elements.Inventory;
 import com.elements.Stage;
 import com.elements.parser.Action;
 import com.overlay.BathroomNoteOverlay;
+import com.overlay.BombWiring;
 import com.overlay.MedicineCabinet;
 import com.overlay.OverlayObject;
+import com.overlay.PictureNoteOverlay;
 import com.overlay.SinkTopView;
 import com.overlay.SliderGame;
 import com.overlay.VaultPassword;
@@ -44,7 +46,9 @@ public abstract class GameWorld extends World {
 	protected SinkTopView sink;
 	protected BathroomNoteOverlay note;
 	protected SliderGame sliderGame;
+	protected BombWiring bombWiring;
 	protected MedicineCabinet medicineCabinet;
+	protected PictureNoteOverlay pictureNote;
 	
 	protected Timer gameTimer;
 	
@@ -87,28 +91,35 @@ public abstract class GameWorld extends World {
 
 		this.sliderGame = new SliderGame(this, this.player);
 		this.medicineCabinet = new MedicineCabinet(this, this.player);
+		this.bombWiring = new BombWiring(this, this.player);
+		this.pictureNote = new PictureNoteOverlay(this, this.player);
 //		controls.setBounds(0, 0, controls.getWidth(), controls.getHeight());
 		
 		this.listOverlay = new ArrayList<OverlayObject>();
 
 		listOverlay.add(sliderGame);
+		listOverlay.add(pictureNote);
 		listOverlay.add(vault);
 		listOverlay.add(sink);
 		listOverlay.add(note);
 		listOverlay.add(medicineCabinet);
+		listOverlay.add(bombWiring);
 		
 		this.add(btnCharacterSelect);
 		this.add(inventory);
 		this.add(controls);
 		
 
+		this.add(lblResult);
+
 		this.add(sliderGame);		
 		this.add(vault);
-		this.add(sink);
+		this.add(sink);	
+		this.add(pictureNote);
 		this.add(note);
+		this.add(bombWiring);
 		this.add(medicineCabinet);
 		
-		this.add(lblResult);
 		
 		this.add(gamebar);		
 
@@ -166,9 +177,19 @@ public abstract class GameWorld extends World {
 		this.sliderGame.open();
 	}
 	
+	public void openBombWiring() {
+		this.closeAllOverlays();
+		this.bombWiring.open();
+	}
+	
 	public void openOverlayMedicineCabinet() {
 		this.closeAllOverlays();
 		this.medicineCabinet.open();
+	}
+	
+	public void openPictureNoteOverlay() {
+		this.closeAllOverlays();
+		this.pictureNote.open();
 	}
 	
 	class MovementListener extends SwingWorker<Void, Object> {
@@ -252,9 +273,10 @@ public abstract class GameWorld extends World {
 	}
 
 
-	public void updateMessage(String text) {
-		this.getGamebar().getLblMessage().setText(text);
+	public void updateMessage(String text){
+		this.getGamebar().addMsgQueue(text);
 	}
+
 	public void toCharacterSelect() {
 		this.isActive = false;
 		if(this.gameTimer.isRunning())
@@ -294,6 +316,8 @@ public abstract class GameWorld extends World {
 	public Character getPlayer() {
 		return player;
 	}
+
+	public Controls getControls(){ return controls;}
 
 	public void setPlayer(Character player) {
 		this.player = player;
