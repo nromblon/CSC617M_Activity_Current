@@ -30,7 +30,7 @@ public class Splash extends JPanel implements MouseListener {
 	}
 
 	public void startGame() {
-		this.parent.add(new CharacterSelect(this.parent));
+		this.parent.add(new MainMenu(this.parent));
 		this.parent.remove(this);
 		this.parent.repaint();
 		this.parent.revalidate();

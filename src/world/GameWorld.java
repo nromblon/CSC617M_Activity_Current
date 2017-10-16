@@ -30,7 +30,7 @@ import com.overlay.PictureNoteOverlay;
 import com.overlay.SinkTopView;
 import com.overlay.SliderGame;
 import com.overlay.VaultPassword;
-import com.screens.CharacterSelect;
+import com.screens.MainMenu;
 
 
 public abstract class GameWorld extends World {
@@ -288,7 +288,7 @@ public abstract class GameWorld extends World {
 		if(this.gameTimer.isRunning())
 			this.gameTimer.stop();
 		Game.M.stop();
-		this.parent.add(new CharacterSelect(this.parent));
+		this.parent.add(new MainMenu(this.parent));
 		this.parent.remove(this);
 		
 	}

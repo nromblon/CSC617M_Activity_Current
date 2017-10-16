@@ -41,8 +41,7 @@ public class BedroomDoor extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		this.getParent().updateMessage("This door appears to be made of wood. It is also unlocked.");
 	}
 
 	@Override
@@ -50,13 +49,14 @@ public class BedroomDoor extends InteractableObject{
 		// Assumes that the gameWorld is an instance of Room
 		this.getParent().getParent().toStage(Room.INDEX_BEDROOM,
 				Room.INDEX_X, 1);
+
+		this.getParent().updateMessage("This seems like the bedroom.");
 	}
 
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		this.getParent().updateMessage("The door is already closed.");
 	}
 	@Override
 	public void update() {
@@ -64,13 +64,16 @@ public class BedroomDoor extends InteractableObject{
 	}
 	@Override
 	public void take() {
-		// TODO Auto-generated method stub
-		
+		this.getParent().updateMessage("I can't lift a door that heavy.");
 	}
+
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
+		// Assumes that the gameWorld is an instance of Room
+		this.getParent().getParent().toStage(Room.INDEX_BEDROOM,
+				Room.INDEX_X, 1);
+
+		this.getParent().updateMessage("This seems like the bedroom.");
 	}
 
 }

@@ -33,6 +33,7 @@ public class Controls extends JPanel {
 	private int keyPointer;
 	private boolean isSuccessful;
 	
+	private JLabel lblControls;
 	private JTextField txtfControls;
 	private JPanel pnlControlLog;
 
@@ -53,6 +54,7 @@ public class Controls extends JPanel {
 		this.isInAction = false;
 		this.actionQueue = new LinkedList<Action>();
 
+		this.add(lblControls);
 		this.add(txtfControls);
 		this.add(scrlpControlLog);
 		this.setVisible(true);
@@ -64,9 +66,13 @@ public class Controls extends JPanel {
 	public void initComponents() {
 		this.setLayout(new FlowLayout());
 		this.strControlLog = new ArrayList<String>();
+		
+		this.lblControls = new JLabel("Commands");
+		Game.initLabel(lblControls, Game.fntGothamLight20, Game.clrTransparent, 0, 0, this.getWidth(), 30);
+		this.lblControls.setForeground(Color.WHITE);
+		
 		this.txtfControls = new JTextField();
 		Game.initTextField(txtfControls, 0, 0, this.getWidth()-50, 25, Game.fntDefault11, Game.clrAutomatic);
-		
 		
 		this.pnlControlLog = new JPanel();
 		pnlControlLog.setBackground(Color.WHITE);

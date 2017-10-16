@@ -23,7 +23,7 @@ import javax.swing.border.LineBorder;
 
 import com.music.Music;
 import com.override.CustomScrollBarUISky;
-import com.screens.CharacterSelect;
+import com.screens.MainMenu;
 
 public class Game extends JFrame implements MouseListener {
 	private static final long serialVersionUID = 1L;
@@ -80,7 +80,7 @@ public class Game extends JFrame implements MouseListener {
 		M = new Music();
 
 //		this.add(new Splash(this));
-		this.add(new CharacterSelect(this));
+		this.add(new MainMenu(this));
 		this.setVisible(true);
 	}
 	private void initComponents() {

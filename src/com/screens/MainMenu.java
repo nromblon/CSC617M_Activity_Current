@@ -18,10 +18,11 @@ import javax.swing.Timer;
 
 import com.characters.Player;
 import com.elements.Game;
+import com.frame.Frame;
 
 import world.Room;
 
-public class CharacterSelect extends JPanel implements ActionListener, MouseListener {
+public class MainMenu extends JPanel implements ActionListener, MouseListener {
 	private static final long serialVersionUID = 1L;
 	
 	private JFrame parent;
@@ -43,46 +44,9 @@ public class CharacterSelect extends JPanel implements ActionListener, MouseList
 	
 	private ImageIcon iiChara1;
 	private ImageIcon iiChara1_2;
-//	
-//	private ImageIcon iiChara2;
-//	private ImageIcon iiChara2_2;
-//	
-//	private ImageIcon iiChara3;
-//	private ImageIcon iiChara3_2;
-//	
-//	private ImageIcon iiChara4;
-//	
-//	private ImageIcon iiChara5;
-//	private ImageIcon iiChara5_2;
-//	
-//	private ImageIcon iiChara6;
-//	private ImageIcon iiChara7;
-//	
-//	private ImageIcon iiChara8;
-//	private ImageIcon iiChara8_2;
-//	
-//	private ImageIcon iiChara9;
-//	private ImageIcon iiChara10;
-//	private ImageIcon iiChara11;
 	
 	private JButton btnStart;
-	
-//	private JButton btnChara1;
-//	private JButton btnChara2;
-//	private JButton btnChara3;
-//	
-//	private JButton btnChara4;
-//	private JButton btnChara5;
-//	private JButton btnChara6;
-//	
-//	private JButton btnChara7;
-//	private JButton btnChara8;
-//	private JButton btnChara9;
-//	
-//	private JButton btnChara10;
-//	private JButton btnChara11;
-//	private JButton btnChara12;
-//	
+
 	private JButton btnClass1;
 	private JButton btnClass2;
 	private JButton btnClass3;
@@ -90,22 +54,22 @@ public class CharacterSelect extends JPanel implements ActionListener, MouseList
 	private Timer tmrFocus;
 
 
-	public CharacterSelect(JFrame parent) {
+	public MainMenu(JFrame parent) {
 		this.parent = parent;
 		this.initComponents();		
 
 		this.add(this.mapSelect);
 		this.add(btnStart);
 		
-		this.add(btnClass1);
-		this.add(btnClass2);
+//		this.add(btnClass1);
+//		this.add(btnClass2);
 //		this.add(btnClass3);
 		
-		this.add(lblClass);
-		this.add(lblName);
-		this.add(pnlImage);
+//		this.add(lblClass);
+//		this.add(lblName);
+//		this.add(pnlImage);
 		
-		this.add(lblBackground);
+//		this.add(lblBackground);
 		this.parent.revalidate();
 		this.parent.repaint();
 		
@@ -141,35 +105,36 @@ public class CharacterSelect extends JPanel implements ActionListener, MouseList
 //		Game.initButtons(this.btnClass3, "Class", btnClass1.getX(), btnClass2.getY()+btnClass2.getHeight()+offsetY, true, this);
 
 //		Game.initButtons(this.btnClass1, "Class", 829, 200, true, this);
-		Game.initButtons(this.btnClass1, "Class", 829, 292+offsetY, true, this);
-		Game.initButtons(this.btnClass2, "Class", btnClass1.getX(), btnClass1.getY()+btnClass1.getHeight()+offsetY, true, this);
-		Game.initButtons(this.btnClass3, "Class", btnClass1.getX(), btnClass2.getY()+btnClass2.getHeight()+offsetY, true, this);
-
-		this.pnlImage = new JPanel();
-		Game.initPanel(this.pnlImage, Game.clrBlack70, 394, 144, 474, 528);
-		
-		this.lblImage = new JLabel();
-		Game.initLabel(this.lblImage, Game.fntGothamLight12, Color.WHITE, 22, 22, 430, 484);
-		this.lblImage.setVerticalAlignment(JLabel.TOP);
-		
-		this.pnlImage.add(this.lblImage);
+//		Game.initButtons(this.btnClass1, "Class", 829, 292+offsetY, true, this);
+//		Game.initButtons(this.btnClass2, "Class", btnClass1.getX(), btnClass1.getY()+btnClass1.getHeight()+offsetY, true, this);
+//		Game.initButtons(this.btnClass3, "Class", btnClass1.getX(), btnClass2.getY()+btnClass2.getHeight()+offsetY, true, this);
+//
+//		this.pnlImage = new JPanel();
+//		Game.initPanel(this.pnlImage, Game.clrBlack70, 394, 144, 474, 528);
+//		
+//		this.lblImage = new JLabel();
+//		Game.initLabel(this.lblImage, Game.fntGothamLight12, Color.WHITE, 22, 22, 430, 484);
+//		this.lblImage.setVerticalAlignment(JLabel.TOP);
+//		
+//		this.pnlImage.add(this.lblImage);
 		
 		this.btnStart = new JButton();
 //		Game.initButtons(this.btnStart, Game.clrTransparent, 995, 23, 371, 74, this);
-		Game.initButtons(this.btnStart, "btnStart", 995, 23, true, this);
+		Game.initButtons(this.btnStart, "btnStart", 0, 0, true, this);
+		this.btnStart.setBounds(Frame.MAX_WIDTH/2 + btnStart.getWidth()/2, Frame.MAX_HEIGHT/2 + btnStart.getHeight()/2, btnStart.getWidth(), btnStart.getHeight());
 		this.btnStart.setOpaque(false);
 		this.btnStart.setContentAreaFilled(false);
 		
-		this.lblBackground = new JLabel();
-		Game.initLabels(this.lblBackground, "CharacterSelect", null);
-		
-		this.lblClass = new JLabel("JOB CLASS");
-		Game.initLabel(this.lblClass, Game.fntGothamLight29, Game.clrBlack70, 379, 571, 451, 66);
-		lblClass.setForeground(Color.WHITE);
-		
-		this.lblName = new JLabel("NAME");
-		Game.initLabel(this.lblName, Game.fntGothamLight29, Game.clrBlack70, 394, 74, 474, 58);
-		lblName.setForeground(Color.WHITE);
+//		this.lblBackground = new JLabel();
+//		Game.initLabels(this.lblBackground, "CharacterSelect", null);
+//		
+//		this.lblClass = new JLabel("JOB CLASS");
+//		Game.initLabel(this.lblClass, Game.fntGothamLight29, Game.clrBlack70, 379, 571, 451, 66);
+//		lblClass.setForeground(Color.WHITE);
+//		
+//		this.lblName = new JLabel("NAME");
+//		Game.initLabel(this.lblName, Game.fntGothamLight29, Game.clrBlack70, 394, 74, 474, 58);
+//		lblName.setForeground(Color.WHITE);
 		
 //		this.btnChara1 = new JButton();
 //		this.btnChara2 = new JButton();
@@ -260,108 +225,25 @@ public class CharacterSelect extends JPanel implements ActionListener, MouseList
 //			selected = 1;
 //		}
 		
-		this.selectedClass = selected;
-		switch(this.selectedClass) {
-			case 1: this.btnClass1.setIcon(btnClass1.getRolloverIcon());
-			break;
-			case 2: this.btnClass2.setIcon(btnClass2.getRolloverIcon());
-			break;
-			case 3: this.btnClass3.setIcon(btnClass3.getRolloverIcon());
-			break;
-		}
-		
-		switch(this.selectedClass) {
-		case 2:
-			this.lblClass.setText("MAY");
-			this.lblImage.setIcon(this.iiChara1_2);
-			break;
-		default:
-			this.lblClass.setText("DEFAULT");
-			this.lblImage.setIcon(this.iiChara1);
-	}
-//		
-//		switch(this.selectedChara) {
-//		case 1: 
-//				switch(this.selectedClass) {
-//					case 2:
-//						this.lblClass.setText("MAY");
-//						this.lblImage.setIcon(this.iiChara1_2);
-//						break;
-//					default:
-//						this.lblClass.setText("DEFAULT");
-//						this.lblImage.setIcon(this.iiChara1);
-//				}
-//				
-//				break;
-//		case 2:
-//				switch(this.selectedClass) {
-//				case 2:
-//					this.lblClass.setText("jOS");
-//					this.lblImage.setIcon(this.iiChara2_2);
-//					break;
-//				default:
-//					this.lblClass.setText("DEFAULT");
-//					this.lblImage.setIcon(this.iiChara2);
-//			}
-//				break;
-//		case 3:
-//				switch(this.selectedClass) {
-//					case 2:
-//						this.lblClass.setText("PROTACIO");
-//						this.lblImage.setIcon(this.iiChara3_2);
-//						break;
-//					default:
-//						this.lblClass.setText("DEFAULT");
-//						this.lblImage.setIcon(this.iiChara3);
-//				}
-//				break;
-//		case 4: this.lblClass.setText("DEFAULT");
-//				this.lblImage.setIcon(this.iiChara4);
-//				break;
-//		case 5:
-//				switch(this.selectedClass) {
-//					case 2:
-//						this.lblClass.setText("FROSH CHINO");
-//						this.lblImage.setIcon(this.iiChara5_2);
-//						break;
-//					default:
-//						this.lblClass.setText("DEFAULT");
-//						this.lblImage.setIcon(this.iiChara5);
-//				}
-//				break;
-//		case 6: this.lblClass.setText("DEFAULT");
-//				this.lblImage.setIcon(this.iiChara6);
-//				break;
-//		case 7: this.lblClass.setText("DEFAULT");
-//				this.lblImage.setIcon(this.iiChara7);
-//				break;
-//		case 8:
-//				switch(this.selectedClass) {
-//				case 2:
-//					this.lblClass.setText("DJ JAZZ");
-//					this.lblImage.setIcon(this.iiChara8_2);
-//					break;
-//				default:
-//					this.lblClass.setText("DEFAULT");
-//					this.lblImage.setIcon(this.iiChara8);
-//				}
-//				break;
-//		case 9: this.lblClass.setText("DEFAULT");
-//				this.lblImage.setIcon(this.iiChara9);
-//				break;
-//		case 10: 
-//				this.lblClass.setText("DEFAULT");
-//				this.lblImage.setIcon(this.iiChara10);
-//				break;
-//		case 11:
-//				this.lblClass.setText("DEFAULT");
-//				this.lblImage.setIcon(this.iiChara11);
-//				break;
-//		default:
-//				this.lblClass.setText("DEFAULT");
-//				break;
+//		this.selectedClass = selected;
+//		switch(this.selectedClass) {
+//			case 1: this.btnClass1.setIcon(btnClass1.getRolloverIcon());
+//			break;
+//			case 2: this.btnClass2.setIcon(btnClass2.getRolloverIcon());
+//			break;
+//			case 3: this.btnClass3.setIcon(btnClass3.getRolloverIcon());
+//			break;
 //		}
-		
+//		
+//		switch(this.selectedClass) {
+//		case 2:
+//			this.lblClass.setText("MAY");
+//			this.lblImage.setIcon(this.iiChara1_2);
+//			break;
+//		default:
+//			this.lblClass.setText("DEFAULT");
+//			this.lblImage.setIcon(this.iiChara1);
+//	}
 		this.repaint();
 	}
 	
@@ -381,62 +263,9 @@ public class CharacterSelect extends JPanel implements ActionListener, MouseList
 		Game.M.play("SE1.wav", 0);
 		this.deselectAll();
 		this.selectedClass = 1;
-		
-//		switch(selected) {
-//			case 1:
-//				this.btnChara1.setIcon(btnChara1.getRolloverIcon());
-//				this.lblName.setText("MAYNARD");
-//				break;
-//			case 2:
-//				this.btnChara2.setIcon(btnChara2.getRolloverIcon());
-//				this.lblName.setText("JOSM");
-//				break;
-//			case 3:
-//				this.btnChara3.setIcon(btnChara3.getRolloverIcon());
-//				this.lblName.setText("NEIL");
-//				break;
-//				
-//			case 4:
-//				this.btnChara4.setIcon(btnChara4.getRolloverIcon());
-//				this.lblName.setText("GYRA");
-//				break;
-//			case 5:
-//				this.btnChara5.setIcon(btnChara5.getRolloverIcon());
-//				this.lblName.setText("CHINO");
-//				break;
-//			case 6:
-//				this.btnChara6.setIcon(btnChara6.getRolloverIcon());
-//				this.lblName.setText("JARL");
-//				
-//				break;
-//				
-//			case 7:
-//				this.btnChara7.setIcon(btnChara7.getRolloverIcon());
-//				this.lblName.setText("JJ");
-//				break;
-//			case 8:
-//				this.btnChara8.setIcon(btnChara8.getRolloverIcon());
-//				this.lblName.setText("JAZZ");
-//				break;
-//			case 9:
-//				this.btnChara9.setIcon(btnChara9.getRolloverIcon());
-//				this.lblName.setText("AMZE");
-//				break;
-//				
-//			case 10:
-//				this.btnChara10.setIcon(btnChara10.getRolloverIcon());
-//				this.lblName.setText("LUIS");
-//				break;
-//			case 11:
-//				this.btnChara11.setIcon(btnChara11.getRolloverIcon());
-//				this.lblName.setText("XEI");
-//				break;
-//			case 12:
-//				this.btnChara12.setIcon(btnChara12.getRolloverIcon());
-//				break;
-//		}
+	
 		this.selectedChara = selected;
-		this.lblClass.setText(this.lblName.getText());
+//		this.lblClass.setText(this.lblName.getText());
 		this.selectClass(1);
 		this.repaint();
 //		Game.M.stop();
@@ -486,44 +315,6 @@ public class CharacterSelect extends JPanel implements ActionListener, MouseList
 		if(e.getSource() == this.btnStart) {
 			this.start();
 		}
-//		if(e.getSource() == this.btnChara1) {
-//			this.select(1);
-//		}
-//		if(e.getSource() == this.btnChara2) {
-//			this.select(2);
-//		}
-//		if(e.getSource() == this.btnChara3) {
-//			this.select(3);
-//		}
-//		if(e.getSource() == this.btnChara4) {
-//			this.select(4);
-//		}
-//		if(e.getSource() == this.btnChara5) {
-//			this.select(5);
-//		}
-//		if(e.getSource() == this.btnChara6) {
-////			Game.M.stop();
-////			Game.M.play("Jarl.wav", Clip.LOOP_CONTINUOUSLY);
-//			this.select(6);
-//		}
-//		if(e.getSource() == this.btnChara7) {
-////			Game.M.stop();
-////			Game.M.play("JJ.wav", Clip.LOOP_CONTINUOUSLY);
-//			this.select(7);
-//		}
-//		if(e.getSource() == this.btnChara8) {
-//			this.select(8);
-//		}
-//		if(e.getSource() == this.btnChara9) {
-//			this.select(9);
-//		}
-//		if(e.getSource() == this.btnChara10) {
-//			this.select(10);
-//		}
-//		if(e.getSource() == this.btnChara11) {
-//			this.select(11);
-//		}
-		
 		
 		if(e.getSource() == this.btnClass1) {
 			this.selectClass(1);
