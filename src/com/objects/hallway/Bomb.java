@@ -7,7 +7,10 @@ import com.elements.Stage;
 import com.objects.InteractableObject;
 
 public class Bomb extends InteractableObject{
-	
+
+	private String[] responses = new String[]{""};
+	private static int resCount = 0;
+
 	public Bomb() {
 		super(new String[]{"bomb","explosives","explosive"});
 		this.viewResponse = "A "+this.objectName+".";
@@ -39,7 +42,7 @@ public class Bomb extends InteractableObject{
 	
 	@Override
 	public void view() {
-		
+//		if(getParent().getParent().getInventory().searchIfItemExists())
 	}
 
 	@Override
