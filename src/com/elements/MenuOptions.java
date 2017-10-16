@@ -16,7 +16,6 @@ public class MenuOptions extends JPanel implements MouseListener{
 	
 	private JLabel line1;
 	private JButton btnHowTo;
-	private JLabel overlayHowTo;
 
 	private JLabel line2;
 	private JButton btnExit;
@@ -58,13 +57,14 @@ public class MenuOptions extends JPanel implements MouseListener{
 		Game.initLabels(line3, "lineSeparator", null);
 		this.line3.setLocation(0, btnExit.getY() + btnExit.getHeight());
 		
-		this.overlayHowTo = new JLabel();
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		if(arg0.getSource().equals(btnExit)) {
 			System.exit(1);
+		} else if(arg0.getSource().equals(btnHowTo)) {
+			this.parent.openHow2PlayOverlay();
 		}
 	}
 
