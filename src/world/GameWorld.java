@@ -41,6 +41,7 @@ public abstract class GameWorld extends World {
 	private static final long serialVersionUID = 1L;
 	public static boolean IS_PAUSED;
 
+	public static int VAULT_PIN = 3649;
 	
 	protected JFrame parent;
 	

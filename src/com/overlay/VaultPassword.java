@@ -1,19 +1,24 @@
 package com.overlay;
 
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.text.AbstractDocument;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
+import javax.swing.text.Document;
 import javax.swing.text.DocumentFilter;
+import javax.swing.text.PlainDocument;
 
 import com.characters.Character;
 import com.elements.Game;
 import com.elements.Stage;
+
+import world.GameWorld;
 
 public class VaultPassword extends OverlayObject {
 	private static final long serialVersionUID = 1L;
@@ -27,6 +32,8 @@ public class VaultPassword extends OverlayObject {
 	private JTextField txtf4;
 
 	private JButton btnEnter;
+	
+	private KeyListener listener;
 	
 	public VaultPassword(JPanel parent, Character player) {
 		this.parent = parent;
@@ -42,7 +49,7 @@ public class VaultPassword extends OverlayObject {
 		this.add(pnlCode);
 		this.add(lblOverlay);
 
-		this.close();
+//		this.close();
 	}
 	
 	private void initComponents() {		
@@ -61,19 +68,22 @@ public class VaultPassword extends OverlayObject {
 		Game.initPanel(pnlCode, Game.clrTransparent, 390, 100);
 		pnlCode.setLocation(184, 302);
 		
-		
 		int offsetX = 14;
 		this.txtf1 = new JTextField();
 		Game.initTextField(txtf1, 0, 0, 87, 100, Game.fntConsolas30, Game.clrAutomatic);
+		this.txtf1.setHorizontalAlignment(JTextField.CENTER);
 		
 		this.txtf2 = new JTextField();
 		Game.initTextField(txtf2, txtf1.getX()+txtf1.getWidth()+offsetX, 0, 87, 100, txtf1.getFont(), Game.clrAutomatic);
+		this.txtf2.setHorizontalAlignment(JTextField.CENTER);
 		
 		this.txtf3 = new JTextField();
 		Game.initTextField(txtf3, txtf2.getX()+txtf2.getWidth()+offsetX, 0, 87, 100, txtf1.getFont(), Game.clrAutomatic);
+		this.txtf3.setHorizontalAlignment(JTextField.CENTER);
 		
 		this.txtf4 = new JTextField();
 		Game.initTextField(txtf4, txtf3.getX()+txtf3.getWidth()+offsetX, 0, 87, 100, txtf1.getFont(), Game.clrAutomatic);
+		this.txtf4.setHorizontalAlignment(JTextField.CENTER);
 
 		this.initTextFields();
 		
@@ -83,67 +93,20 @@ public class VaultPassword extends OverlayObject {
 		this.pnlCode.add(this.txtf4);
 	}
 	
-	public void initTextFields() {
-//		NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.getDefault());
-//		DecimalFormat decimalFormat = (DecimalFormat) numberFormat;
-//		decimalFormat.setGroupingUsed(false);
-//		txtf1 = new JFormattedTextField(decimalFormat);
-//		txtf1.setColumns(1);
-//		
-//		txtf2 = new JFormattedTextField(decimalFormat);
-//		txtf2.setColumns(1);
-//		
-//		txtf3 = new JFormattedTextField(decimalFormat);
-//		txtf3.setColumns(1);
-//		
-//		txtf4 = new JFormattedTextField(decimalFormat);
-//		txtf4.setColumns(1);
-		
-		AbstractDocument d1 = (AbstractDocument) txtf1.getDocument();
-		d1.setDocumentFilter(new DocumentFilter(){
-		    int max = 1;
-		    @Override
-		    public void replace(DocumentFilter.FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
-		        int documentLength = fb.getDocument().getLength();
-		        if (documentLength - length + text.length() <= max)
-		        	super.replace(fb, offset, length, text.toUpperCase(), attrs);
-		         
-		    }
-		});
-		
-		AbstractDocument d2 = (AbstractDocument) txtf1.getDocument();
-		d2.setDocumentFilter(new DocumentFilter(){
-		    int max = 1;
-		    @Override
-		    public void replace(DocumentFilter.FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
-		        int documentLength = fb.getDocument().getLength(); 
-		            if (documentLength - length + text.length() <= max)
-		        super.replace(fb, offset, length, text.toUpperCase(), attrs);
-		    }
-		});
-		
-		AbstractDocument d3 = (AbstractDocument) txtf1.getDocument();
-		d3.setDocumentFilter(new DocumentFilter(){
-		    int max = 1;
-		    @Override
-		    public void replace(DocumentFilter.FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
-		        int documentLength = fb.getDocument().getLength(); 
-		            if (documentLength - length + text.length() <= max)
-		        super.replace(fb, offset, length, text.toUpperCase(), attrs);
-		    }
-		});
-		
-		AbstractDocument d4 = (AbstractDocument) txtf1.getDocument();
-		d4.setDocumentFilter(new DocumentFilter(){
-		    int max = 1;
-		    @Override
-		    public void replace(DocumentFilter.FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
-		        int documentLength = fb.getDocument().getLength(); 
-		            if (documentLength - length + text.length() <= max)
-		        super.replace(fb, offset, length, text.toUpperCase(), attrs);
-		    }
-		});		
+	public void initTextFields() {		
+		PlainDocument doc = (PlainDocument) txtf1.getDocument();
+		doc.setDocumentFilter(new MyIntFilter());
 				
+		doc = (PlainDocument) txtf2.getDocument();
+		doc.setDocumentFilter(new MyIntFilter());
+		
+		doc = (PlainDocument) txtf3.getDocument();
+		doc.setDocumentFilter(new MyIntFilter());
+		
+		doc = (PlainDocument) txtf4.getDocument();
+		doc.setDocumentFilter(new MyIntFilter());
+		
+		this.setTextFields("0");
 	}
 	
 	public JPanel getParent() {
@@ -182,8 +145,106 @@ public class VaultPassword extends OverlayObject {
 	public void mouseReleased(MouseEvent e) {
 		super.mouseReleased(e);
 		if(e.getSource() == this.btnEnter) {
-			//TODO Check PIN
-			this.close();
+			this.correctPin();
+//			if(this.correctPin())
+//				this.close();
 		}
 	}
+	
+	private boolean correctPin() {
+		if(this.parsePin() == GameWorld.VAULT_PIN) {
+			this.lblCircle.setIcon(new ImageIcon("images/VaultCircle_right.png"));
+			return true;
+		}
+		else {
+			this.lblCircle.setIcon(new ImageIcon("images/VaultCircle_wrong.png"));
+			Game.M.play("SE1.wav", 0);
+			this.setTextFields("0");
+			return false;
+		}
+	}
+	
+	private int parsePin() {
+		String pin = this.txtf1.getText() + this.txtf2.getText() + this.txtf3.getText() + this.txtf4.getText();
+		int nPin = 0;
+		
+		try {
+			nPin = Integer.parseInt(pin);
+			return nPin;
+		} catch (NumberFormatException e) {
+			return -1;
+		}
+	}
+	
+	private void setTextFields(String text) {
+		this.txtf1.setText(text);
+		this.txtf2.setText(text);
+		this.txtf3.setText(text);
+		this.txtf4.setText(text);
+	}
+	
+	class MyIntFilter extends DocumentFilter {
+		   @Override
+		   public void insertString(FilterBypass fb, int offset, String string,
+		         AttributeSet attr) throws BadLocationException {
+
+		      Document doc = fb.getDocument();
+		      StringBuilder sb = new StringBuilder();
+		      sb.append(doc.getText(0, doc.getLength()));
+		      sb.insert(offset, string);
+
+		      if (test(sb.toString())) {
+		         super.insertString(fb, offset, string, attr);
+		      } else {
+		         // warn the user and don't allow the insert
+		      }
+		   }
+
+		   private boolean test(String text) {
+			  if(text.equals(""))
+				  return true;
+			  if(text.length() > 1)
+				  return false;
+			  
+		      try {
+		         Integer.parseInt(text);
+		         return true;
+		      } catch (NumberFormatException e) {
+		         return false;
+		      }
+		   }
+
+		   @Override
+		   public void replace(FilterBypass fb, int offset, int length, String text,
+		         AttributeSet attrs) throws BadLocationException {
+
+		      Document doc = fb.getDocument();
+		      StringBuilder sb = new StringBuilder();
+		      sb.append(doc.getText(0, doc.getLength()));
+		      sb.replace(offset, offset + length, text);
+
+		      if (test(sb.toString())) {
+		         super.replace(fb, offset, length, text, attrs);
+		      } else {
+		         // warn the user and don't allow the insert
+		      }
+
+		   }
+
+		   @Override
+		   public void remove(FilterBypass fb, int offset, int length)
+		         throws BadLocationException {
+		      Document doc = fb.getDocument();
+		      StringBuilder sb = new StringBuilder();
+		      sb.append(doc.getText(0, doc.getLength()));
+		      sb.delete(offset, offset + length);
+
+		      if (test(sb.toString())) {
+		         super.remove(fb, offset, length);
+		      } else {
+		         // warn the user and don't allow the insert
+		      }
+
+		   }
+		}
 }
