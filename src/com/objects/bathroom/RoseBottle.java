@@ -28,10 +28,7 @@ public class RoseBottle extends InteractableObject{
 		this.setY(iY);
 
 		this.iiInventory = new ImageIcon("images/"+this.objectName+".png");
-//		this.iiOpened = new ImageIcon("images/"+this.objectName+"_opened.png");
-//		this.iiClosed = new ImageIcon("images/"+this.objectName+"_closed.png");
-//		this.iiViewed = new ImageIcon("images/"+this.objectName+"_viewed.png");
-		
+	
 		this.setCenterX(this.lblObject.getWidth()/2);
 		this.setCenterY(this.lblObject.getHeight()/2);
 	}
@@ -77,6 +74,8 @@ public class RoseBottle extends InteractableObject{
 					// TODO: I poured rose essence in the bathttub
 					this.getParent().updateMessage("I poured the Rose essence in the bathtub."+
 													"The room is filled with the scent of Roses.");
+					this.getParent().updateMessage("... What was that noise? I think I heard something click.");
+
 					this.setUsed(true);
 					this.getParent().lookupObject("Bathtub").use();
 					

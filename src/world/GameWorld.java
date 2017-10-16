@@ -22,6 +22,7 @@ import com.elements.Inventory;
 import com.elements.Stage;
 import com.elements.parser.Action;
 import com.overlay.BathroomNoteOverlay;
+import com.overlay.MedicineCabinet;
 import com.overlay.OverlayObject;
 import com.overlay.SinkTopView;
 import com.overlay.SliderGame;
@@ -43,6 +44,7 @@ public abstract class GameWorld extends World {
 	protected SinkTopView sink;
 	protected BathroomNoteOverlay note;
 	protected SliderGame sliderGame;
+	protected MedicineCabinet medicineCabinet;
 	
 	protected Timer gameTimer;
 	
@@ -84,6 +86,7 @@ public abstract class GameWorld extends World {
 		
 
 		this.sliderGame = new SliderGame(this, this.player);
+		this.medicineCabinet = new MedicineCabinet(this, this.player);
 //		controls.setBounds(0, 0, controls.getWidth(), controls.getHeight());
 		
 		this.listOverlay = new ArrayList<OverlayObject>();
@@ -92,7 +95,7 @@ public abstract class GameWorld extends World {
 		listOverlay.add(vault);
 		listOverlay.add(sink);
 		listOverlay.add(note);
-		
+		listOverlay.add(medicineCabinet);
 		
 		this.add(btnCharacterSelect);
 		this.add(inventory);
@@ -103,6 +106,7 @@ public abstract class GameWorld extends World {
 		this.add(vault);
 		this.add(sink);
 		this.add(note);
+		this.add(medicineCabinet);
 		
 		this.add(lblResult);
 		
@@ -127,10 +131,6 @@ public abstract class GameWorld extends World {
 		this.btnCharacterSelect.setVisible(false);
 		
 		this.setVisible(true);
-//		this.setFocusable(true);
-		
-//    	this.addKeyListener(new TAdapter());	
-//    	this.addKeyListener(new SAdapter());	
 	}
 	
 	protected void paintComponent(Graphics g) {
@@ -166,6 +166,11 @@ public abstract class GameWorld extends World {
 		this.sliderGame.open();
 	}
 	
+	public void openOverlayMedicineCabinet() {
+		this.closeAllOverlays();
+		this.medicineCabinet.open();
+	}
+	
 	class MovementListener extends SwingWorker<Void, Object> {
 		private Timer moveTimer;
 		public MovementListener() {
@@ -176,7 +181,6 @@ public abstract class GameWorld extends World {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(!IS_PAUSED) {
-//					requestFocus(true);
 					if(player.isBusy()) {
 						player.continueAction();
 					}
@@ -205,9 +209,6 @@ public abstract class GameWorld extends World {
 	
 	public void actionPerformed(ActionEvent e) {
 		gamebar.update();
-//		gamebar.update(stage.getEnemies().get(0));
-//		spellbook.setLocation(player.getLblCharacter().getX()+player.getLblCharacter().getWidth()/2-spellbook.getWidth()/2, player.getLblCharacter().getY()-spellbook.getHeight());
-//		spellbook.cast();
 		this.update();
 		repaint();
 		revalidate();
@@ -272,19 +273,16 @@ public abstract class GameWorld extends World {
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+	
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 

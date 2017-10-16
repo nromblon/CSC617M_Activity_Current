@@ -1,5 +1,6 @@
 package com.objects.bathroom;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import com.elements.Game;
 import com.objects.InteractableObject;
@@ -26,7 +27,8 @@ public class Mirror extends InteractableObject{
 		
 		this.setX(iX);
 		this.setY(iY);
-//		this.iiOpened = new ImageIcon("images/"+this.objectName+"_opened.png");
+		
+		this.iiOpened = new ImageIcon("images/"+this.objectName+"_opened.png");
 //		this.iiClosed = new ImageIcon("images/"+this.objectName+"_closed.png");
 //		this.iiViewed = new ImageIcon("images/"+this.objectName+"_viewed.png");
 		
@@ -36,34 +38,59 @@ public class Mirror extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		if(this.getParent().lookupObject("RoseBottle").isUsed()) {
+			this.getParent().updateMessage("A mirror with a rose enabled lock. This must be expensive");
+
+		}
+		else {
+			this.getParent().updateMessage("A mirror. It seems like there's something behind it.");
+		}
 	}
 
 	@Override
 	public void open() {
-		// TODO Auto-generated method stub
-		
+		if(this.isOpened()) {
+
+			this.getParent().getParent().openOverlayMedicineCabinet();
+		}
+		else if(this.getParent().lookupObject("RoseBottle").isUsed()) {
+			
+			this.getLblObject().setIcon(this.getIiOpened());			
+
+			this.getParent().updateMessage("It opened!");
+			this.getParent().updateMessage("It seems like the rose scented bath triggered the lock to open.");
+			this.setOpened(true);
+		}
+		else {
+			this.getParent().updateMessage("A mirror. It seems like I can open it, but it's stuck");
+		}		
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		if(this.isOpened()) {
+			this.getParent().updateMessage("I probably shouldn't close it, it might automatically get locked.");
+		}
 	}
+	
 	@Override
 	public void update() {
-//		System.out.println("Drawer update");
+
 	}
+	
 	@Override
 	public void take() {
-		// TODO Auto-generated method stub
-		
+		this.getParent().updateMessage("It's stuck to the wall, I don't think I can take it off.");
 	}
+	
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
+		if(this.isOpened()) {
+			this.getParent().getParent().openOverlayMedicineCabinet();
+		}
+		else {
+			this.getParent().updateMessage("Now's not the time to be staring at my reflection.");	
+		}		
 	}
 
 }

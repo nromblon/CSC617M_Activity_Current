@@ -226,9 +226,7 @@ public class Inventory extends JPanel implements MouseListener {
 
 		JLabel label = new JLabel();
 		JLabel labelBorder = new JLabel();
-		
-//		JButton button = new JButton("Delete");
-		
+
 
 		int width = 70;
 
@@ -295,14 +293,6 @@ public class Inventory extends JPanel implements MouseListener {
 		this.isSuccessful = isSuccessful;
 	}
 
-//	public JTextField getTxtfControls() {
-//		return txtfControls;
-//	}
-
-//	public void setTxtfControls(JTextField txtfControls) {
-//		this.txtfControls = txtfControls;
-//	}
-
 	public JPanel getPnlControlLog() {
 		return pnlInventory;
 	}
@@ -313,25 +303,25 @@ public class Inventory extends JPanel implements MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+
+	
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+
+	
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
+
 		
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
+
 		
 	}
 
