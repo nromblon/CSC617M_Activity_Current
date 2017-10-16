@@ -3,18 +3,21 @@ package com.overlay;
 import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import com.characters.Character;
 import com.elements.Game;
 import com.elements.Stage;
 import com.slider.SliderPanel;
 
+import world.GameWorld;
+
 public class SliderGame extends OverlayObject {
 	private static final long serialVersionUID = 1L;
 	
 	private SliderPanel pnlSlider;
+
+	private GameWorld parent;
 	
-	public SliderGame(JPanel parent, Character player) {
+	public SliderGame(GameWorld parent, Character player) {
 		this.parent = parent;
 		this.player = player;
 		Game.initPanel(this, Game.clrTransparent, 0, 0, Stage.MAX_WIDTH, Game.MAX_HEIGHT);
@@ -27,7 +30,7 @@ public class SliderGame extends OverlayObject {
 	}
 	
 	private void initComponents() {		
-		this.pnlSlider = new SliderPanel();
+		this.pnlSlider = new SliderPanel(this);
 		int size = 400;
 		pnlSlider.getUI().setBounds((Stage.MAX_WIDTH-size)/2, (Stage.MAX_HEIGHT-size)/2, size, size);
 		
@@ -35,11 +38,11 @@ public class SliderGame extends OverlayObject {
 		Game.initLabels(this.lblOverlay, new ImageIcon("images/bg_overlay.png"), null);
 	}
 	
-	public JPanel getParent() {
+	public GameWorld getParent() {
 		return parent;
 	}
 
-	public void setParent(JPanel parent) {
+	public void setParent(GameWorld parent) {
 		this.parent = parent;
 	}
 
