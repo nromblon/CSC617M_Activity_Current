@@ -1,6 +1,7 @@
 package com.overlay;
 
-import java.awt.event.KeyListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
@@ -20,7 +21,7 @@ import com.elements.Stage;
 
 import world.GameWorld;
 
-public class VaultPassword extends OverlayObject {
+public class VaultPassword extends OverlayObject implements ActionListener{
 	private static final long serialVersionUID = 1L;
 	
 	private JLabel lblCircle;
@@ -32,8 +33,6 @@ public class VaultPassword extends OverlayObject {
 	private JTextField txtf4;
 
 	private JButton btnEnter;
-	
-	private KeyListener listener;
 	
 	public VaultPassword(JPanel parent, Character player) {
 		this.parent = parent;
@@ -48,7 +47,7 @@ public class VaultPassword extends OverlayObject {
 		this.add(lblCircle);
 		this.add(pnlCode);
 		this.add(lblOverlay);
-
+		
 //		this.close();
 	}
 	
@@ -96,15 +95,19 @@ public class VaultPassword extends OverlayObject {
 	public void initTextFields() {		
 		PlainDocument doc = (PlainDocument) txtf1.getDocument();
 		doc.setDocumentFilter(new MyIntFilter());
+		this.txtf1.addActionListener(this);
 				
 		doc = (PlainDocument) txtf2.getDocument();
 		doc.setDocumentFilter(new MyIntFilter());
+		this.txtf2.addActionListener(this);
 		
 		doc = (PlainDocument) txtf3.getDocument();
 		doc.setDocumentFilter(new MyIntFilter());
+		this.txtf3.addActionListener(this);
 		
 		doc = (PlainDocument) txtf4.getDocument();
 		doc.setDocumentFilter(new MyIntFilter());
+		this.txtf4.addActionListener(this);
 		
 		this.setTextFields("0");
 	}
@@ -190,7 +193,7 @@ public class VaultPassword extends OverlayObject {
 
 		      Document doc = fb.getDocument();
 		      StringBuilder sb = new StringBuilder();
-		      sb.append(doc.getText(0, doc.getLength()));
+		      sb.append(doc.getText(0, 1));
 		      sb.insert(offset, string);
 
 		      if (test(sb.toString())) {
@@ -247,4 +250,11 @@ public class VaultPassword extends OverlayObject {
 
 		   }
 		}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		this.correctPin();
+	}
+
+	
 }
