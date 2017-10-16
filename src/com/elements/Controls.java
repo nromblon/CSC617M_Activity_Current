@@ -98,6 +98,11 @@ public class Controls extends JPanel {
             case USE: o.use(); break;
             default: break;
         }
+//		if(a.getCommand() != Commands.MOVE && !this.getParent().getGamebar().getMessageQueue().isEmpty())
+		if(a.getCommand() != Commands.MOVE && !actionQueue.isEmpty())
+				player.setInAction(true);
+	    if(actionQueue.isEmpty())
+	    	player.getParent().getParent().getGamebar().getNextBtn().setVisible(false);
     }
 
 	public void action(String strAction) {
@@ -112,6 +117,7 @@ public class Controls extends JPanel {
 			if(action.getObject().getTarget() != null)
 		  	  actionQueue.add(new Action(Commands.MOVE,action.getObject().getTarget()));
             actionQueue.add(action);
+            getParent().getGamebar().getNextBtn().setVisible(true);
         }
 
 	}

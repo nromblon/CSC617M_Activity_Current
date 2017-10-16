@@ -252,9 +252,10 @@ public abstract class GameWorld extends World {
 	}
 
 
-	public void updateMessage(String text) {
-		this.getGamebar().getLblMessage().setText(text);
+	public void updateMessage(String text){
+		this.getGamebar().addMsgQueue(text);
 	}
+
 	public void toCharacterSelect() {
 		this.isActive = false;
 		if(this.gameTimer.isRunning())
@@ -294,6 +295,8 @@ public abstract class GameWorld extends World {
 	public Character getPlayer() {
 		return player;
 	}
+
+	public Controls getControls(){ return controls;}
 
 	public void setPlayer(Character player) {
 		this.player = player;
