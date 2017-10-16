@@ -28,6 +28,7 @@ public abstract class Character {
 	
 
 	protected boolean isMovingTo;
+	protected boolean isInAction;
 	protected InteractableObject moveToObject;
 	protected boolean isAlive;
 	protected boolean movLeft;
@@ -59,6 +60,7 @@ public abstract class Character {
 		this.name = "Undefined";
 
 		this.isInOverlay = false;
+		this.isInAction = false;
 		
 		this.direction = 1;
 		this.iX = 0;
@@ -204,10 +206,18 @@ public abstract class Character {
 	 * @return
 	 */
 	public boolean isBusy() {
-		if(isMovingTo | isInOverlay)
+		if(isMovingTo | isInOverlay | isInAction)
 			return true;
 		else
 			return false;
+	}
+
+	public boolean isInAction() {
+		return isInAction;
+	}
+
+	public void setInAction(boolean inAction) {
+		isInAction = inAction;
 	}
 
 	public void setIsInOverlay(boolean isInOverlay){

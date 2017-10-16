@@ -23,7 +23,7 @@ public class GameBar extends JPanel {
 	private JScrollPane scrlMessage;
 
 	private JButton nextBtn;
-	private Queue<String> messageQueue;
+//	private Queue<String> messageQueue;
 	
 	public GameBar(JPanel parent, Character player) {
 		this.parent = parent;
@@ -36,7 +36,7 @@ public class GameBar extends JPanel {
 		Game.initLabels(this.lblGamebarOverlay, new ImageIcon("images/Gamebar_arcade.png"), null);
 
 		//TODO
-		this.messageQueue = new LinkedList<>();
+//		this.messageQueue = new LinkedList<>();
 
 		this.add(nextBtn);
 		this.add(scrlMessage);
@@ -92,11 +92,12 @@ public class GameBar extends JPanel {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				if(messageQueue.peek() != null) {
-					lblMessage.setText(messageQueue.remove());
-					if (messageQueue.peek() == null)
-						nextBtn.setVisible(false);
-				}
+//				if(messageQueue.peek() != null) {
+//					lblMessage.setText(messageQueue.remove());
+//				}
+				player.setInAction(false);
+//				if(player.getParent().getParent().getControls().getActionQueue().isEmpty())
+//					nextBtn.setVisible(false);
 			}
 
 			@Override
@@ -127,6 +128,10 @@ public class GameBar extends JPanel {
 		return parent;
 	}
 
+	public JButton getNextBtn() {
+		 return nextBtn;
+	}
+
 	public void setParent(JPanel parent) {
 		this.parent = parent;
 	}
@@ -140,15 +145,15 @@ public class GameBar extends JPanel {
 	}
 
 	public void addMsgQueue(String message){
-		if(lblMessage.getText().equals(""))
-			this.lblMessage.setText(message);
-		else {
-			this.messageQueue.add(message);
-			this.nextBtn.setVisible(true);
-		}
+		this.lblMessage.setText(message);
+//		if(lblMessage.getText().equals(""))
+//			this.lblMessage.setText(message);
+//		else {
+//			this.messageQueue.add(message);
+//		}
 	}
 
-	public void clearMsgQueue(){
-		this.messageQueue.clear();
-	}
+//	public void clearMsgQueue(){
+//		this.messageQueue.clear();
+//	}
 }
