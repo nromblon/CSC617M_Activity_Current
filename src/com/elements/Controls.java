@@ -117,10 +117,14 @@ public class Controls extends JPanel {
 					break;
 			}
 //		if(a.getCommand() != Commands.MOVE && !this.getParent().getGamebar().getMessageQueue().isEmpty())
-			if (a.getCommand() != Commands.MOVE && !actionQueue.isEmpty())
+			if (a.getCommand() != Commands.MOVE && !actionQueue.isEmpty()) {
 				player.setInAction(true);
+				getParent().getGamebar().getNextBtn().setVisible(true);
+			}
+
 			if (actionQueue.isEmpty())
 				player.getParent().getParent().getGamebar().getNextBtn().setVisible(false);
+
 		}
     }
 
@@ -136,7 +140,6 @@ public class Controls extends JPanel {
 			if(!action.getCommand().equals(Commands.ERROR) && action.getObject().getTarget() != null)
 		  	  actionQueue.add(new Action(Commands.MOVE,action.getObject().getTarget()));
             actionQueue.add(action);
-            getParent().getGamebar().getNextBtn().setVisible(true);
         }
 
 	}
