@@ -1,18 +1,21 @@
-package com.objects.kitchen;
+package com.objects.hallway;
 
 import javax.swing.JLabel;
 import com.elements.Game;
 import com.objects.InteractableObject;
 
-public class Pot extends InteractableObject{
+public class PurpleBook extends InteractableObject{
 	
-	public Pot() {
-		super(new String[]{"pot", "casserole"});
+	public PurpleBook() {
+		super(new String[]{"purple book", "purplebook", "second book",
+							"secondbook", "2nd book", "book2", "book 2",
+							"book two", "booktwo"});
 		this.viewResponse = "A "+this.objectName+".";
 		this.openResponse = "The "+this.objectName+" can't be opened.";
 		this.closeResponse = "The "+this.objectName+" can't be closed.";
 		this.objectName = this.getClass().getSimpleName();
 		this.initComponents();
+		this.setOpened(false);
 	}
 	private void initComponents() {
 
@@ -20,8 +23,8 @@ public class Pot extends InteractableObject{
 		this.lblObject = new JLabel();
 		Game.initLabels(lblObject, this.objectName+"_default", null);
 		
-		this.iX = 473;
-		this.iY = 390;
+		this.iX = 267;
+		this.iY = 404;
 		
 		this.setX(iX);
 		this.setY(iY);
@@ -35,18 +38,24 @@ public class Pot extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		this.getParent().updateMessage("A book about poisonous chemicals.");
 	}
 
 	@Override
 	public void open() {
-		
+		if(!this.isOpened()) {
+			this.setOpened(true);
+			this.getParent().updateMessage("It contains information about various poisonous chemicals.");
+			this.getParent().updateMessage("There's a recipe for sulfuric acid in between the pages, I should take it.");
+			this.getParent().lookupObject("AcidRecipe").take();
+		}
+		else {
+			this.getParent().updateMessage("It contains information about various poisonous chemicals.");
+		}
 	}
 
 	@Override
 	public void close() {
-
 		
 	}
 	@Override
@@ -55,16 +64,12 @@ public class Pot extends InteractableObject{
 	}
 	@Override
 	public void take() {
-
 		
 	}
 	@Override
 	public void use() {
-		if(this.getParent().getParent().getInventory().searchIfItemExists("Wrench") &&
-				this.getParent().getParent().getInventory().searchIfItemExists("CarBattery")) {
-			this.getParent().updateMessage("I can make sulfuric acid with ");
-			this.setUsed(true);
-		}
+		// TODO Auto-generated method stub
+		
 	}
 
 }

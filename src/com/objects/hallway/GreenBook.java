@@ -1,13 +1,15 @@
-package com.objects.kitchen;
+package com.objects.hallway;
 
 import javax.swing.JLabel;
 import com.elements.Game;
 import com.objects.InteractableObject;
 
-public class Pot extends InteractableObject{
+public class GreenBook extends InteractableObject{
 	
-	public Pot() {
-		super(new String[]{"pot", "casserole"});
+	public GreenBook() {
+		super(new String[]{"green book", "greenbook", "third book",
+							"thirdbook", "3rd book", "book3", "book 3",
+							"book three", "bookthree"});
 		this.viewResponse = "A "+this.objectName+".";
 		this.openResponse = "The "+this.objectName+" can't be opened.";
 		this.closeResponse = "The "+this.objectName+" can't be closed.";
@@ -20,8 +22,8 @@ public class Pot extends InteractableObject{
 		this.lblObject = new JLabel();
 		Game.initLabels(lblObject, this.objectName+"_default", null);
 		
-		this.iX = 473;
-		this.iY = 390;
+		this.iX = 278;
+		this.iY = 404;
 		
 		this.setX(iX);
 		this.setY(iY);
@@ -46,25 +48,22 @@ public class Pot extends InteractableObject{
 
 	@Override
 	public void close() {
-
+		// TODO Auto-generated method stub
 		
 	}
 	@Override
 	public void update() {
-
+//		System.out.println("Drawer update");
 	}
 	@Override
 	public void take() {
-
+		// TODO Auto-generated method stub
 		
 	}
 	@Override
 	public void use() {
-		if(this.getParent().getParent().getInventory().searchIfItemExists("Wrench") &&
-				this.getParent().getParent().getInventory().searchIfItemExists("CarBattery")) {
-			this.getParent().updateMessage("I can make sulfuric acid with ");
-			this.setUsed(true);
-		}
+		// TODO Auto-generated method stub
+		
 	}
 
 }

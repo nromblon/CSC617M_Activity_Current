@@ -41,10 +41,19 @@ import com.objects.bedroom.PillowRight;
 import com.objects.bedroom.Shirt;
 import com.objects.bedroom.TopDrawer;
 import com.objects.bedroom.Vault;
+import com.objects.hallway.AcidRecipe;
 import com.objects.hallway.BathroomDoor;
 import com.objects.hallway.BedroomDoor;
+import com.objects.hallway.BlueBook;
 import com.objects.hallway.Bomb;
+import com.objects.hallway.GreenBook;
+import com.objects.hallway.HallwayShelfBottom;
+import com.objects.hallway.HallwayShelfTop;
 import com.objects.hallway.KitchenDoor;
+import com.objects.hallway.OrangeBook;
+import com.objects.hallway.PinkBook;
+import com.objects.hallway.PurpleBook;
+import com.objects.hallway.RedBook;
 import com.objects.hallway.Whiteboard;
 import com.objects.kitchen.Apple;
 import com.objects.kitchen.Blender;
@@ -110,6 +119,18 @@ public class Room extends GameWorld {
 		 */		
 		ArrayList<InteractableObject> objects = new ArrayList<InteractableObject>();
 		objects.add(new Bomb());
+		
+		objects.add(new OrangeBook());
+		objects.add(new PurpleBook());
+		objects.add(new AcidRecipe());
+		objects.add(new GreenBook());
+		objects.add(new BlueBook());
+		objects.add(new PinkBook());		
+		objects.add(new RedBook());
+		
+		objects.add(new HallwayShelfTop());
+		objects.add(new HallwayShelfBottom());
+		
 		objects.add(new Whiteboard());
 		objects.add(new KitchenDoor());
 		objects.add(new BedroomDoor());

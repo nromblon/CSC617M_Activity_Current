@@ -52,7 +52,7 @@ public class Picture extends InteractableObject{
 	}
 	@Override
 	public void update() {
-//		System.out.println("Drawer update");
+
 	}
 	@Override
 	public void take() {

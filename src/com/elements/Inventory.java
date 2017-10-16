@@ -360,6 +360,10 @@ public class Inventory extends JPanel implements MouseListener {
 			if(name.equals("PictureNote")) {
 				this.getParent().openPictureNoteOverlay();
 			}
+			
+			if(name.equals("AcidRecipe")) {
+				this.getParent().openAcidRecipeOverlay();
+			}
 		}
 	}
 }

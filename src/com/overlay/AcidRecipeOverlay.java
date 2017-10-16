@@ -8,12 +8,12 @@ import com.characters.Character;
 import com.elements.Game;
 import com.elements.Stage;
 
-public class PictureNoteOverlay extends OverlayObject {
+public class AcidRecipeOverlay extends OverlayObject {
 	private static final long serialVersionUID = 1L;
 	
 	
 	
-	public PictureNoteOverlay(JPanel parent, Character player) {
+	public AcidRecipeOverlay(JPanel parent, Character player) {
 		this.parent = parent;
 		this.player = player;
 		Game.initPanel(this, Game.clrTransparent, 0, 0, Stage.MAX_WIDTH, Game.MAX_HEIGHT);
@@ -27,7 +27,7 @@ public class PictureNoteOverlay extends OverlayObject {
 	private void initComponents() {		
 
 		this.lblOverlay = new JLabel();
-		Game.initLabels(this.lblOverlay, new ImageIcon("images/bg_picturenote.png"), null);
+		Game.initLabels(this.lblOverlay, new ImageIcon("images/bg_acidrecipe.png"), null);
 	}
 	
 	public JPanel getParent() {

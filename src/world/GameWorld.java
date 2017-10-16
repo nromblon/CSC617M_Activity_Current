@@ -22,6 +22,7 @@ import com.elements.Inventory;
 import com.elements.Stage;
 import com.elements.parser.Action;
 import com.objects.bedroom.PictureNote;
+import com.overlay.AcidRecipeOverlay;
 import com.overlay.BathroomNoteOverlay;
 import com.overlay.BombWiring;
 import com.overlay.MedicineCabinet;
@@ -50,6 +51,7 @@ public abstract class GameWorld extends World {
 	protected BombWiring bombWiring;
 	protected MedicineCabinet medicineCabinet;
 	protected PictureNoteOverlay pictureNote;
+	protected AcidRecipeOverlay acidRecipe;
 	
 	protected Timer gameTimer;
 	
@@ -94,6 +96,8 @@ public abstract class GameWorld extends World {
 		this.medicineCabinet = new MedicineCabinet(this, this.player);
 		this.bombWiring = new BombWiring(this, this.player);
 		this.pictureNote = new PictureNoteOverlay(this, this.player);
+		this.acidRecipe = new AcidRecipeOverlay(this, this.player);
+
 //		controls.setBounds(0, 0, controls.getWidth(), controls.getHeight());
 		
 		this.listOverlay = new ArrayList<OverlayObject>();
@@ -105,6 +109,7 @@ public abstract class GameWorld extends World {
 		listOverlay.add(note);
 		listOverlay.add(medicineCabinet);
 		listOverlay.add(bombWiring);
+		listOverlay.add(acidRecipe);
 		
 		this.add(btnCharacterSelect);
 		this.add(inventory);
@@ -116,6 +121,7 @@ public abstract class GameWorld extends World {
 		this.add(sliderGame);		
 		this.add(vault);
 		this.add(sink);	
+		this.add(acidRecipe);	
 		this.add(pictureNote);
 		this.add(note);
 		this.add(bombWiring);
@@ -192,7 +198,10 @@ public abstract class GameWorld extends World {
 		this.closeAllOverlays();
 		this.pictureNote.open();
 	}
-	
+	public void openAcidRecipeOverlay() {
+		this.closeAllOverlays();
+		this.acidRecipe.open();
+	}
 	class MovementListener extends SwingWorker<Void, Object> {
 		private Timer moveTimer;
 		public MovementListener() {
