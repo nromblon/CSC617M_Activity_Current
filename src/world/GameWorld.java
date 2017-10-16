@@ -18,8 +18,9 @@ import com.characters.Character;
 import com.elements.Controls;
 import com.elements.Game;
 import com.elements.GameBar;
-import com.elements.MenuOptions;
+import com.elements.GameTimer;
 import com.elements.Inventory;
+import com.elements.MenuOptions;
 import com.elements.Stage;
 import com.elements.parser.Action;
 import com.objects.bedroom.PictureNote;
@@ -63,7 +64,8 @@ public abstract class GameWorld extends World {
 	protected BombClueOverlay bombClue;
 	protected How2PlayOverlay how2play;
 	
-	protected Timer gameTimer;
+//	protected Timer gameTimer;
+	protected GameTimer timer;
 	
 	protected JLabel lblResult;
 	protected JButton btnCharacterSelect;
@@ -87,7 +89,7 @@ public abstract class GameWorld extends World {
 		this.player = player;
 		this.stageIndex = 0;
 		this.stages = new ArrayList<Stage>();
-		this.gameTimer = new Timer(0, this);	
+//		this.gameTimer = new Timer(0, this);	
 		this.setRight(isRight);
 		this.initComponents();
 
@@ -110,6 +112,7 @@ public abstract class GameWorld extends World {
 		this.bombClue = new BombClueOverlay(this, this.player, this.isRight);
 		
 		this.how2play = new How2PlayOverlay(this, this.player);
+		this.timer = new GameTimer(this, this.player, 30);
 		
 //		controls.setBounds(0, 0, controls.getWidth(), controls.getHeight());
 		
@@ -129,6 +132,7 @@ public abstract class GameWorld extends World {
 		this.add(menuLbl);
 		this.add(line);
 		
+		this.add(timer);
 		this.add(btnCharacterSelect);
 		this.add(menuOps);
 		this.add(inventory);
@@ -295,7 +299,7 @@ public abstract class GameWorld extends World {
 	public void endWorld(boolean isWin) {
 		this.isActive = false;
 
-		this.gameTimer.stop();
+		this.timer.getTimer().stop();
 		if(isWin) {
 			this.btnCharacterSelect.setForeground(Color.WHITE);
 			this.btnCharacterSelect.setBackground(Color.BLACK);
@@ -325,8 +329,8 @@ public abstract class GameWorld extends World {
 
 	public void toCharacterSelect() {
 		this.isActive = false;
-		if(this.gameTimer.isRunning())
-			this.gameTimer.stop();
+		if(this.timer.getTimer().isRunning())
+			this.timer.getTimer().stop();
 		Game.M.stop();
 		this.parent.add(new MainMenu(this.parent));
 		this.parent.remove(this);
