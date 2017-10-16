@@ -1,6 +1,7 @@
 package com.screens;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -35,22 +36,10 @@ public class MainMenu extends JPanel implements ActionListener, MouseListener {
 	private int selectedChara;
 	private int selectedClass;
 	
-	private JPanel pnlImage;
-	
-	private JLabel lblBackground;
-	private JLabel lblImage;
-	private JLabel lblClass;
-	private JLabel lblName;
-	
-	private ImageIcon iiChara1;
-	private ImageIcon iiChara1_2;
+	private JLabel gameTitle;
+	private JLabel startPrompt;
 	
 	private JButton btnStart;
-
-	private JButton btnClass1;
-	private JButton btnClass2;
-	private JButton btnClass3;
-
 	private Timer tmrFocus;
 
 
@@ -58,18 +47,11 @@ public class MainMenu extends JPanel implements ActionListener, MouseListener {
 		this.parent = parent;
 		this.initComponents();		
 
-		this.add(this.mapSelect);
+//		this.add(this.mapSelect);
 		this.add(btnStart);
+		this.add(gameTitle);
+//		this.add(startPrompt);
 		
-//		this.add(btnClass1);
-//		this.add(btnClass2);
-//		this.add(btnClass3);
-		
-//		this.add(lblClass);
-//		this.add(lblName);
-//		this.add(pnlImage);
-		
-//		this.add(lblBackground);
 		this.parent.revalidate();
 		this.parent.repaint();
 		
@@ -83,118 +65,19 @@ public class MainMenu extends JPanel implements ActionListener, MouseListener {
 
 		this.tmrFocus = new Timer(0, this);
 		this.tmrFocus.start();
-//		Game.M.play("SE1.wav", Clip.LOOP_CONTINUOUSLY);
-//		Game.M.sound("SE1.wav", Clip.LOOP_CONTINUOUSLY);
 	}
 	
 	public void initComponents() {
-		int offsetY = 14;
-		
-		Game.initPanel(this, Color.GRAY, 0, 0, Game.MAX_WIDTH, Game.MAX_WIDTH);
-		
-		this.mapSelect = new MapSelect(this);
-		this.mapSelect.setVisible(false);
-		
-		
-		this.btnClass1 = new JButton();
-		this.btnClass2 = new JButton();
-		this.btnClass3 = new JButton();
-		
-//		Game.initButtons(this.btnClass1, "Class", 829, 200, true, this);
-//		Game.initButtons(this.btnClass2, "Class", btnClass1.getX(), btnClass1.getY()+btnClass1.getHeight()+offsetY, true, this);
-//		Game.initButtons(this.btnClass3, "Class", btnClass1.getX(), btnClass2.getY()+btnClass2.getHeight()+offsetY, true, this);
-
-//		Game.initButtons(this.btnClass1, "Class", 829, 200, true, this);
-//		Game.initButtons(this.btnClass1, "Class", 829, 292+offsetY, true, this);
-//		Game.initButtons(this.btnClass2, "Class", btnClass1.getX(), btnClass1.getY()+btnClass1.getHeight()+offsetY, true, this);
-//		Game.initButtons(this.btnClass3, "Class", btnClass1.getX(), btnClass2.getY()+btnClass2.getHeight()+offsetY, true, this);
-//
-//		this.pnlImage = new JPanel();
-//		Game.initPanel(this.pnlImage, Game.clrBlack70, 394, 144, 474, 528);
-//		
-//		this.lblImage = new JLabel();
-//		Game.initLabel(this.lblImage, Game.fntGothamLight12, Color.WHITE, 22, 22, 430, 484);
-//		this.lblImage.setVerticalAlignment(JLabel.TOP);
-//		
-//		this.pnlImage.add(this.lblImage);
+		Game.initPanel(this, Color.BLACK, 0, 0, Game.MAX_WIDTH, Game.MAX_WIDTH);
 		
 		this.btnStart = new JButton();
-//		Game.initButtons(this.btnStart, Game.clrTransparent, 995, 23, 371, 74, this);
-		Game.initButtons(this.btnStart, "btnStart", 0, 0, true, this);
-		this.btnStart.setBounds(Frame.MAX_WIDTH/2 + btnStart.getWidth()/2, Frame.MAX_HEIGHT/2 + btnStart.getHeight()/2, btnStart.getWidth(), btnStart.getHeight());
+		Game.initButtons(this.btnStart, "startbtn", 0, 0, true, this);
+		this.btnStart.setBounds(600, 600, btnStart.getWidth(), btnStart.getHeight());
 		this.btnStart.setOpaque(false);
 		this.btnStart.setContentAreaFilled(false);
 		
-//		this.lblBackground = new JLabel();
-//		Game.initLabels(this.lblBackground, "CharacterSelect", null);
-//		
-//		this.lblClass = new JLabel("JOB CLASS");
-//		Game.initLabel(this.lblClass, Game.fntGothamLight29, Game.clrBlack70, 379, 571, 451, 66);
-//		lblClass.setForeground(Color.WHITE);
-//		
-//		this.lblName = new JLabel("NAME");
-//		Game.initLabel(this.lblName, Game.fntGothamLight29, Game.clrBlack70, 394, 74, 474, 58);
-//		lblName.setForeground(Color.WHITE);
-		
-//		this.btnChara1 = new JButton();
-//		this.btnChara2 = new JButton();
-//		this.btnChara3 = new JButton();
-//		
-//		this.btnChara4 = new JButton();
-//		this.btnChara5 = new JButton();
-//		this.btnChara6 = new JButton();
-//		
-//		this.btnChara7 = new JButton();
-//		this.btnChara8 = new JButton();
-//		this.btnChara9 = new JButton();
-//
-//		this.btnChara10 = new JButton();
-//		this.btnChara11 = new JButton();
-//		this.btnChara12 = new JButton();
-		
-		offsetY = 8;
-		
-//		Game.initButtons(this.btnChara1, "Chara1", 39, 36, true, this);
-//		Game.initButtons(this.btnChara2, "Chara2", btnChara1.getX()+btnChara1.getWidth()+offsetX, btnChara1.getY(), true, this);
-//		Game.initButtons(this.btnChara3, "Chara3", btnChara2.getX()+btnChara2.getWidth()+offsetX, btnChara2.getY(), true, this);
-//		
-//		Game.initButtons(this.btnChara4, "Chara4", btnChara1.getX(), btnChara1.getY()+btnChara1.getHeight()+offsetY, true, this);
-//		Game.initButtons(this.btnChara5, "Chara5", btnChara2.getX(), btnChara4.getY(), true, this);
-//		Game.initButtons(this.btnChara6, "Chara6", btnChara3.getX(), btnChara4.getY(), true, this);
-//		
-//		Game.initButtons(this.btnChara7, "Chara7", btnChara1.getX(), 540, true, this);
-//		Game.initButtons(this.btnChara8, "Chara8", btnChara2.getX(), btnChara7.getY(), true, this);
-//		Game.initButtons(this.btnChara9, "Chara9", btnChara3.getX(), btnChara7.getY(), true, this);
-//		
-//		Game.initButtons(this.btnChara10, "Chara10", btnChara1.getX(), btnChara7.getY()+btnChara7.getHeight()+offsetY, true, this);
-//		Game.initButtons(this.btnChara11, "Chara11", btnChara2.getX(), btnChara10.getY(), true, this);
-//		Game.initButtons(this.btnChara12, Game.clrBlack70, btnChara3.getX(), btnChara11.getY(), 92, 92, this);
-//		
-//		
-		this.iiChara1 = new ImageIcon("images/Maynard_arcadePic.png");
-		this.iiChara1_2 = new ImageIcon("images/Neil_arcadePic.png");
-//		
-//		this.iiChara2 = new ImageIcon("images/Josm_arcadePic.png");
-//		this.iiChara2_2 = new ImageIcon("images/jOS_arcadePic.png");
-//		
-//		this.iiChara3 = new ImageIcon("images/Neil_arcadePic.png");
-//		this.iiChara3_2 = new ImageIcon("images/Protacio_arcadePic.png");
-//		
-//		
-//		this.iiChara4 = new ImageIcon("images/Gyra_arcadePic.png");
-//		
-//		this.iiChara5 = new ImageIcon("images/Chino_arcadePic.png");
-//		this.iiChara5_2 = new ImageIcon("images/FroshChino_arcadePic.png");
-//		
-//		this.iiChara6 = new ImageIcon("images/Jarl_arcadePic.png");
-//		this.iiChara7 = new ImageIcon("images/JJ_arcadePic.png");
-//		
-//		this.iiChara8 = new ImageIcon("images/Jazz_arcadePic.png");
-//		this.iiChara8_2 = new ImageIcon("images/EDMJazz_arcadePic.png");
-//		
-//		this.iiChara9 = new ImageIcon("images/Amze_arcadePic.png");
-//		this.iiChara10 = new ImageIcon("images/Luis_arcadePic.png");
-//		this.iiChara11 = new ImageIcon("images/Xei_arcadePic.png");
+		this.gameTitle = new JLabel();
+		Game.initLabels(gameTitle, "Game_title", null);
 		
 		this.setVisible(true);
 		this.setFocusable(true);
@@ -210,52 +93,11 @@ public class MainMenu extends JPanel implements ActionListener, MouseListener {
 	public void selectClass(int selected) {
 		this.deselectAllClass();		
 		
-		this.btnClass1.setIcon(new ImageIcon("images/Chara"+this.selectedChara+"_Class1.png"));
-		this.btnClass1.setRolloverIcon(new ImageIcon("images/Chara"+this.selectedChara+"_Class1_on.png"));
-		
-		/*
-		 * Condition for those who have a Second Class 
-		 */
-//		if(this.selectedChara == 1 || this.selectedChara == 2 || this.selectedChara == 3 || this.selectedChara == 5 || this.selectedChara == 8) {
-			this.btnClass2.setIcon(new ImageIcon("images/Chara"+this.selectedChara+"_Class2.png"));
-			this.btnClass2.setRolloverIcon(new ImageIcon("images/Chara"+this.selectedChara+"_Class2_on.png"));
-//			this.btnClass3.setIcon(new ImageIcon("images/Chara"+this.selectedChara+"_Class3.png"));
-//		}
-//		else {
-//			selected = 1;
-//		}
-		
-//		this.selectedClass = selected;
-//		switch(this.selectedClass) {
-//			case 1: this.btnClass1.setIcon(btnClass1.getRolloverIcon());
-//			break;
-//			case 2: this.btnClass2.setIcon(btnClass2.getRolloverIcon());
-//			break;
-//			case 3: this.btnClass3.setIcon(btnClass3.getRolloverIcon());
-//			break;
-//		}
-//		
-//		switch(this.selectedClass) {
-//		case 2:
-//			this.lblClass.setText("MAY");
-//			this.lblImage.setIcon(this.iiChara1_2);
-//			break;
-//		default:
-//			this.lblClass.setText("DEFAULT");
-//			this.lblImage.setIcon(this.iiChara1);
-//	}
 		this.repaint();
 	}
 	
 	public void deselectAllClass() {
-		this.btnClass1.setIcon(btnClass1.getDisabledIcon());
-		this.btnClass1.setRolloverIcon(btnClass1.getDisabledIcon());
-		
-		this.btnClass2.setIcon(btnClass2.getDisabledIcon());
-		this.btnClass2.setRolloverIcon(btnClass2.getDisabledIcon());
-		
-		this.btnClass3.setIcon(btnClass3.getDisabledIcon());
-		this.btnClass3.setRolloverIcon(btnClass3.getDisabledIcon());
+
 	}
 	
 	public void select(int selected) {
@@ -273,21 +115,6 @@ public class MainMenu extends JPanel implements ActionListener, MouseListener {
 	}
 	
 	public void deselectAll() {
-//		this.btnChara1.setIcon(btnChara1.getDisabledIcon());
-//		this.btnChara2.setIcon(btnChara2.getDisabledIcon());
-//		this.btnChara3.setIcon(btnChara3.getDisabledIcon());
-//
-//		this.btnChara4.setIcon(btnChara4.getDisabledIcon());
-//		this.btnChara5.setIcon(btnChara5.getDisabledIcon());
-//		this.btnChara6.setIcon(btnChara6.getDisabledIcon());
-//
-//		this.btnChara7.setIcon(btnChara7.getDisabledIcon());
-//		this.btnChara8.setIcon(btnChara8.getDisabledIcon());
-//		this.btnChara9.setIcon(btnChara9.getDisabledIcon());
-//
-//		this.btnChara10.setIcon(btnChara10.getDisabledIcon());
-//		this.btnChara11.setIcon(btnChara11.getDisabledIcon());
-//		this.btnChara12.setIcon(btnChara12.getDisabledIcon());
 	}
 	
 	public void start() {
@@ -314,17 +141,6 @@ public class MainMenu extends JPanel implements ActionListener, MouseListener {
 	public void mouseClicked(MouseEvent e) {
 		if(e.getSource() == this.btnStart) {
 			this.start();
-		}
-		
-		if(e.getSource() == this.btnClass1) {
-			this.selectClass(1);
-		}
-		if(e.getSource() == this.btnClass2) {
-			this.selectClass(2);
-					
-			}
-		if(e.getSource() == this.btnClass3) {
-			this.selectClass(3);			
 		}
 	}
 
