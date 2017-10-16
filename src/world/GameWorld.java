@@ -104,7 +104,7 @@ public abstract class GameWorld extends World {
 
 		this.sliderGame = new SliderGame(this, this.player);
 		this.medicineCabinet = new MedicineCabinet(this, this.player);
-		this.bombWiring = new BombWiring(this, this.player);
+		this.bombWiring = new BombWiring(this, this.player, this.isRight);
 		this.pictureNote = new PictureNoteOverlay(this, this.player);
 		this.acidRecipe = new AcidRecipeOverlay(this, this.player);
 		this.bombClue = new BombClueOverlay(this, this.player, this.isRight);

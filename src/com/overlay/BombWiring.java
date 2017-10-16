@@ -1,6 +1,7 @@
 package com.overlay;
 
 import java.awt.event.MouseEvent;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -10,6 +11,8 @@ import com.characters.Character;
 import com.elements.Game;
 import com.elements.Stage;
 
+import world.GameWorld;
+
 public class BombWiring extends OverlayObject {
 	private static final long serialVersionUID = 1L;
 	
@@ -17,7 +20,9 @@ public class BombWiring extends OverlayObject {
 	private JButton btnCutRight;
 	private JButton btnCutLeft;
 	
-	public BombWiring(JPanel parent, Character player) {
+	private boolean isRight;
+	
+	public BombWiring(JPanel parent, Character player, boolean isRight) {
 		this.parent = parent;
 		this.player = player;
 		Game.initPanel(this, Game.clrTransparent, 0, 0, Stage.MAX_WIDTH, Game.MAX_HEIGHT);
@@ -27,7 +32,8 @@ public class BombWiring extends OverlayObject {
 		this.add(btnCutRight);
 		this.add(btnCutLeft);
 		this.add(lblOverlay);
-
+		
+		this.isRight = isRight;
 		this.close();
 	}
 	
@@ -75,11 +81,17 @@ public class BombWiring extends OverlayObject {
 	public void mouseReleased(MouseEvent e) {
 		super.mouseReleased(e);
 		if(e.getSource() == this.btnCutRight) {
-			//TODO Check Call Parent
+			if(isRight)
+				((GameWorld) this.parent).endWorld(true);
+			else
+				((GameWorld) this.parent).endWorld(false);
 			this.close();
 		}
 		if(e.getSource() == this.btnCutLeft) {
-			//TODO Check Call Parent
+			if(isRight)
+				((GameWorld) this.parent).endWorld(false);
+			else
+				((GameWorld) this.parent).endWorld(true);
 			this.close();
 		}
 	}
