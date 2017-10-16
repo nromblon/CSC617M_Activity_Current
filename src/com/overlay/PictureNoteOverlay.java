@@ -21,7 +21,7 @@ public class PictureNoteOverlay extends OverlayObject {
 		this.initComponents();
 		
 		this.add(lblOverlay);
-//		this.close();
+		this.close();
 	}
 	
 	private void initComponents() {		

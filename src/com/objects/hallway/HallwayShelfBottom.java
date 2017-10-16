@@ -1,15 +1,14 @@
-package com.objects.kitchen;
+package com.objects.hallway;
 
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import com.elements.Game;
 import com.objects.InteractableObject;
 
-public class Flask extends InteractableObject{
+public class HallwayShelfBottom extends InteractableObject{
 	
-	public Flask() {
-		super(new String[]{"flask","science bottle","potion","volumetric flask"});
-
+	public HallwayShelfBottom() {
+		super(new String[]{"shelf", "bottom shelf"});
+		
 		this.viewResponse = "A "+this.objectName+".";
 		this.openResponse = "The "+this.objectName+" can't be opened.";
 		this.closeResponse = "The "+this.objectName+" can't be closed.";
@@ -17,21 +16,17 @@ public class Flask extends InteractableObject{
 		this.initComponents();
 	}
 	private void initComponents() {
-
-		this.objectName = this.getClass().getSimpleName();
 		this.lblObject = new JLabel();
 		Game.initLabels(lblObject, this.objectName+"_default", null);
 		
-		this.iX = 164;
-		this.iY = 478;
+		this.iX = 252;
+		this.iY = 439;
 		
 		this.setX(iX);
 		this.setY(iY);
 //		this.iiOpened = new ImageIcon("images/"+this.objectName+"_opened.png");
 //		this.iiClosed = new ImageIcon("images/"+this.objectName+"_closed.png");
 //		this.iiViewed = new ImageIcon("images/"+this.objectName+"_viewed.png");
-		this.iiInventory = new ImageIcon("images/"+this.objectName+".png");
-//		this.iiUsed = new ImageIcon("images/"+this.objectName+"_used.png");
 		
 		this.setCenterX(this.lblObject.getWidth()/2);
 		this.setCenterY(this.lblObject.getHeight()/2);
@@ -45,7 +40,6 @@ public class Flask extends InteractableObject{
 
 	@Override
 	public void open() {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -56,19 +50,16 @@ public class Flask extends InteractableObject{
 	}
 	@Override
 	public void update() {
-
+//		System.out.println("Drawer update");
 	}
 	@Override
 	public void take() {
-		if(!isTaken() &&
-				this.getParent().lookupObject("FridgeDoor").isOpened()) {
-			this.setTaken(true);
-			this.getParent().getParent().getInventory().addItem(this);
-			this.lblObject.setVisible(false);
-		}
+		// TODO Auto-generated method stub
+		
 	}
 	@Override
 	public void use() {
+		// TODO Auto-generated method stub
 		
 	}
 

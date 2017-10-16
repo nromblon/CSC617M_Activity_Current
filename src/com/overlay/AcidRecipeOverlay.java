@@ -3,46 +3,38 @@ package com.overlay;
 import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import com.characters.Character;
 import com.elements.Game;
 import com.elements.Stage;
-import com.slider.SliderPanel;
 
-import world.GameWorld;
-
-public class SliderGame extends OverlayObject {
+public class AcidRecipeOverlay extends OverlayObject {
 	private static final long serialVersionUID = 1L;
 	
-	private SliderPanel pnlSlider;
-
-	private GameWorld parent;
 	
-	public SliderGame(GameWorld parent, Character player) {
+	
+	public AcidRecipeOverlay(JPanel parent, Character player) {
 		this.parent = parent;
 		this.player = player;
 		Game.initPanel(this, Game.clrTransparent, 0, 0, Stage.MAX_WIDTH, Game.MAX_HEIGHT);
 		
 		this.initComponents();
 		
-		this.add(pnlSlider.getUI());
 		this.add(lblOverlay);
 		this.close();
 	}
 	
 	private void initComponents() {		
-		this.pnlSlider = new SliderPanel(this);
-		int size = 400;
-		pnlSlider.getUI().setBounds((Stage.MAX_WIDTH-size)/2, (Stage.MAX_HEIGHT-size)/2, size, size);
-		
+
 		this.lblOverlay = new JLabel();
-		Game.initLabels(this.lblOverlay, new ImageIcon("images/bg_overlay.png"), null);
+		Game.initLabels(this.lblOverlay, new ImageIcon("images/bg_acidrecipe.png"), null);
 	}
 	
-	public GameWorld getParent() {
+	public JPanel getParent() {
 		return parent;
 	}
 
-	public void setParent(GameWorld parent) {
+	public void setParent(JPanel parent) {
 		this.parent = parent;
 	}
 

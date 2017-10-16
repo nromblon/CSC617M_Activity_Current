@@ -1,37 +1,38 @@
-package com.objects.kitchen;
+package com.objects.bedroom;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import com.elements.Game;
 import com.objects.InteractableObject;
 
-public class Flask extends InteractableObject{
+public class PictureNote extends InteractableObject{
 	
-	public Flask() {
-		super(new String[]{"flask","science bottle","potion","volumetric flask"});
-
+	public PictureNote() {
+		super(new String[]{"picture note", "note", "post-it", "clue"});
 		this.viewResponse = "A "+this.objectName+".";
 		this.openResponse = "The "+this.objectName+" can't be opened.";
 		this.closeResponse = "The "+this.objectName+" can't be closed.";
 		this.objectName = this.getClass().getSimpleName();
 		this.initComponents();
+		this.setTaken(false);
 	}
 	private void initComponents() {
-
+		
 		this.objectName = this.getClass().getSimpleName();
 		this.lblObject = new JLabel();
 		Game.initLabels(lblObject, this.objectName+"_default", null);
 		
-		this.iX = 164;
-		this.iY = 478;
+		this.iX = 268;
+		this.iY = 415;
 		
 		this.setX(iX);
 		this.setY(iY);
-//		this.iiOpened = new ImageIcon("images/"+this.objectName+"_opened.png");
+		
+		this.iiDefault = new ImageIcon("images/"+this.objectName+"_default.png");
+		this.iiInventory = new ImageIcon("images/"+this.objectName+".png");
+//		this.iiTaken = new ImageIcon("images/"+this.objectName+"_taken.png");
 //		this.iiClosed = new ImageIcon("images/"+this.objectName+"_closed.png");
 //		this.iiViewed = new ImageIcon("images/"+this.objectName+"_viewed.png");
-		this.iiInventory = new ImageIcon("images/"+this.objectName+".png");
-//		this.iiUsed = new ImageIcon("images/"+this.objectName+"_used.png");
 		
 		this.setCenterX(this.lblObject.getWidth()/2);
 		this.setCenterY(this.lblObject.getHeight()/2);
@@ -39,19 +40,15 @@ public class Flask extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		this.getParent().getParent().openOverlayNote();
 	}
 
 	@Override
 	public void open() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
 		
 	}
 	@Override
@@ -60,16 +57,14 @@ public class Flask extends InteractableObject{
 	}
 	@Override
 	public void take() {
-		if(!isTaken() &&
-				this.getParent().lookupObject("FridgeDoor").isOpened()) {
-			this.setTaken(true);
-			this.getParent().getParent().getInventory().addItem(this);
-			this.lblObject.setVisible(false);
-		}
+//		if(!this.isTaken) {
+//			this.setTaken(true);
+//			this.getParent().getParent().getInventory().addItem(this);
+//			this.lblObject.setVisible(false);
+//		}
 	}
 	@Override
 	public void use() {
-		
 	}
 
 }

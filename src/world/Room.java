@@ -41,10 +41,19 @@ import com.objects.bedroom.PillowRight;
 import com.objects.bedroom.Shirt;
 import com.objects.bedroom.TopDrawer;
 import com.objects.bedroom.Vault;
+import com.objects.hallway.AcidRecipe;
 import com.objects.hallway.BathroomDoor;
 import com.objects.hallway.BedroomDoor;
+import com.objects.hallway.BlueBook;
 import com.objects.hallway.Bomb;
+import com.objects.hallway.GreenBook;
+import com.objects.hallway.HallwayShelfBottom;
+import com.objects.hallway.HallwayShelfTop;
 import com.objects.hallway.KitchenDoor;
+import com.objects.hallway.OrangeBook;
+import com.objects.hallway.PinkBook;
+import com.objects.hallway.PurpleBook;
+import com.objects.hallway.RedBook;
 import com.objects.hallway.Whiteboard;
 import com.objects.kitchen.Apple;
 import com.objects.kitchen.Blender;
@@ -87,13 +96,13 @@ public class Room extends GameWorld {
 	public static final int INDEX_X = 100;
 	public static final int INDEX_Y = 550;
 
-	public static final int INDEX_BATHROOM_X = 808;
+	public static final int INDEX_BATHROOM_X = 926;
 	public static final int INDEX_BATHROOM_Y = 285;
 	
-	public static final int INDEX_KITCHEN_X = 283;
+	public static final int INDEX_KITCHEN_X = 120;
 	public static final int INDEX_KITCHEN_Y = 285;
 	
-	public static final int INDEX_BEDROOM_X = 546;
+	public static final int INDEX_BEDROOM_X = 720;
 	public static final int INDEX_BEDROOM_Y = 285;
 	
 	private static final long serialVersionUID = 1L;
@@ -110,6 +119,18 @@ public class Room extends GameWorld {
 		 */		
 		ArrayList<InteractableObject> objects = new ArrayList<InteractableObject>();
 		objects.add(new Bomb());
+		
+		objects.add(new OrangeBook());
+		objects.add(new PurpleBook());
+		objects.add(new AcidRecipe());
+		objects.add(new GreenBook());
+		objects.add(new BlueBook());
+		objects.add(new PinkBook());		
+		objects.add(new RedBook());
+		
+		objects.add(new HallwayShelfTop());
+		objects.add(new HallwayShelfBottom());
+		
 		objects.add(new Whiteboard());
 		objects.add(new KitchenDoor());
 		objects.add(new BedroomDoor());
