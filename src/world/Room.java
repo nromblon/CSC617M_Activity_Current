@@ -96,13 +96,13 @@ public class Room extends GameWorld {
 	public static final int INDEX_X = 100;
 	public static final int INDEX_Y = 550;
 
-	public static final int INDEX_BATHROOM_X = 808;
+	public static final int INDEX_BATHROOM_X = 926;
 	public static final int INDEX_BATHROOM_Y = 285;
 	
-	public static final int INDEX_KITCHEN_X = 283;
+	public static final int INDEX_KITCHEN_X = 120;
 	public static final int INDEX_KITCHEN_Y = 285;
 	
-	public static final int INDEX_BEDROOM_X = 546;
+	public static final int INDEX_BEDROOM_X = 720;
 	public static final int INDEX_BEDROOM_Y = 285;
 	
 	private static final long serialVersionUID = 1L;

@@ -14,6 +14,7 @@ public class Stove extends InteractableObject{
 		this.closeResponse = "The "+this.objectName+" can't be closed.";
 		this.objectName = this.getClass().getSimpleName();
 		this.initComponents();
+		this.setOpened(false);
 	}
 	private void initComponents() {
 
@@ -42,7 +43,18 @@ public class Stove extends InteractableObject{
 
 	@Override
 	public void open() {
-		// TODO Auto-generated method stub
+		if(!this.isOpened() &&
+				this.getParent().lookupObject("Pot").isUsed()) {
+			this.setOpened(true);
+			this.setUsed(true);
+			
+			this.getParent().getParent().getInventory().removeItem("Flask");
+			this.getParent().getParent().getInventory().addItem(new SulfuricAcid());
+			this.getParent().updateMessage("I now have a flask full of sulfuric acid. This is strong enough to corrode metal.");
+		}
+		else {
+			this.getParent().updateMessage("There's no point in turning this on.");
+		}
 		
 	}
 
@@ -53,7 +65,7 @@ public class Stove extends InteractableObject{
 	}
 	@Override
 	public void update() {
-//		System.out.println("Drawer update");
+
 	}
 	@Override
 	public void take() {
@@ -62,8 +74,7 @@ public class Stove extends InteractableObject{
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
+		this.open();
 	}
 
 }

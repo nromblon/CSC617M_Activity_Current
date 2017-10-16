@@ -13,6 +13,7 @@ public class Pot extends InteractableObject{
 		this.closeResponse = "The "+this.objectName+" can't be closed.";
 		this.objectName = this.getClass().getSimpleName();
 		this.initComponents();
+		this.setUsed(false);
 	}
 	private void initComponents() {
 
@@ -61,10 +62,29 @@ public class Pot extends InteractableObject{
 	@Override
 	public void use() {
 		if(this.getParent().getParent().getInventory().searchIfItemExists("Wrench") &&
-				this.getParent().getParent().getInventory().searchIfItemExists("CarBattery")) {
-			this.getParent().updateMessage("I can make sulfuric acid with ");
+				this.getParent().getParent().getInventory().searchIfItemExists("CarBattery") &&
+				this.getParent().getParent().getInventory().searchIfItemExists("AcidRecipe") &&
+				!this.getParent().getParent().getInventory().searchIfItemExists("Flask")) {
+			this.getParent().updateMessage("I can make sulfuric acid with this, but I'll need something to put it in.");
+
+		}
+		else if(!this.isUsed() &&
+				this.getParent().getParent().getInventory().searchIfItemExists("Wrench") &&
+				this.getParent().getParent().getInventory().searchIfItemExists("CarBattery") &&
+				this.getParent().getParent().getInventory().searchIfItemExists("AcidRecipe") &&
+				this.getParent().getParent().getInventory().searchIfItemExists("Flask")) {
+			this.getParent().updateMessage("I poured the battery fluid in the pot. Now all I have to do is heat it up.");
+			
+			this.getParent().getParent().getInventory().removeItem("CarBattery");
 			this.setUsed(true);
 		}
+		else if(this.isUsed() && 
+				!this.getParent().getParent().getInventory().searchIfItemExists("SulfuricAcid")) {
+			this.getParent().updateMessage("All that's left is to heat it up.");
+			
+		}
+		else {
+			this.getParent().updateMessage("What am I supposed to use this with?");
+		}
 	}
-
 }

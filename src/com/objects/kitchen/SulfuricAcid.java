@@ -5,9 +5,9 @@ import javax.swing.JLabel;
 import com.elements.Game;
 import com.objects.InteractableObject;
 
-public class Flask extends InteractableObject{
+public class SulfuricAcid extends InteractableObject{
 	
-	public Flask() {
+	public SulfuricAcid() {
 		super(new String[]{"flask","science bottle","potion","volumetric flask"});
 
 		this.viewResponse = "A "+this.objectName+".";
@@ -69,6 +69,7 @@ public class Flask extends InteractableObject{
 	}
 	@Override
 	public void use() {
+		this.getParent().getParent().getInventory().searchItem("Flask");
 		
 	}
 
