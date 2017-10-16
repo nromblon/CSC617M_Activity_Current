@@ -8,7 +8,8 @@ import com.objects.InteractableObject;
 public class BottomDrawer extends InteractableObject{
 	
 	public BottomDrawer() {
-		super(new String[]{"lower drawer","bottom drawer","2nd Drawer","second drawer"});
+		super(new String[]{"lower drawer","lower compartment","bottom drawer","bottom compartment",
+				"2nd Drawer","2nd compartment","second drawer","second compartment"});
 		this.viewResponse = "The "+this.objectName+".";
 		this.openResponse = "It's empty.";
 		this.closeResponse = "The "+this.objectName+" can't be closed.";
@@ -36,8 +37,7 @@ public class BottomDrawer extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("This drawer is unlocked.");
 	}
 
 	@Override
@@ -47,8 +47,7 @@ public class BottomDrawer extends InteractableObject{
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("It is already closed.");
 	}
 	@Override
 	public void update() {
@@ -56,13 +55,11 @@ public class BottomDrawer extends InteractableObject{
 	}
 	@Override
 	public void take() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I don't think I'll gain anything from that.");
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage(this.openResponse);
 	}
 
 }

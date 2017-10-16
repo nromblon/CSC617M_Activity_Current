@@ -36,20 +36,17 @@ public class Drawer extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("This drawer has 2 compartments. An upper one and a lower one.");
 	}
 
 	@Override
 	public void open() {
-		
-		
+		this.parent.updateMessage("I don't know which compartment to open.");
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I don't know what you're talking about.");
 	}
 	@Override
 	public void update() {
@@ -57,13 +54,11 @@ public class Drawer extends InteractableObject{
 	}
 	@Override
 	public void take() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I can't carry something this heavy.");
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I don't know which compartment to open.");
 	}
 
 }

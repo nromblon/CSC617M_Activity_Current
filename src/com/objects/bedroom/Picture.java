@@ -37,18 +37,17 @@ public class Picture extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		this.getParent().updateMessage("The picture frame contains a slider puzzle of what seems like a flower.");
 	}
 
 	@Override
 	public void open() {
+		this.getParent().updateMessage("I can't open the frame.");
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		this.getParent().updateMessage("I don't know what you're talking about.");
 	}
 	@Override
 	public void update() {
@@ -60,12 +59,15 @@ public class Picture extends InteractableObject{
 			this.setTaken(true);
 			this.getParent().getParent().getInventory().addItem(this);
 			this.lblObject.setVisible(false);
+			this.getParent().updateMessage("I should try solving this puzzle.");
 		}
+		else
+			this.getParent().updateMessage("I already took the picture.");
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
+		if(!isTaken)
+			this.getParent().updateMessage("To make things easier, I should take it first before trying to solve it.");
 	}
 
 }

@@ -41,18 +41,17 @@ public class Vault extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("The vault is locked with a 4-digit code.");
 	}
 
 	@Override
 	public void open() {
+		this.parent.updateMessage("I need to unlock it by entering the PIN code");
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I don't know what you're talking about.");
 	}
 	@Override
 	public void update() {
@@ -64,12 +63,17 @@ public class Vault extends InteractableObject{
 			if(!this.isTaken) {
 				this.getParent().getParent().getInventory().addItem(this);
 				this.setTaken(true);
+				this.parent.updateMessage("I took the vault.");
 			}
+			else
+				this.parent.updateMessage("I already took the vault");
 		}
+		else
+			this.parent.updateMessage("What vault?");
 	}
 	@Override
 	public void use() {
-		
+		//TODO: open overlay
 	}
 
 }

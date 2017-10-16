@@ -37,20 +37,17 @@ public class BedroomLight extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("This bulb lights up the room.");
 	}
 
 	@Override
 	public void open() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("The light is already opened. Also, I can't reach it.");
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I can't reach it and there's no switch nearby");
 	}
 	@Override
 	public void update() {
@@ -58,13 +55,11 @@ public class BedroomLight extends InteractableObject{
 	}
 	@Override
 	public void take() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I can't reach it.");
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I can't reach it.");
 	}
 
 }

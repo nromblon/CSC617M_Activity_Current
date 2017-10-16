@@ -36,18 +36,21 @@ public class Floorboard extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I think it's possible to take this floorboard.");
 	}
 
 	@Override
 	public void open() {
+		this.lblObject.setIcon(this.iiTaken);
+		this.setTaken(true);
+		this.parent.updateMessage("The floorboard lifted off nicely.");
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("It's already closed.");
+		if(this.isTaken)
+			this.parent.updateMessage("I don't see the significance of that.");
 	}
 	@Override
 	public void update() {
@@ -55,13 +58,23 @@ public class Floorboard extends InteractableObject{
 	}
 	@Override
 	public void take() {
-		this.lblObject.setIcon(this.iiTaken);
-		this.setTaken(true);
+		if(!isTaken) {
+			this.lblObject.setIcon(this.iiTaken);
+			this.setTaken(true);
+			this.parent.updateMessage("The floorboard lifted off nicely.");
+		}
+		else
+			this.parent.updateMessage("I already took the floorboard off.");
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
+		if(!isTaken) {
+			this.lblObject.setIcon(this.iiTaken);
+			this.setTaken(true);
+			this.parent.updateMessage("The floorboard lifted off nicely.");
+		}
+		else
+			this.parent.updateMessage("I already took the floorboard off.");
 	}
 
 }

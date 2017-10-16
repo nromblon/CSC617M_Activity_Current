@@ -35,18 +35,17 @@ public class Clock extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("The clock seems to be broken. The hands point to 9:00");
 	}
 
 	@Override
 	public void open() {
+		this.parent.updateMessage("I don't think I can open it.");
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("It's not open in the first place.");
 	}
 	@Override
 	public void update() {
@@ -54,13 +53,11 @@ public class Clock extends InteractableObject{
 	}
 	@Override
 	public void take() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I don't think I have any use for a broken clock.");
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("How do you 'use' a broken clock??");
 	}
 
 }

@@ -35,18 +35,17 @@ public class BedroomWindow extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I can see grass from here.");
 	}
 
 	@Override
 	public void open() {
+		this.parent.updateMessage("The window is jammed.");
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("It is already closed.");
 	}
 	@Override
 	public void update() {
@@ -54,13 +53,11 @@ public class BedroomWindow extends InteractableObject{
 	}
 	@Override
 	public void take() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I don't think that's a right decision.");
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("The window is jammed.");
 	}
 
 }

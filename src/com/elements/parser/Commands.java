@@ -4,8 +4,8 @@ public enum Commands {
     VIEW (new String[]{"view"}),
     OPEN (new String[]{"open","switch","turn"}),
     CLOSE (new String[]{"close"}),
-    TAKE (new String[]{"take","pick"}),
-    USE (new String[]{"use","enter"}),
+    TAKE (new String[]{"take","pick","remove","lift"}),
+    USE (new String[]{"use","enter","exit"}),
     MOVE (new String[]{"move","go","goto"}),
     ERROR (new String[]{"error"});
     protected String[] synonyms;

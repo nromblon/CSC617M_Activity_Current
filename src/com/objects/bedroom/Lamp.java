@@ -35,8 +35,7 @@ public class Lamp extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("Seems like an ordinary lamp. I can try opening it on and off.");
 	}
 
 	@Override

@@ -8,7 +8,8 @@ import com.objects.InteractableObject;
 public class TopDrawer extends InteractableObject{
 	
 	public TopDrawer() {
-		super(new String[]{"top drawer","upper drawer","first drawer","1st drawer","higher drawer"});
+		super(new String[]{"top drawer","top compartment","upper drawer","upper compartment","first drawer","first compartment",
+				"1st drawer","1st compartment","higher drawer"});
 		this.viewResponse = "A "+this.objectName+".";
 		this.openResponse = "The top drawer is locked.";
 		this.closeResponse = "The "+this.objectName+" can't be closed.";
@@ -54,8 +55,7 @@ public class TopDrawer extends InteractableObject{
 			if(parent.lookupObject("Key").isTaken()) {
 				this.setOpened(true);
 				parent.updateMessage(this.openResponse+" Used the key.");
-
-				parent.lookupObject("Key").use();
+				this.getParent().getParent().getInventory().removeItem(parent.lookupObject("Key"));
 			}
 			else {
 				parent.updateMessage(this.openResponse);

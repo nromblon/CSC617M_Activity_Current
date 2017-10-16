@@ -35,18 +35,17 @@ public class PillowLeft extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("This pillow is light, like any other pillow.");
 	}
 
 	@Override
 	public void open() {
+		this.parent.updateMessage("I don't know why I should do that..");
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("What?");
 	}
 	@Override
 	public void update() {
@@ -57,12 +56,14 @@ public class PillowLeft extends InteractableObject{
 		if(!isTaken()) {
 			this.setTaken(true);
 			this.lblObject.setVisible(false);
+			this.parent.updateMessage("There's a number engraved on the headrest.");
 		}
+		else
+			this.parent.updateMessage("I already took the pillow.");
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I don't feel like sleeping...");
 	}
 
 }

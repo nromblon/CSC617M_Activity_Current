@@ -35,18 +35,17 @@ public class BedroomCloset extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("All the drawers of closet is locked. However, there is a shirt hanged inside it.");
 	}
 
 	@Override
 	public void open() {
+		this.parent.updateMessage("The drawers are locked.");
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I can't close what has not been opened.");
 	}
 	@Override
 	public void update() {
@@ -54,13 +53,11 @@ public class BedroomCloset extends InteractableObject{
 	}
 	@Override
 	public void take() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I think this is too heavy to carry around.");
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I don't know what you're talking about.");
 	}
 
 }

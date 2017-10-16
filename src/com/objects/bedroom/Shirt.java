@@ -35,18 +35,17 @@ public class Shirt extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("A hanged shirt.");
 	}
 
 	@Override
 	public void open() {
+		this.parent.updateMessage("I don't see the significance of that.");
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I don't see the significance of that.");
 	}
 	@Override
 	public void update() {
@@ -57,12 +56,14 @@ public class Shirt extends InteractableObject{
 		if(!isTaken()) {
 			this.setTaken(true);
 			this.lblObject.setVisible(false);
+			this.parent.updateMessage("I took the shirt. There's a number engraved on the closet. How surprising.");
 		}
+		else
+			this.parent.updateMessage("I already took the shirt.");
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("What?");
 	}
 
 }

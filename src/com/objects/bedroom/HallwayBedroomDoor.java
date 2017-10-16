@@ -39,8 +39,7 @@ public class HallwayBedroomDoor extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("The door leads back to the hallway.");
 	}
 
 	@Override
@@ -49,11 +48,11 @@ public class HallwayBedroomDoor extends InteractableObject{
 		// Assumes that the gameWorld is an instance of Room
 		this.getParent().getParent().toStage(Room.INDEX_HALLWAY,
 				Room.INDEX_BEDROOM_X, -1);
+		this.parent.updateMessage("I'm back in the hallway.");
 	}
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I don't see the significance of that.");
 	}
 	@Override
 	public void update() {
@@ -61,13 +60,15 @@ public class HallwayBedroomDoor extends InteractableObject{
 	}
 	@Override
 	public void take() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I can't carry a door around.");
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Entered "+this.objectName);
+		// Assumes that the gameWorld is an instance of Room
+		this.getParent().getParent().toStage(Room.INDEX_HALLWAY,
+				Room.INDEX_BEDROOM_X, -1);
+		this.parent.updateMessage("I'm back in the hallway.");
 	}
 
 }

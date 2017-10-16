@@ -13,6 +13,7 @@ public class LampLight extends InteractableObject{
 		this.openResponse = "The "+this.objectName+" can't be opened.";
 		this.closeResponse = "The "+this.objectName+" can't be closed.";
 		this.objectName = this.getClass().getSimpleName();
+		this.setOpened(false);
 		this.initComponents();
 	}
 	private void initComponents() {
@@ -44,14 +45,20 @@ public class LampLight extends InteractableObject{
 
 	@Override
 	public void open() {
-		this.lblObject.setIcon(this.iiOpened);
-		this.setOpened(true);
+		if(!isOpened) {
+			this.lblObject.setIcon(this.iiOpened);
+			this.setOpened(true);
+			this.parent.updateMessage("I have opened the lamp. There's something written by the side of the lamp.");
+		}
+		else
+			this.parent.updateMessage("The lamp is already opened.");
 	}
 
 	@Override
 	public void close() {
 		this.lblObject.setIcon(this.iiClosed);
 		this.setOpened(false);
+		this.parent.updateMessage("I turned the lamp off, to save energy...");
 	}
 	@Override
 	public void update() {
@@ -59,11 +66,14 @@ public class LampLight extends InteractableObject{
 	}
 	@Override
 	public void take() {
+		this.parent.updateMessage("I don't see the significance of carrying a lamp around.");
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
+		if(isOpened)
+			close();
+		else
+			open();
 	}
 
 }

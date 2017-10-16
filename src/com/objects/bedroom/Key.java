@@ -39,18 +39,17 @@ public class Key extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("A key is hidden inside the floor.");
 	}
 
 	@Override
 	public void open() {
+		this.parent.updateMessage("A key is used to open things, I don't think a key can open itself.");
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("What?");
 	}
 	@Override
 	public void update() {
@@ -58,16 +57,24 @@ public class Key extends InteractableObject{
 	}
 	@Override
 	public void take() {
-		if(!isTaken()) {
-			this.setTaken(true);
-			this.getParent().getParent().getInventory().addItem(this);
-			this.lblObject.setIcon(this.iiTaken);
+		if(getParent().lookupObject("Floorboard").isTaken()) {
+			if (!isTaken()) {
+				this.setTaken(true);
+				this.getParent().getParent().getInventory().addItem(this);
+				this.lblObject.setIcon(this.iiTaken);
+				this.parent.updateMessage("I took the key.");
+			} else
+				this.parent.updateMessage("I already took the key.");
 		}
+		else
+			this.parent.updateMessage("What key?");
 	}
 	@Override
 	public void use() {
-		this.getParent().getParent().getInventory().removeItem(this);
-		
+		if(isTaken)
+			this.parent.updateMessage("Maybe this key could open the locked top drawer?");
+		else
+			this.parent.updateMessage("I need to take the key first.");
 	}
 
 }

@@ -37,34 +37,30 @@ public class Bed extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("There's two pillows on this bed.");
 	}
 
 	@Override
 	public void open() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I can try opening the mattress, but I don't see the reason why.");
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I don't know what you're talking about");
 	}
+
 	@Override
 	public void update() {
 //		System.out.println("Drawer update");
 	}
 	@Override
 	public void take() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I can't lift a whole bed.");
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I'm not really in the mood to sleep...");
 	}
 
 }
