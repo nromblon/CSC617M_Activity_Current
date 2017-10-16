@@ -27,11 +27,6 @@ public class RoseBubbles extends InteractableObject{
 		this.setX(iX);
 		this.setY(iY);
 
-//		this.iiInventory = new ImageIcon("images/"+this.objectName+".png");
-//		this.iiOpened = new ImageIcon("images/"+this.objectName+"_opened.png");
-//		this.iiClosed = new ImageIcon("images/"+this.objectName+"_closed.png");
-//		this.iiViewed = new ImageIcon("images/"+this.objectName+"_viewed.png");
-		
 		this.setCenterX(this.lblObject.getWidth()/2);
 		this.setCenterY(this.lblObject.getHeight()/2);
 	}
@@ -65,14 +60,10 @@ public class RoseBubbles extends InteractableObject{
 	}
 	@Override
 	public void take() {
-		if(!this.isTaken) {
-			this.getParent().getParent().getInventory().addItem(this);
-			this.setTaken(true);
-		}		
+			
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
 		
 	}
 

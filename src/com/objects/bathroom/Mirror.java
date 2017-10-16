@@ -55,6 +55,10 @@ public class Mirror extends InteractableObject{
 		}
 		else if(this.getParent().lookupObject("RoseBottle").isUsed()) {
 			
+			if(!this.getParent().lookupObject("BathroomNote").isTaken()) {
+				this.getParent().lookupObject("BathroomNote").take();
+				this.getParent().getParent().getInventory().removeItem("BathroomNote");
+			}
 			this.getLblObject().setIcon(this.getIiOpened());			
 
 			this.getParent().updateMessage("It opened!");
