@@ -10,38 +10,62 @@ import javax.swing.JPanel;
 
 import world.GameWorld;
 
-public class Instructions extends JPanel implements MouseListener{
+public class MenuOptions extends JPanel implements MouseListener{
 	private static final long serialVersionUID = 1L;
 	private GameWorld parent;
 	
+	private JLabel line1;
 	private JButton btnHowTo;
 	private JLabel overlayHowTo;
+
+	private JLabel line2;
+	private JButton btnExit;
+	private JLabel line3;
 	
-	public Instructions(GameWorld parent) {
+	public MenuOptions(GameWorld parent) {
 		this.parent = parent;
 		
 		this.initComponents();
 		Game.initPanel(this, Game.clrTransparent, Stage.MAX_WIDTH, 0, parent.getWidth()-Stage.MAX_WIDTH, parent.getHeight());	
 		
+		this.add(line1);
 		this.add(btnHowTo);
+		this.add(line2);
+		this.add(btnExit);
+		this.add(line3);
+		
 		this.setVisible(true);
 	}
 	
 	public void initComponents() {
 		this.setLayout(new FlowLayout());
 		
+		this.line1 = new JLabel();
+		Game.initLabels(line1, "lineSeparator", null);
+		this.line1.setLocation(0, 600);
+		
 		this.btnHowTo = new JButton();
-		Game.initButtons(this.btnHowTo, "how2play", 124, 550, true, this);
-//		this.btnHowTo.setOpaque(false);
-//		this.btnHowTo.setContentAreaFilled(false);
+		Game.initButtons(this.btnHowTo, "how2play", 0, this.line1.getY() + this.line1.getHeight(), true, this);
+
+		this.line2 = new JLabel();
+		Game.initLabels(line2, "lineSeparator", null);
+		this.line2.setLocation(0, btnHowTo.getY() + btnHowTo.getHeight());
+		
+		this.btnExit = new JButton();
+		Game.initButtons(btnExit, "btnExit", 0, this.line2.getY() + this.line2.getHeight(), true, this);
+		
+		this.line3 = new JLabel();
+		Game.initLabels(line3, "lineSeparator", null);
+		this.line3.setLocation(0, btnExit.getY() + btnExit.getHeight());
 		
 		this.overlayHowTo = new JLabel();
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
+		if(arg0.getSource().equals(btnExit)) {
+			System.exit(1);
+		}
 	}
 
 	@Override

@@ -48,7 +48,7 @@ public class Controls extends JPanel {
 		this.player = player;
 		this.isSuccessful = false;
 		
-		Game.initPanel(this, Game.clrBlack70, Stage.MAX_WIDTH, 0, parent.getWidth()-Stage.MAX_WIDTH, parent.getHeight());	
+		Game.initPanel(this, Game.clrTransparent, Stage.MAX_WIDTH, 110, parent.getWidth()-Stage.MAX_WIDTH, parent.getHeight());	
 		this.initComponents();
 
 		this.isInAction = false;

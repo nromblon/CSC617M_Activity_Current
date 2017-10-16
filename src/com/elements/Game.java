@@ -39,7 +39,7 @@ public class Game extends JFrame implements MouseListener {
 	
 	public static Color clrTransparent = new Color(1.0f, 1.0f, 1.0f, 0.0f);
 	public static Color clrBlack70 = new Color(0.0f, 0.0f, 0.0f, 0.7f);
-	
+	public static Color darkGrey = new Color(38, 38, 38);
 
 	public static Color clrAutomatic = new Color(50, 50, 50, 255);
 	public static Color clrRed = new Color(229, 28, 74, 180);

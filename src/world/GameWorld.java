@@ -18,7 +18,7 @@ import com.characters.Character;
 import com.elements.Controls;
 import com.elements.Game;
 import com.elements.GameBar;
-import com.elements.Instructions;
+import com.elements.MenuOptions;
 import com.elements.Inventory;
 import com.elements.Stage;
 import com.elements.parser.Action;
@@ -43,9 +43,12 @@ public abstract class GameWorld extends World {
 	
 	protected JFrame parent;
 	
+	protected JLabel menuLbl;
+	protected JLabel line;
+	
 	protected Controls controls;
 	protected Inventory inventory;
-	protected Instructions instructions;
+	protected MenuOptions menuOps;
 	
 	protected VaultPassword vault;
 	protected SinkTopView sink;
@@ -94,7 +97,7 @@ public abstract class GameWorld extends World {
 		
 		this.controls = new Controls(this, this.player);
 		this.inventory = new Inventory(this, this.player);
-		this.instructions = new Instructions(this);
+		this.menuOps = new MenuOptions(this);
 
 		this.sliderGame = new SliderGame(this, this.player);
 		this.medicineCabinet = new MedicineCabinet(this, this.player);
@@ -117,8 +120,11 @@ public abstract class GameWorld extends World {
 		listOverlay.add(acidRecipe);
 		listOverlay.add(bombClue);
 		
+		this.add(menuLbl);
+		this.add(line);
+		
 		this.add(btnCharacterSelect);
-		this.add(instructions);
+		this.add(menuOps);
 		this.add(inventory);
 		this.add(controls);
 
@@ -138,7 +144,7 @@ public abstract class GameWorld extends World {
 	}	
 	
 	private void initComponents() {
-		Game.initPanel(this, Color.GRAY, 0, 0, Game.MAX_WIDTH, Game.MAX_WIDTH);
+		Game.initPanel(this, Game.darkGrey, 0, 0, Game.MAX_WIDTH, Game.MAX_WIDTH);
 		
 		this.iiResultLose = new ImageIcon("images/Result_Lose.png");
 		this.iiResultWin = new ImageIcon("images/Result_Win.png");
@@ -152,6 +158,14 @@ public abstract class GameWorld extends World {
 		Game.initButtons(this.btnCharacterSelect, Game.clrTransparent, (Stage.MAX_WIDTH-180)/2, Stage.MAX_HEIGHT-200, 180, 50, this);
 		this.btnCharacterSelect.setFont(Game.fntGothamLight20);
 		this.btnCharacterSelect.setVisible(false);
+		
+		this.menuLbl = new JLabel();
+		Game.initLabels(menuLbl, "MenuLabel", null);
+		this.menuLbl.setLocation(1050, 0);
+		
+		this.line = new JLabel();
+		Game.initLabels(line, "lineSeparator", null);
+		this.line.setLocation(1050, menuLbl.getHeight());
 		
 		this.setVisible(true);
 	}

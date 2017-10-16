@@ -41,7 +41,7 @@ public class Inventory extends JPanel implements MouseListener {
 		int offsetW = 30;
 		int offsetX = offsetW/2;
 		int width = parent.getWidth()-Stage.MAX_WIDTH-offsetW;
-		Game.initPanel(this, Game.clrTransparent, Stage.MAX_WIDTH+offsetX, 150, width, width);	
+		Game.initPanel(this, Game.clrTransparent, Stage.MAX_WIDTH+offsetX, 270, width, width);	
 		this.initComponents();
 
 //		this.add(txtfControls);
