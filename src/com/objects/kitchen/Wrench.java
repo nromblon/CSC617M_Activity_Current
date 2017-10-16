@@ -18,6 +18,7 @@ public class Wrench extends InteractableObject{
 		this.objectName = this.getClass().getSimpleName();
 		this.initComponents();
 		this.setTaken(false);
+		this.setUsed(false);
 		this.close();
 	}
 	private void initComponents() {
@@ -46,7 +47,7 @@ public class Wrench extends InteractableObject{
 	
 	@Override
 	public void view() {
-
+	
 	}
 
 	@Override
@@ -78,7 +79,7 @@ public class Wrench extends InteractableObject{
 	}
 	@Override
 	public void use() {
-		
+		this.setUsed(true);
 	}
 
 }

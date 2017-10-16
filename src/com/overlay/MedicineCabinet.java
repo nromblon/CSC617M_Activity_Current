@@ -47,7 +47,7 @@ public class MedicineCabinet extends OverlayObject {
 //		this.add(pnlCode);
 		this.add(lblOverlay);
 
-//		this.close();
+		this.close();
 	}
 	
 	private void initComponents() {		
