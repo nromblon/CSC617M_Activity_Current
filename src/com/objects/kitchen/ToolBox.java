@@ -1,5 +1,6 @@
 package com.objects.kitchen;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import com.elements.Game;
 import com.elements.Stage;
@@ -26,29 +27,40 @@ public class ToolBox extends InteractableObject{
 		
 		this.setX(iX);
 		this.setY(iY);
-//		this.iiOpened = new ImageIcon("images/"+this.objectName+"_opened.png");
-//		this.iiClosed = new ImageIcon("images/"+this.objectName+"_closed.png");
-//		this.iiViewed = new ImageIcon("images/"+this.objectName+"_viewed.png");
+		this.iiOpened = new ImageIcon("images/"+this.objectName+"_opened.png");
+		this.iiClosed = new ImageIcon("images/"+this.objectName+"_default.png");
 		
 		this.setCenterX(this.lblObject.getWidth()/2);
 		this.setCenterY(this.lblObject.getHeight()/2);
 	}
 	
+	public void showContents() {
+		this.getParent().lookupObject("CarBattery").open();
+		this.getParent().lookupObject("WireCutter").open();
+		this.getParent().lookupObject("Wrench").open();
+	}
+	
+	public void hideContents() {
+		this.getParent().lookupObject("CarBattery").close();
+		this.getParent().lookupObject("WireCutter").close();
+		this.getParent().lookupObject("Wrench").close();
+	}
+	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void open() {
-		if(this.getParent().lookupObject("ToolBoxKey").isTaken() &&
-				!this.getParent().lookupObject("ToolBoxKey").isUsed()) {
-			this.getParent().lookupObject("ToolBoxKey").use();
+		if(this.getParent().lookupObject("ToolBoxKey").isTaken()) {
+//			this.getParent().lookupObject("ToolBoxKey").use();
 			this.getParent().updateMessage("It's locked. I used the toolbox key.");
 			this.getParent().updateMessage("There's a car battery inside. It might be useful, I should take it.");
-			this.setTaken(true);
-			this.getParent().getParent().getInventory().addItem(this.getParent().lookupObject("CarBattery"));
+			
+			this.setOpened(true);
+			this.getLblObject().setIcon(this.iiOpened);
+			this.showContents();
 		}
 		else {
 			this.getParent().updateMessage("It's locked.");
@@ -57,21 +69,21 @@ public class ToolBox extends InteractableObject{
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
+		this.lblObject.setIcon(this.getIiClosed());
+		this.setOpened(false);
+		this.hideContents();
 		
 	}
 	@Override
 	public void update() {
-//		System.out.println("Drawer update");
+
 	}
 	@Override
 	public void take() {
-		// TODO Auto-generated method stub
 		
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
 		
 	}
 

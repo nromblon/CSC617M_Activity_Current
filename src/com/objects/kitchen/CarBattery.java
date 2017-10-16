@@ -30,29 +30,35 @@ public class CarBattery extends InteractableObject{
 		this.setY(iY);
 		
 		this.iiInventory = new ImageIcon("images/"+this.objectName+".png");
-//		this.iiOpened = new ImageIcon("images/"+this.objectName+"_opened.png");
-//		this.iiClosed = new ImageIcon("images/"+this.objectName+"_closed.png");
-//		this.iiViewed = new ImageIcon("images/"+this.objectName+"_viewed.png");
-		
+	
 		this.setCenterX(this.lblObject.getWidth()/2);
 		this.setCenterY(this.lblObject.getHeight()/2);
 	}
 	
 	@Override
+	public void spawn() {
+		super.spawn();
+		this.close();
+	}
+	
+	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void open() {
-		
+		if(this.isTaken()) {
+			this.close();
+		}
+		else {
+			this.lblObject.setVisible(true);
+		}
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		this.lblObject.setVisible(false);
 	}
 	@Override
 	public void update() {
@@ -60,7 +66,8 @@ public class CarBattery extends InteractableObject{
 	}
 	@Override
 	public void take() {
-		if(!isTaken()) {
+		if(!isTaken() &&
+				this.getParent().lookupObject("ToolBox").isOpened()) {
 			this.setTaken(true);
 			this.getParent().getParent().getInventory().addItem(this);
 			this.lblObject.setVisible(false);
@@ -68,7 +75,6 @@ public class CarBattery extends InteractableObject{
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
 		
 	}
 

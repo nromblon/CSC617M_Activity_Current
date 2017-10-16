@@ -75,6 +75,8 @@ import com.objects.kitchen.ToolBox;
 import com.objects.kitchen.ToolBoxKey;
 import com.objects.kitchen.Tumbler;
 import com.objects.kitchen.WaterBottle;
+import com.objects.kitchen.WireCutter;
+import com.objects.kitchen.Wrench;
 
 public class Room extends GameWorld {
 	public static final int INDEX_HALLWAY = 0;
@@ -125,7 +127,12 @@ public class Room extends GameWorld {
 
 		objects.add(new HallwayKitchenDoor());
 		objects.add(new KitchenLight());
+
+		objects.add(new CarBattery());
+		objects.add(new WireCutter());
+		objects.add(new Wrench());
 		objects.add(new ToolBox());
+		
 		objects.add(new Garbage());
 		objects.add(new KitchenWindow());
 		
@@ -143,7 +150,6 @@ public class Room extends GameWorld {
 		
 		objects.add(new Goblet());
 		objects.add(new ToolBoxKey());
-		objects.add(new CarBattery());
 		
 		objects.add(new Blender());
 		objects.add(new Tumbler());

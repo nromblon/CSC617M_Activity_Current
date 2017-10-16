@@ -34,7 +34,19 @@ public abstract class InteractableObject {
 	protected ImageIcon iiViewed;
 	protected ImageIcon iiClosed;
 	protected ImageIcon iiTaken;
+	/**
+	 * 
+	 */
+	protected ImageIcon iiUsed;
 	
+	public ImageIcon getIiUsed() {
+		return iiUsed;
+	}
+
+	public void setIiUsed(ImageIcon iiUsed) {
+		this.iiUsed = iiUsed;
+	}
+
 	protected boolean isDefault;	
 	protected boolean isInventory;
 	protected boolean isOpened;
@@ -43,21 +55,28 @@ public abstract class InteractableObject {
 	protected boolean isTaken;
 	protected boolean isLocked;
 	
-//	protected boolean isDown;
-//	protected boolean isUp;
-//	protected int weight;
-	
-//	public final String attackedResponse = "";
-//	public final String evadedResponse = "";
-//	public final String talkedResponse = "";
-//
-//	public final String usedResponse = "";
-//	public final String openedResponse = "";
-//	public final String closedResponse = "";
 	public String viewResponse = "";
 	public String openResponse = "";
 	public String closeResponse = "";
+	public String useResponse = "";
+	public String takeResponse = "";
 	
+	public String getUseResponse() {
+		return useResponse;
+	}
+
+	public void setUseResponse(String useResponse) {
+		this.useResponse = useResponse;
+	}
+
+	public String getTakeResponse() {
+		return takeResponse;
+	}
+
+	public void setTakeResponse(String takeResponse) {
+		this.takeResponse = takeResponse;
+	}
+
 	protected String objectName;
 	
 	public abstract void update();
@@ -289,5 +308,29 @@ public abstract class InteractableObject {
 
 	public String[] getSynonyms() {
 		return synonyms;
+	}
+
+	public String getViewResponse() {
+		return viewResponse;
+	}
+
+	public void setViewResponse(String viewResponse) {
+		this.viewResponse = viewResponse;
+	}
+
+	public String getOpenResponse() {
+		return openResponse;
+	}
+
+	public void setOpenResponse(String openResponse) {
+		this.openResponse = openResponse;
+	}
+
+	public String getCloseResponse() {
+		return closeResponse;
+	}
+
+	public void setCloseResponse(String closeResponse) {
+		this.closeResponse = closeResponse;
 	}
 }

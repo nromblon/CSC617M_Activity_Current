@@ -31,6 +31,7 @@ public class Flask extends InteractableObject{
 //		this.iiClosed = new ImageIcon("images/"+this.objectName+"_closed.png");
 //		this.iiViewed = new ImageIcon("images/"+this.objectName+"_viewed.png");
 		this.iiInventory = new ImageIcon("images/"+this.objectName+".png");
+		this.iiUsed = new ImageIcon("images/"+this.objectName+"_used.png");
 		
 		this.setCenterX(this.lblObject.getWidth()/2);
 		this.setCenterY(this.lblObject.getHeight()/2);
@@ -68,7 +69,7 @@ public class Flask extends InteractableObject{
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
+		this.getParent().getParent().getInventory().searchItem("Flask");
 		
 	}
 

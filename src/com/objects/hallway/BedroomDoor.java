@@ -10,7 +10,9 @@ import world.Room;
 public class BedroomDoor extends InteractableObject{
 	
 	public BedroomDoor() {
-		super(new String[]{"middle door","center door","2nd door","second door","brown door","wooden door","bedroom door","bedroom"});
+		super(new String[]{"middle door", "center door", "2nd door",
+							"second door", "brown door", "wooden door",
+							"bedroom door", "bedroom", "door 2", "door2"});
 		this.viewResponse = "A "+this.objectName+".";
 		this.openResponse = "The "+this.objectName+" can't be opened.";
 		this.closeResponse = "The "+this.objectName+" can't be closed.";

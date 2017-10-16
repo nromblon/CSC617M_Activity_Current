@@ -7,10 +7,10 @@ import com.objects.InteractableObject;
 public class WaterBottle extends InteractableObject{
 	
 	public WaterBottle() {
-		super(new String[]{"water bottle","water","bottle"});
+		super(new String[]{"water bottle", "water", "bottle", "blue bottle", "plastic bottle"});
 
-		this.viewResponse = "A "+this.objectName+".";
-		this.openResponse = "The "+this.objectName+" can't be opened.";
+		this.viewResponse = "A water bottle";
+		this.openResponse = "I don't think I need to open it.";
 		this.closeResponse = "The "+this.objectName+" can't be closed.";
 		this.objectName = this.getClass().getSimpleName();
 		this.initComponents();
@@ -26,44 +26,36 @@ public class WaterBottle extends InteractableObject{
 		
 		this.setX(iX);
 		this.setY(iY);
-//		this.iiOpened = new ImageIcon("images/"+this.objectName+"_opened.png");
-//		this.iiClosed = new ImageIcon("images/"+this.objectName+"_closed.png");
-//		this.iiViewed = new ImageIcon("images/"+this.objectName+"_viewed.png");
-		
+
 		this.setCenterX(this.lblObject.getWidth()/2);
 		this.setCenterY(this.lblObject.getHeight()/2);
 	}
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		this.getParent().updateMessage(this.getViewResponse());
 	}
 
 	@Override
 	public void open() {
-		// TODO Auto-generated method stub
-		
+		this.getParent().updateMessage(this.getOpenResponse());
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		this.getParent().updateMessage(this.getCloseResponse());
 	}
 	@Override
 	public void update() {
-//		System.out.println("Drawer update");
+
 	}
 	@Override
 	public void take() {
-		// TODO Auto-generated method stub
-		
+		this.getParent().updateMessage(this.getTakeResponse());
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
+		this.getParent().updateMessage(this.getUseResponse());
 	}
 
 }

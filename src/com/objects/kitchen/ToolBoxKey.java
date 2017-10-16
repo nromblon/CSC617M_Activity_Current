@@ -27,9 +27,7 @@ public class ToolBoxKey extends InteractableObject{
 		
 		this.setX(iX);
 		this.setY(iY);
-//		this.iiOpened = new ImageIcon("images/"+this.objectName+"_opened.png");
-//		this.iiClosed = new ImageIcon("images/"+this.objectName+"_closed.png");
-//		this.iiViewed = new ImageIcon("images/"+this.objectName+"_viewed.png");
+
 		this.iiInventory = new ImageIcon("images/"+this.objectName+".png");
 		
 		this.setCenterX(this.lblObject.getWidth()/2);
@@ -38,19 +36,16 @@ public class ToolBoxKey extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void open() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
 		
 	}
 	@Override
