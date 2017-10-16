@@ -22,6 +22,7 @@ import com.elements.Inventory;
 import com.elements.Stage;
 import com.elements.parser.Action;
 import com.overlay.BathroomNoteOverlay;
+import com.overlay.BombWiring;
 import com.overlay.MedicineCabinet;
 import com.overlay.OverlayObject;
 import com.overlay.SinkTopView;
@@ -44,6 +45,7 @@ public abstract class GameWorld extends World {
 	protected SinkTopView sink;
 	protected BathroomNoteOverlay note;
 	protected SliderGame sliderGame;
+	protected BombWiring bombWiring;
 	protected MedicineCabinet medicineCabinet;
 	
 	protected Timer gameTimer;
@@ -87,6 +89,7 @@ public abstract class GameWorld extends World {
 
 		this.sliderGame = new SliderGame(this, this.player);
 		this.medicineCabinet = new MedicineCabinet(this, this.player);
+		this.bombWiring = new BombWiring(this, this.player);
 //		controls.setBounds(0, 0, controls.getWidth(), controls.getHeight());
 		
 		this.listOverlay = new ArrayList<OverlayObject>();
@@ -96,19 +99,22 @@ public abstract class GameWorld extends World {
 		listOverlay.add(sink);
 		listOverlay.add(note);
 		listOverlay.add(medicineCabinet);
+		listOverlay.add(bombWiring);
 		
 		this.add(btnCharacterSelect);
 		this.add(inventory);
 		this.add(controls);
 		
 
+		this.add(lblResult);
+
 		this.add(sliderGame);		
 		this.add(vault);
 		this.add(sink);
 		this.add(note);
+		this.add(bombWiring);
 		this.add(medicineCabinet);
 		
-		this.add(lblResult);
 		
 		this.add(gamebar);		
 
@@ -164,6 +170,11 @@ public abstract class GameWorld extends World {
 	public void openSliderGame() {
 		this.closeAllOverlays();
 		this.sliderGame.open();
+	}
+	
+	public void openBombWiring() {
+		this.closeAllOverlays();
+		this.bombWiring.open();
 	}
 	
 	public void openOverlayMedicineCabinet() {

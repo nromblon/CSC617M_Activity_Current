@@ -200,16 +200,30 @@ public class Inventory extends JPanel implements MouseListener {
 	}
 	
 	public void removeItem(InteractableObject item) {
-		this.pnlInventory.remove(searchItem(item.getObjectName()));
+		this.removeItem(item.getObjectName());
+	}
+	
+	public void removeItem(String itemName) {
+		this.pnlInventory.remove(searchItem(itemName));
 	}
 
 	public Component searchItem(String text) {
 		for(Component component : pnlInventory.getComponents()) {
-			if(text == component.getName()){
+			
+			if(text.trim().equals(component.getName())){
 				return component;
 			}
 		}
 		return null;
+	}
+	
+	public boolean searchIfItemExists(String text) {
+		for(Component component : pnlInventory.getComponents()) {
+			if(text.trim().equals(component.getName())){
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public JLabel createItem(InteractableObject item, JPanel parent) {
