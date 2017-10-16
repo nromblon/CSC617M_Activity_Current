@@ -18,6 +18,7 @@ import com.characters.Character;
 import com.elements.Controls;
 import com.elements.Game;
 import com.elements.GameBar;
+import com.elements.Instructions;
 import com.elements.Inventory;
 import com.elements.Stage;
 import com.elements.parser.Action;
@@ -43,6 +44,7 @@ public abstract class GameWorld extends World {
 	
 	protected Controls controls;
 	protected Inventory inventory;
+	protected Instructions instructions;
 	
 	protected VaultPassword vault;
 	protected SinkTopView sink;
@@ -90,7 +92,7 @@ public abstract class GameWorld extends World {
 		
 		this.controls = new Controls(this, this.player);
 		this.inventory = new Inventory(this, this.player);
-		
+		this.instructions = new Instructions(this);
 
 		this.sliderGame = new SliderGame(this, this.player);
 		this.medicineCabinet = new MedicineCabinet(this, this.player);
@@ -112,9 +114,9 @@ public abstract class GameWorld extends World {
 		listOverlay.add(acidRecipe);
 		
 		this.add(btnCharacterSelect);
+		this.add(instructions);
 		this.add(inventory);
 		this.add(controls);
-		
 
 		this.add(lblResult);
 
