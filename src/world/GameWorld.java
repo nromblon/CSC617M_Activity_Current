@@ -21,6 +21,7 @@ import com.elements.GameBar;
 import com.elements.Inventory;
 import com.elements.Stage;
 import com.elements.parser.Action;
+import com.objects.bedroom.PictureNote;
 import com.overlay.BathroomNoteOverlay;
 import com.overlay.BombWiring;
 import com.overlay.MedicineCabinet;
@@ -273,6 +274,11 @@ public abstract class GameWorld extends World {
 	}
 
 
+	public void addPictureNote() {
+		PictureNote picturenote = new PictureNote();
+		this.getInventory().addItem(picturenote);
+	}
+	
 	public void updateMessage(String text){
 		this.getGamebar().addMsgQueue(text);
 	}

@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+import com.overlay.SliderGame;
+
 public class SliderPanel implements ActionListener {
 	
 	private SliderModel sliderModel;
@@ -15,8 +17,10 @@ public class SliderPanel implements ActionListener {
 	private ImageSplitter img;
 	private ImageIcon blankSlot;
 	private Tile[][] tiles;
-	
-	public SliderPanel() {
+	private SliderGame parent;
+
+	public SliderPanel(SliderGame parent) {
+		this.setParent(parent);
 		this.sliderModel = new SliderModel();		
 		
 		this.pnlSlider = new JPanel();
@@ -105,6 +109,7 @@ public class SliderPanel implements ActionListener {
 				for(int p = 0; p < 4; p++)
 					this.tiles[o][p].getBtnTile().setBorderPainted(false);
 			}
+			this.getParent().getParent().addPictureNote();
 		}
 	}
 	
@@ -144,6 +149,14 @@ public class SliderPanel implements ActionListener {
 	
 	public Tile[][] getTiles() {
 		return this.tiles;
+	}
+
+	public SliderGame getParent() {
+		return parent;
+	}
+
+	public void setParent(SliderGame parent) {
+		this.parent = parent;
 	}
 
 }
