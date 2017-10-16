@@ -25,6 +25,7 @@ import com.overlay.BathroomNoteOverlay;
 import com.overlay.BombWiring;
 import com.overlay.MedicineCabinet;
 import com.overlay.OverlayObject;
+import com.overlay.PictureNoteOverlay;
 import com.overlay.SinkTopView;
 import com.overlay.SliderGame;
 import com.overlay.VaultPassword;
@@ -47,6 +48,7 @@ public abstract class GameWorld extends World {
 	protected SliderGame sliderGame;
 	protected BombWiring bombWiring;
 	protected MedicineCabinet medicineCabinet;
+	protected PictureNoteOverlay pictureNote;
 	
 	protected Timer gameTimer;
 	
@@ -90,11 +92,13 @@ public abstract class GameWorld extends World {
 		this.sliderGame = new SliderGame(this, this.player);
 		this.medicineCabinet = new MedicineCabinet(this, this.player);
 		this.bombWiring = new BombWiring(this, this.player);
+		this.pictureNote = new PictureNoteOverlay(this, this.player);
 //		controls.setBounds(0, 0, controls.getWidth(), controls.getHeight());
 		
 		this.listOverlay = new ArrayList<OverlayObject>();
 
 		listOverlay.add(sliderGame);
+		listOverlay.add(pictureNote);
 		listOverlay.add(vault);
 		listOverlay.add(sink);
 		listOverlay.add(note);
@@ -110,7 +114,8 @@ public abstract class GameWorld extends World {
 
 		this.add(sliderGame);		
 		this.add(vault);
-		this.add(sink);
+		this.add(sink);	
+		this.add(pictureNote);
 		this.add(note);
 		this.add(bombWiring);
 		this.add(medicineCabinet);
@@ -180,6 +185,11 @@ public abstract class GameWorld extends World {
 	public void openOverlayMedicineCabinet() {
 		this.closeAllOverlays();
 		this.medicineCabinet.open();
+	}
+	
+	public void openPictureNoteOverlay() {
+		this.closeAllOverlays();
+		this.pictureNote.open();
 	}
 	
 	class MovementListener extends SwingWorker<Void, Object> {
