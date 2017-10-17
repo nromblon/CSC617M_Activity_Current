@@ -57,6 +57,7 @@ public class WireCutter extends InteractableObject{
 		else {
 			this.lblObject.setVisible(true);
 			this.setVisible(true);
+			this.setTarget(this);
 		}
 	}
 
@@ -64,6 +65,7 @@ public class WireCutter extends InteractableObject{
 	public void close() {
 		this.lblObject.setVisible(false);
 		this.setVisible(false);
+		this.setTarget(null);
 	}
 	@Override
 	public void update() {
