@@ -36,25 +36,26 @@ public class Fridge extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		if(!this.getParent().lookupObject("FridgeDoor").isOpened()){
+			this.parent.updateMessage("A normal fridge. I wonder what's inside...");
+		}
+		else{
+			this.parent.updateMessage("There's an apple, a soda can, cheese, a water bottle, a flask, and some strawberry jam.");
+		}
 	}
 
 	@Override
 	public void open() {
-//		if(!this.isOpened()) {
-//			this.setOpened(true);
-//			this.lblObject.setIcon(this.getIiOpened());
-//			this.getParent().lookupObject("FridgeDoor").open();
-//		}
+		if(!this.getParent().lookupObject("FridgeDoor").isOpened()) {
+			this.getParent().lookupObject("FridgeDoor").open();
+		}
 	}
 
 	@Override
 	public void close() {
-//		if(this.isOpened) {
-//			this.setOpened(false);
-//			this.getParent().lookupObject("FridgeDoor").close();
-//		}
+		if(this.getParent().lookupObject("FridgeDoor").isOpened()) {
+			this.getParent().lookupObject("FridgeDoor").close();
+		}
 		
 	}
 	@Override
@@ -63,13 +64,17 @@ public class Fridge extends InteractableObject{
 	}
 	@Override
 	public void take() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I can't carry something that heavy...");
 	}
 	@Override
 	public void use() {
 		// TODO Auto-generated method stub
-		
+		if(!this.getParent().lookupObject("FridgeDoor").isOpened()) {
+			this.getParent().lookupObject("FridgeDoor").open();
+		}
+		else{
+			this.getParent().lookupObject("FridgeDoor").close();
+		}
 	}
 
 }

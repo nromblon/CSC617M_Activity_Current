@@ -36,20 +36,17 @@ public class KitchenShelf extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("The shelf features a tumbler, dishes, a jar of honey, and a goblet. The only thing that interests me is that goblet...");
 	}
 
 	@Override
 	public void open() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("There's nothing to be opened.");
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("There's nothing to be closed.");
 	}
 	@Override
 	public void update() {
@@ -57,13 +54,11 @@ public class KitchenShelf extends InteractableObject{
 	}
 	@Override
 	public void take() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("The shelf is screwed to the wall.");
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("What?");
 	}
 
 }

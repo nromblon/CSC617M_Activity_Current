@@ -17,6 +17,7 @@ public class WaterBottle extends InteractableObject{
 	}
 	private void initComponents() {
 
+		this.setTarget(null);
 		this.objectName = this.getClass().getSimpleName();
 		this.lblObject = new JLabel();
 		Game.initLabels(lblObject, this.objectName+"_default", null);
@@ -33,17 +34,30 @@ public class WaterBottle extends InteractableObject{
 	
 	@Override
 	public void view() {
-		this.getParent().updateMessage(this.getViewResponse());
+		if(this.getParent().lookupObject("FridgeDoor").isOpened()){
+			this.getParent().updateMessage(this.getViewResponse());
+		}
+		else
+			this.parent.updateMessage("...");
 	}
+
 
 	@Override
 	public void open() {
-		this.getParent().updateMessage(this.getOpenResponse());
+		if(this.getParent().lookupObject("FridgeDoor").isOpened()){
+			this.getParent().updateMessage(this.getOpenResponse());
+		}
+		else
+			this.parent.updateMessage("...");
 	}
 
 	@Override
 	public void close() {
-		this.getParent().updateMessage(this.getCloseResponse());
+		if(this.getParent().lookupObject("FridgeDoor").isOpened()){
+			this.getParent().updateMessage(this.getCloseResponse());
+		}
+		else
+			this.parent.updateMessage("...");
 	}
 	@Override
 	public void update() {
@@ -51,11 +65,18 @@ public class WaterBottle extends InteractableObject{
 	}
 	@Override
 	public void take() {
-		this.getParent().updateMessage(this.getTakeResponse());
+		if(this.getParent().lookupObject("FridgeDoor").isOpened()){
+			this.getParent().updateMessage(this.getTakeResponse());
+		}
+		else
+			this.parent.updateMessage("...");
 	}
 	@Override
 	public void use() {
-		this.getParent().updateMessage(this.getUseResponse());
+		if(this.getParent().lookupObject("FridgeDoor").isOpened()){
+			this.getParent().updateMessage(this.getUseResponse());
+		}
+		else
+			this.parent.updateMessage("...");
 	}
-
 }

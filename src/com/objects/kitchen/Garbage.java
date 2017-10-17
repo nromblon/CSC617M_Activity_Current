@@ -37,20 +37,17 @@ public class Garbage extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("For a kitchen with a lot of things, the garbage can is surprisingly empty.");
 	}
 
 	@Override
 	public void open() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I've opened it and there's nothing inside it.");
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("It's already closed.");
 	}
 	@Override
 	public void update() {
@@ -58,13 +55,11 @@ public class Garbage extends InteractableObject{
 	}
 	@Override
 	public void take() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I don't want to be seen walking around with a garbage can around my arms.");
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I have nothing to throw in it. I'm sorry trash can, looks like you're nothing but garbage right now.");
 	}
 
 }

@@ -35,20 +35,17 @@ public class Mixer extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("A mixer. Used for mixing things.");
 	}
 
 	@Override
 	public void open() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I don't have anything to mix right now.");
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("It's already closed.");
 	}
 	@Override
 	public void update() {
@@ -56,13 +53,11 @@ public class Mixer extends InteractableObject{
 	}
 	@Override
 	public void take() {
-		// TODO Auto-generated method stub
-		
-	}
+		this.parent.updateMessage("Taking this mixer is definitely not my priority right now.");
+}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I don't have anything to mix right now.");
 	}
 
 }

@@ -16,6 +16,7 @@ public class Apple extends InteractableObject{
 	}
 	private void initComponents() {
 
+		this.setTarget(null);
 		this.objectName = this.getClass().getSimpleName();
 		this.lblObject = new JLabel();
 		Game.initLabels(lblObject, this.objectName+"_default", null);
@@ -35,34 +36,51 @@ public class Apple extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		if(this.getParent().lookupObject("FridgeDoor").isOpened()){
+			this.getParent().updateMessage("Looks tasty");
+		}
+		else
+			this.parent.updateMessage("...");
 	}
 
 	@Override
 	public void open() {
-		// TODO Auto-generated method stub
-		
+		if(this.getParent().lookupObject("FridgeDoor").isOpened()){
+			this.getParent().updateMessage("I don't know if I want to do that...");
+		}
+		else
+			this.parent.updateMessage("...");
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		if(this.getParent().lookupObject("FridgeDoor").isOpened()){
+			this.getParent().updateMessage("What?");
+		}
+		else
+			this.parent.updateMessage("...");
 	}
+
 	@Override
 	public void update() {
-//		System.out.println("Drawer update");
 	}
+
 	@Override
 	public void take() {
-		// TODO Auto-generated method stub
-		
+		if(this.getParent().lookupObject("FridgeDoor").isOpened()){
+			this.getParent().updateMessage("I don't think I'll have any use for that...");
+		}
+		else
+			this.parent.updateMessage("...");
 	}
+
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
+		if(this.getParent().lookupObject("FridgeDoor").isOpened()){
+			this.getParent().updateMessage("I'm not really hungry right now...");
+		}
+		else
+			this.parent.updateMessage("...");
 	}
 
 }

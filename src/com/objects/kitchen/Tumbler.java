@@ -35,20 +35,17 @@ public class Tumbler extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("A regular tumbler.");
 	}
 
 	@Override
 	public void open() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("There's nothing inside it.");
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("It's already closed.");
 	}
 	@Override
 	public void update() {
@@ -56,13 +53,11 @@ public class Tumbler extends InteractableObject{
 	}
 	@Override
 	public void take() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I have no use for a tumbler.");
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
+		take();
 	}
 
 }

@@ -35,20 +35,17 @@ public class Honey extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("The label reads '100% Natural Honey', like they all do.");
 	}
 
 	@Override
 	public void open() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("The lid is stuck.");
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("It's already closed.");
 	}
 	@Override
 	public void update() {
@@ -56,13 +53,11 @@ public class Honey extends InteractableObject{
 	}
 	@Override
 	public void take() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I'd love to however, it's nothing but dead weight.");
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I'd love a taste of that, if the lid wasn't stuck.");
 	}
 
 }

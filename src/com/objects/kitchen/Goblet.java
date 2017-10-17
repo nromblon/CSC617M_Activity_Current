@@ -15,7 +15,7 @@ public class Goblet extends InteractableObject{
 		this.initComponents();
 	}
 	private void initComponents() {
-
+		this.setViewed(false);
 		this.objectName = this.getClass().getSimpleName();
 		this.lblObject = new JLabel();
 		Game.initLabels(lblObject, this.objectName+"_default", null);
@@ -35,19 +35,24 @@ public class Goblet extends InteractableObject{
 	
 	@Override
 	public void view() {
-		this.getParent().updateMessage("Theres a key inside.");
-		this.getParent().lookupObject("ToolBoxKey").take();
+		if(!this.getParent().lookupObject("ToolBoxKey").isTaken()) {
+			this.getParent().updateMessage("Theres a key inside.");
+			this.parent.lookupObject("ToolBoxKey").setTarget(parent.lookupObject("ToolBoxKey"));
+//			this.getParent().lookupObject("ToolBoxKey").take();
+			this.setViewed(true);
+		}
+		else
+			this.parent.updateMessage("It's empty.");
 	}
 
 	@Override
 	public void open() {
-		
+		this.parent.updateMessage("There's nothing to open.");
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("There's nothing to close.");
 	}
 	@Override
 	public void update() {
@@ -55,13 +60,11 @@ public class Goblet extends InteractableObject{
 	}
 	@Override
 	public void take() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I know it looks cool, but I don't think I have the time for that now.");
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I don't know what you want me to do.");
 	}
 
 }

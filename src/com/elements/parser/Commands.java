@@ -2,7 +2,7 @@ package com.elements.parser;
 
 public enum Commands {
     VIEW (new String[]{"view","check","inspect","observe"}),
-    OPEN (new String[]{"open","switch","turn","enter"}),
+    OPEN (new String[]{"open","switch","turn","enter","exit"}),
     CLOSE (new String[]{"close"}),
     TAKE (new String[]{"take","pick","remove","lift"}),
     USE (new String[]{"use"}),

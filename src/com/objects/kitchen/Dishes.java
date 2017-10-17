@@ -35,20 +35,17 @@ public class Dishes extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		this.getParent().updateMessage("A stack of dishes.");
 	}
 
 	@Override
 	public void open() {
-		// TODO Auto-generated method stub
-		
+		this.getParent().updateMessage("How do you open a stack of dishes?");
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		this.getParent().updateMessage("Excuse me?");
 	}
 	@Override
 	public void update() {
@@ -56,13 +53,11 @@ public class Dishes extends InteractableObject{
 	}
 	@Override
 	public void take() {
-		// TODO Auto-generated method stub
-		
+		this.getParent().updateMessage("I don't have any use for these.");
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
+		this.getParent().updateMessage("I don't have any use for these.");
 	}
 
 }

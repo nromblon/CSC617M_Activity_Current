@@ -35,20 +35,17 @@ public class CoffeePot extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		this.getParent().updateMessage("A coffee pot. The coffee inside looks old.");
 	}
 
 	@Override
 	public void open() {
-		// TODO Auto-generated method stub
-		
+		this.getParent().updateMessage("I opened it and it smells terrible. I should leave it closed.");
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		this.getParent().updateMessage("I should leave it closed.");
 	}
 	@Override
 	public void update() {
@@ -56,13 +53,11 @@ public class CoffeePot extends InteractableObject{
 	}
 	@Override
 	public void take() {
-		// TODO Auto-generated method stub
-		
+		this.getParent().updateMessage("Nahh...");
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
+		this.getParent().updateMessage("I bet it tastes horrible.");
 	}
 
 }

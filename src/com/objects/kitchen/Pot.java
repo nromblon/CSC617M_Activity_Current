@@ -36,18 +36,17 @@ public class Pot extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I could cook something with this...");
 	}
 
 	@Override
 	public void open() {
-		
+		this.parent.updateMessage("It's empty.");
 	}
 
 	@Override
 	public void close() {
-
+		this.parent.updateMessage("It's already closed.");
 		
 	}
 	@Override
@@ -56,7 +55,7 @@ public class Pot extends InteractableObject{
 	}
 	@Override
 	public void take() {
-
+		this.parent.updateMessage("I don't think it's productive to carry that around.");
 		
 	}
 	@Override

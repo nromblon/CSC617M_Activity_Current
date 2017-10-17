@@ -33,20 +33,25 @@ public class StrawberryJam extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		if(this.getParent().lookupObject("FridgeDoor").isOpened()){
+			this.parent.updateMessage("An ordinary strawberry jam.");
+		}
+		else
+			this.parent.updateMessage("...");
 	}
 
 	@Override
 	public void open() {
-		// TODO Auto-generated method stub
-		
+		use();
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		if(this.getParent().lookupObject("FridgeDoor").isOpened()){
+			this.parent.updateMessage("It's already closed.");
+		}
+		else
+			this.parent.updateMessage("...");
 	}
 	@Override
 	public void update() {
@@ -54,13 +59,19 @@ public class StrawberryJam extends InteractableObject{
 	}
 	@Override
 	public void take() {
-		// TODO Auto-generated method stub
-		
+		if(this.getParent().lookupObject("FridgeDoor").isOpened()){
+			this.parent.updateMessage("I don't need a strawberry jam.");
+		}
+		else
+			this.parent.updateMessage("...");
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
+		if(this.getParent().lookupObject("FridgeDoor").isOpened()){
+			this.parent.updateMessage("I have no use for this.");
+		}
+		else
+			this.parent.updateMessage("...");
 	}
 
 }

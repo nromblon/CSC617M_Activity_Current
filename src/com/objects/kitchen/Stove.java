@@ -8,7 +8,7 @@ import com.objects.InteractableObject;
 public class Stove extends InteractableObject{
 	
 	public Stove() {
-		super(new String[]{"stove"});
+		super(new String[]{"stove","oven"});
 		this.viewResponse = "A "+this.objectName+".";
 		this.openResponse = "The "+this.objectName+" can't be opened.";
 		this.closeResponse = "The "+this.objectName+" can't be closed.";
@@ -37,8 +37,7 @@ public class Stove extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("The stove. I could cook something on this.");
 	}
 
 	@Override
@@ -60,8 +59,7 @@ public class Stove extends InteractableObject{
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("It's already closed.");
 	}
 	@Override
 	public void update() {
@@ -69,8 +67,7 @@ public class Stove extends InteractableObject{
 	}
 	@Override
 	public void take() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I can't take something this heavy.");
 	}
 	@Override
 	public void use() {

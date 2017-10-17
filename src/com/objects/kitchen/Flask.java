@@ -18,6 +18,8 @@ public class Flask extends InteractableObject{
 	}
 	private void initComponents() {
 
+		this.setTarget(null);
+
 		this.objectName = this.getClass().getSimpleName();
 		this.lblObject = new JLabel();
 		Game.initLabels(lblObject, this.objectName+"_default", null);
@@ -39,37 +41,52 @@ public class Flask extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		if(this.getParent().lookupObject("FridgeDoor").isOpened()) {
+			this.parent.updateMessage("A flask. Usually used for containing harmful liquids.");
+		}else
+			this.parent.updateMessage("...");
 	}
 
 	@Override
 	public void open() {
-		// TODO Auto-generated method stub
-		
+		if(this.getParent().lookupObject("FridgeDoor").isOpened()) {
+			this.parent.updateMessage("I don't think that's possible.");
+		}else
+			this.parent.updateMessage("...");
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		if(this.getParent().lookupObject("FridgeDoor").isOpened()) {
+			this.parent.updateMessage("I don't think that's possible.");
+		}else
+			this.parent.updateMessage("...");
 	}
 	@Override
 	public void update() {
-
 	}
+
 	@Override
 	public void take() {
-		if(!isTaken() &&
-				this.getParent().lookupObject("FridgeDoor").isOpened()) {
-			this.setTaken(true);
-			this.getParent().getParent().getInventory().addItem(this);
-			this.lblObject.setVisible(false);
-		}
+		if(this.getParent().lookupObject("FridgeDoor").isOpened()) {
+			if(!isTaken() &&
+					this.getParent().lookupObject("FridgeDoor").isOpened()) {
+				this.setTaken(true);
+				this.getParent().getParent().getInventory().addItem(this);
+				this.lblObject.setVisible(false);
+				this.getParent().updateMessage("This could probably come in handy.");
+			}
+			else
+				this.parent.updateMessage("I already took the flask.");
+		}else
+			this.parent.updateMessage("...");
 	}
 	@Override
 	public void use() {
-		
+		if(this.getParent().lookupObject("FridgeDoor").isOpened()) {
+			this.parent.updateMessage("How should I use it?");
+		}else
+			this.parent.updateMessage("...");
 	}
 
 }

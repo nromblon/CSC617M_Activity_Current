@@ -15,6 +15,7 @@ public class ToolBoxKey extends InteractableObject{
 		this.objectName = this.getClass().getSimpleName();
 		this.initComponents();
 		this.setTaken(false);
+		this.setTarget(null);
 	}
 	private void initComponents() {
 
@@ -36,33 +37,44 @@ public class ToolBoxKey extends InteractableObject{
 	
 	@Override
 	public void view() {
-		
+		if(isTaken)
+			this.getParent().updateMessage("Looks like a key, for opening things.");
+		else
+			this.parent.updateMessage("What key?");
 	}
 
 	@Override
 	public void open() {
-		
+		this.getParent().updateMessage("I don't know what you're talking about.");
 	}
 
 	@Override
 	public void close() {
-		
+		this.getParent().updateMessage("I don't know what you're talking about.");
 	}
 	@Override
 	public void update() {
 	}
 	@Override
 	public void take() {
-		if(!this.isTaken()) {
-			this.setTaken(true);
-			this.getParent().getParent().getInventory().addItem(this, "A key with a picture of a toolbox on the tag.");
-			this.lblObject.setVisible(false);
-
+		if(parent.lookupObject("Goblet").isViewed()) {
+			if (!this.isTaken()) {
+				this.setTaken(true);
+				this.getParent().getParent().getInventory().addItem(this, "A key with a picture of a toolbox on the tag.");
+				this.lblObject.setVisible(false);
+				this.getParent().updateMessage("I took the key.");
+			} else
+				this.getParent().updateMessage("I already took the key.");
 		}
+		else
+			this.parent.updateMessage("What key?");
 	}
 	@Override
 	public void use() {
-
+		if(isTaken)
+			this.getParent().updateMessage("I should try opening random objects with this.");
+		else
+			this.parent.updateMessage("What key?");
 	}
 
 }

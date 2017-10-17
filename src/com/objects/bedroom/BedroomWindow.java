@@ -35,7 +35,7 @@ public class BedroomWindow extends InteractableObject{
 	
 	@Override
 	public void view() {
-		this.parent.updateMessage("I can see grass from here.");
+		this.parent.updateMessage("Looks like an unbreakable window. Don't ask me why I know this.");
 	}
 
 	@Override
@@ -53,7 +53,7 @@ public class BedroomWindow extends InteractableObject{
 	}
 	@Override
 	public void take() {
-		this.parent.updateMessage("I don't think that's a right decision.");
+		this.parent.updateMessage("I don't think that's a good decision.");
 	}
 	@Override
 	public void use() {

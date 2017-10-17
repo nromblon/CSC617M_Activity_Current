@@ -35,20 +35,17 @@ public class Blender extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("A regular blender. For blending things. Also used to make smoothies.");
 	}
 
 	@Override
 	public void open() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I don't really want a smoothie right now.");
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("Can't make smoothies when it's closed.");
 	}
 	@Override
 	public void update() {
@@ -56,13 +53,11 @@ public class Blender extends InteractableObject{
 	}
 	@Override
 	public void take() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("Great, I could steal this and make smoothies at home when I get out of here.");
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("Now's not the time for a smoothie.");
 	}
 
 }

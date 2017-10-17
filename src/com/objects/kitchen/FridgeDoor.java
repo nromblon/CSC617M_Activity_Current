@@ -40,20 +40,41 @@ public class FridgeDoor extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void open() {
-		this.setOpened(true);
-		this.lblObject.setVisible(false);
+		if(!this.isOpened()) {
+			this.setOpened(true);
+			this.lblObject.setVisible(false);
+			this.parent.updateMessage("I have opened the fridge door.");
+			this.parent.lookupObject("Apple").setTarget(parent.lookupObject("Apple"));
+			this.parent.lookupObject("Cheese").setTarget(parent.lookupObject("Cheese"));
+			this.parent.lookupObject("Can").setTarget(parent.lookupObject("Can"));
+			this.parent.lookupObject("WaterBottle").setTarget(parent.lookupObject("WaterBottle"));
+			this.parent.lookupObject("Flask").setTarget(parent.lookupObject("Flask"));
+			this.parent.lookupObject("StrawberryJam").setTarget(parent.lookupObject("StrawberryJam"));
+		}
+		else
+			this.parent.updateMessage("It is already opened.");
 	}
 
 	@Override
 	public void close() {
-		this.setOpened(false);
-		this.lblObject.setVisible(true);
+		if(this.isOpened()) {
+			this.setOpened(false);
+			this.lblObject.setVisible(true);
+			this.parent.updateMessage("I've closed the fridge door. Gotta save energy");
+			this.parent.lookupObject("Apple").setTarget(parent.lookupObject(null));
+			this.parent.lookupObject("Cheese").setTarget(parent.lookupObject(null));
+			this.parent.lookupObject("Can").setTarget(parent.lookupObject(null));
+			this.parent.lookupObject("WaterBottle").setTarget(parent.lookupObject(null));
+			this.parent.lookupObject("Flask").setTarget(parent.lookupObject(null));
+			this.parent.lookupObject("StrawberryJam").setTarget(parent.lookupObject(null));
+		}
+		else
+			this.parent.updateMessage("It is already closed.");
 	}
 	@Override
 	public void update() {
@@ -61,13 +82,21 @@ public class FridgeDoor extends InteractableObject{
 	}
 	@Override
 	public void take() {
-		// TODO Auto-generated method stub
+		this.parent.updateMessage("I don't think I'll ever need to carry around a fridge door");
 		
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
+		if(this.isOpened()) {
+			this.setOpened(false);
+			this.lblObject.setVisible(true);
+			this.parent.updateMessage("I've closed the fridge door. Gotta save energy");
+		}
+		else{
+			this.setOpened(true);
+			this.lblObject.setVisible(false);
+			this.parent.updateMessage("I have opened the fridge door.");
+		}
 	}
 
 }
