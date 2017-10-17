@@ -48,15 +48,18 @@ public class ToolBox extends InteractableObject{
 	
 	@Override
 	public void view() {
-		
+		if(this.getParent().lookupObject("ToolBoxKey").isTaken()) {
+			this.getParent().updateMessage("A toolbox that contained a car battery, wire cutter, and wrench.");
+
+		}
 	}
 
 	@Override
 	public void open() {
 		if(this.getParent().lookupObject("ToolBoxKey").isTaken()) {
-//			this.getParent().lookupObject("ToolBoxKey").use();
-			this.getParent().updateMessage("It's locked. I used the toolbox key.");
-			this.getParent().updateMessage("There's a car battery inside. It might be useful, I should take it.");
+			this.getParent().updateMessage("It's locked. I used the toolbox key. "+
+											"There's a car battery, wire cutter, and wrench inside. "+
+											"These might be useful.");
 			
 			this.setOpened(true);
 			this.getLblObject().setIcon(this.iiOpened);
@@ -80,11 +83,11 @@ public class ToolBox extends InteractableObject{
 	}
 	@Override
 	public void take() {
-		
+		this.getParent().updateMessage("This is heavy, I don't think I need to take the whole thing");
 	}
 	@Override
 	public void use() {
-		
+		this.getParent().updateMessage("I can use this to knock my kidnapper out, "+
+										"but since he or she isn't here, I have no use for it right now.");
 	}
-
 }
