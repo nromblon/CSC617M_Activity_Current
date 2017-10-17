@@ -28,29 +28,24 @@ public class LotusBottle extends InteractableObject{
 		this.setX(iX);
 		this.setY(iY);
 		this.iiInventory = new ImageIcon("images/"+this.objectName+".png");
-//		this.iiClosed = new ImageIcon("images/"+this.objectName+"_closed.png");
-//		this.iiViewed = new ImageIcon("images/"+this.objectName+"_viewed.png");
-		
+	
 		this.setCenterX(this.lblObject.getWidth()/2);
 		this.setCenterY(this.lblObject.getHeight()/2);
 	}
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void open() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+			
 	}
 	@Override
 	public void update() {
@@ -61,6 +56,7 @@ public class LotusBottle extends InteractableObject{
 		if(!this.isTaken()) {
 			this.lblObject.setVisible(false);
 			this.getParent().getParent().getInventory().addItem(this);
+			this.setTarget(this.getParent().lookupObject("LotusBubbles"));
 			this.setTaken(true);
 		}		
 	}

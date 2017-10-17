@@ -275,7 +275,6 @@ public abstract class GameWorld extends World {
 	   @Override
 	   protected void done() {
 		   getControls().getTxtfControls().requestFocus();
-			
 	   }
 	}
 	

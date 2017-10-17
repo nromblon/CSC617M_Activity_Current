@@ -41,13 +41,11 @@ public class RoseBottle extends InteractableObject{
 
 	@Override
 	public void open() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
 		
 	}
 	@Override
@@ -59,6 +57,7 @@ public class RoseBottle extends InteractableObject{
 		if(!this.isTaken) {
 			this.lblObject.setVisible(false);
 			this.getParent().getParent().getInventory().addItem(this);
+			this.setTarget(this.getParent().lookupObject("RoseBubbles"));
 			this.setTaken(true);
 		}		
 	}

@@ -243,11 +243,7 @@ public class Room extends GameWorld {
 		RoseBottle roseBottle = new RoseBottle();
 		DaisyBottle daisyBottle = new DaisyBottle();
 		LotusBottle lotusBottle = new LotusBottle();
-		
-		roseBottle.setTarget(roseBubbles);
-		daisyBottle.setTarget(daisyBubbles);
-		lotusBottle.setTarget(lotusBubbles);
-		
+	
 		objects.add(roseBottle);
 		objects.add(daisyBottle);
 		
