@@ -5,7 +5,6 @@ import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 import com.characters.Character;
 import com.elements.Game;
@@ -22,7 +21,7 @@ public class BombWiring extends OverlayObject {
 	
 	private boolean isRight;
 	
-	public BombWiring(JPanel parent, Character player, boolean isRight) {
+	public BombWiring(GameWorld parent, Character player, boolean isRight) {
 		this.parent = parent;
 		this.player = player;
 		Game.initPanel(this, Game.clrTransparent, 0, 0, Stage.MAX_WIDTH, Game.MAX_HEIGHT);
@@ -48,15 +47,6 @@ public class BombWiring extends OverlayObject {
 		Game.initButtons(btnCutRight, "btnCutRight", 846, 290, true, this);
 	
 	}
-	
-	public JPanel getParent() {
-		return parent;
-	}
-
-	public void setParent(JPanel parent) {
-		this.parent = parent;
-	}
-
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		

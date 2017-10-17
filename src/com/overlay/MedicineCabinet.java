@@ -6,11 +6,13 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 import com.characters.Character;
 import com.elements.Game;
 import com.elements.Stage;
+import com.objects.bathroom.BombClue;
+
+import world.GameWorld;
 
 public class MedicineCabinet extends OverlayObject {
 	private static final long serialVersionUID = 1L;
@@ -44,16 +46,18 @@ public class MedicineCabinet extends OverlayObject {
 	private ArrayList<ImageIcon> listImageIcon;
 	private ArrayList<ImageIcon> listImageIcon_on;
 	
+	private boolean isOpened;
 	
 	
-	public MedicineCabinet(JPanel parent, Character player) {
+	
+	public MedicineCabinet(GameWorld parent, Character player) {
 		this.parent = parent;
 		this.player = player;
 		Game.initPanel(this, Game.clrTransparent, 0, 0, Stage.MAX_WIDTH, Game.MAX_HEIGHT);
 		
 		this.initComponents();
+		this.setOpened(false);
 		
-
 		this.add(btnSlot1);
 		this.add(btnSlot2);
 		this.add(btnSlot3);
@@ -123,14 +127,6 @@ public class MedicineCabinet extends OverlayObject {
 		
 	}
 	
-	public JPanel getParent() {
-		return parent;
-	}
-
-	public void setParent(JPanel parent) {
-		this.parent = parent;
-	}
-
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		
@@ -175,8 +171,14 @@ public class MedicineCabinet extends OverlayObject {
 		}
 		
 		if(e.getSource() == this.btnEnter) {
-			if(this.checkPin()) {
+			if(this.checkPin() && !this.isOpened()) {
+				this.setOpened(true);
+				this.getParent().getInventory().addItem(new BombClue());
+				this.getParent().updateMessage("It worked! There's a note inside.");
 				this.close();
+			}
+			else if(this.isOpened) {
+				this.close();				
 			}
 			else {
 				Game.M.play("SE1.wav", 0);
@@ -293,5 +295,13 @@ public class MedicineCabinet extends OverlayObject {
 			this.indexSlot5 = indexSlot5;
 		else
 			this.indexSlot5 = 0;
+	}
+
+	public boolean isOpened() {
+		return isOpened;
+	}
+
+	public void setOpened(boolean isOpened) {
+		this.isOpened = isOpened;
 	}
 }

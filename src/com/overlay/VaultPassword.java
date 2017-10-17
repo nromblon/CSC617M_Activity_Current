@@ -34,7 +34,7 @@ public class VaultPassword extends OverlayObject implements ActionListener{
 
 	private JButton btnEnter;
 	
-	public VaultPassword(JPanel parent, Character player) {
+	public VaultPassword(GameWorld parent, Character player) {
 		this.parent = parent;
 		this.player = player;
 		Game.initPanel(this, Game.clrTransparent, 0, 0, Stage.MAX_WIDTH, Game.MAX_HEIGHT);
@@ -111,36 +111,23 @@ public class VaultPassword extends OverlayObject implements ActionListener{
 		
 		this.setTextFields("0");
 	}
-	
-	public JPanel getParent() {
-		return parent;
-	}
-
-	public void setParent(JPanel parent) {
-		this.parent = parent;
-	}
-
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 

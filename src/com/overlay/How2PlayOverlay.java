@@ -3,17 +3,15 @@ package com.overlay;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JLabel;
-import javax.swing.JPanel;
-
 import com.elements.Game;
 import com.elements.Stage;
-
+import world.GameWorld;
 import com.characters.Character;
 
 public class How2PlayOverlay extends OverlayObject{
 	private static final long serialVersionUID = 1L;
 
-	public How2PlayOverlay(JPanel parent, Character player) {
+	public How2PlayOverlay(GameWorld parent, Character player) {
 		this.parent = parent;
 		this.player = player;
 		
@@ -31,26 +29,22 @@ public class How2PlayOverlay extends OverlayObject{
 	}
 	
 	@Override
-	public void mouseClicked(MouseEvent arg0) {
-		// TODO Auto-generated method stub
+	public void mouseClicked(MouseEvent e) {
 		
 	}
 
 	@Override
-	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
+	public void mouseEntered(MouseEvent e) {
 		
 	}
 
 	@Override
-	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
+	public void mouseExited(MouseEvent e) {
 		
 	}
 
 	@Override
-	public void mousePressed(MouseEvent arg0) {
-		// TODO Auto-generated method stub
+	public void mousePressed(MouseEvent e) {
 		
 	}
 

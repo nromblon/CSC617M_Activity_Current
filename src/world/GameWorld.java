@@ -237,6 +237,12 @@ public abstract class GameWorld extends World {
 		this.closeAllOverlays();
 		this.how2play.open();
 	}
+	
+	public void openBombClueOverlay() {
+		this.closeAllOverlays();
+		this.bombClue.open();
+	}
+	
 	class MovementListener extends SwingWorker<Void, Object> {
 		private Timer moveTimer;
 		public MovementListener() {

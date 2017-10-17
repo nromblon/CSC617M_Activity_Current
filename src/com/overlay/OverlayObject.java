@@ -10,11 +10,13 @@ import javax.swing.JPanel;
 import com.characters.Character;
 import com.elements.Game;
 
+import world.GameWorld;
+
 public abstract class OverlayObject extends JPanel implements MouseListener {
 	private static final long serialVersionUID = 1L;
 
 	protected JButton btnClose;
-	protected JPanel parent;
+	protected GameWorld parent;
 	protected Character player;
 	protected JLabel lblOverlay;
 	
@@ -39,5 +41,13 @@ public abstract class OverlayObject extends JPanel implements MouseListener {
 		if(e.getSource() == this.btnClose) {
 			this.close();
 		}
+	}
+
+	public GameWorld getParent() {
+		return parent;
+	}
+
+	public void setParent(GameWorld parent) {
+		this.parent = parent;
 	}
 }
