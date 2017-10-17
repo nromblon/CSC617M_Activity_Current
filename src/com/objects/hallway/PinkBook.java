@@ -27,43 +27,36 @@ public class PinkBook extends InteractableObject{
 		
 		this.setX(iX);
 		this.setY(iY);
-//		this.iiOpened = new ImageIcon("images/"+this.objectName+"_opened.png");
-//		this.iiClosed = new ImageIcon("images/"+this.objectName+"_closed.png");
-//		this.iiViewed = new ImageIcon("images/"+this.objectName+"_viewed.png");
-		
+
 		this.setCenterX(this.lblObject.getWidth()/2);
 		this.setCenterY(this.lblObject.getHeight()/2);
 	}
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		this.getParent().updateMessage("Digital Scent Technology: Developing an Electronic Nose. It looks like a self-published book.");	
 	}
 
 	@Override
 	public void open() {
-		
+		this.getParent().updateMessage("It talks about various ways to digitally record and distinguish scent.");
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		this.getParent().updateMessage("It's not even open.");		
 	}
 	@Override
 	public void update() {
-//		System.out.println("Drawer update");
+
 	}
 	@Override
 	public void take() {
-		// TODO Auto-generated method stub
-		
+		this.getParent().updateMessage("There's no point in taking this, I don't have time to read it.");		
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
+		this.getParent().updateMessage("Just how am I supposed to use this?");		
 	}
 
 }

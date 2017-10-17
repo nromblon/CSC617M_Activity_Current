@@ -30,10 +30,7 @@ public class AcidRecipe extends InteractableObject{
 		this.setY(iY);
 		
 		this.iiInventory = new ImageIcon("images/"+this.objectName+".png");
-//		this.iiOpened = new ImageIcon("images/"+this.objectName+"_opened.png");
-//		this.iiClosed = new ImageIcon("images/"+this.objectName+"_closed.png");
-//		this.iiViewed = new ImageIcon("images/"+this.objectName+"_viewed.png");
-		
+	
 		this.setCenterX(this.lblObject.getWidth()/2);
 		this.setCenterY(this.lblObject.getHeight()/2);
 	}
@@ -59,6 +56,7 @@ public class AcidRecipe extends InteractableObject{
 		if(!this.isTaken()) {
 			this.setTaken(true);
 			this.getParent().getParent().getInventory().addItem(this);
+			this.getParent().getParent().updateMessage("This should be useful.");
 			this.lblObject.setVisible(false);
 		}		
 	}

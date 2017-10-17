@@ -28,9 +28,6 @@ public class PurpleBook extends InteractableObject{
 		
 		this.setX(iX);
 		this.setY(iY);
-//		this.iiOpened = new ImageIcon("images/"+this.objectName+"_opened.png");
-//		this.iiClosed = new ImageIcon("images/"+this.objectName+"_closed.png");
-//		this.iiViewed = new ImageIcon("images/"+this.objectName+"_viewed.png");
 		
 		this.setCenterX(this.lblObject.getWidth()/2);
 		this.setCenterY(this.lblObject.getHeight()/2);
@@ -38,19 +35,19 @@ public class PurpleBook extends InteractableObject{
 	
 	@Override
 	public void view() {
-		this.getParent().updateMessage("A book about poisonous chemicals.");
+		this.getParent().updateMessage("A Practical Guide to the Manufacture of Sulfuric Acid, Oleums, and Sulfonating Agents "+
+										"by Navin Ashar and Kiran Golwalkar.");
 	}
 
 	@Override
 	public void open() {
 		if(!this.isOpened()) {
 			this.setOpened(true);
-			this.getParent().updateMessage("It contains information about various poisonous chemicals.");
-			this.getParent().updateMessage("There's a recipe for sulfuric acid in between the pages, I should take it.");
+			this.getParent().updateMessage("It details the manufacture of sulfuric acid and its derivative products. There's a recipe for sulfuric acid in between the pages, I should take it.");
 			this.getParent().lookupObject("AcidRecipe").take();
 		}
 		else {
-			this.getParent().updateMessage("It contains information about various poisonous chemicals.");
+			this.getParent().updateMessage("It contains information about sulfuric acid and its derivative products.");
 		}
 	}
 

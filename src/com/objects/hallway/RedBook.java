@@ -28,42 +28,40 @@ public class RedBook extends InteractableObject{
 		
 		this.setX(iX);
 		this.setY(iY);
-//		this.iiOpened = new ImageIcon("images/"+this.objectName+"_opened.png");
-//		this.iiClosed = new ImageIcon("images/"+this.objectName+"_closed.png");
-//		this.iiViewed = new ImageIcon("images/"+this.objectName+"_viewed.png");
-		
+
 		this.setCenterX(this.lblObject.getWidth()/2);
 		this.setCenterY(this.lblObject.getHeight()/2);
 	}
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
+		this.getParent().updateMessage("The Code Book: The Science of Secrecy from Ancient Egypt to Quantum Cryptography "+
+										"by Simon Singh.");	
 		
 	}
 
 	@Override
 	public void open() {
-		
+		this.getParent().updateMessage("It talks about the history of cryptography from Egyptian puzzles to modern day computer encryption.");
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		this.getParent().updateMessage("Why am I closing a closed book?");
 	}
 	@Override
 	public void update() {
-//		System.out.println("Drawer update");
+
 	}
 	@Override
 	public void take() {
-		// TODO Auto-generated method stub
+		this.getParent().updateMessage("I don't think I'll want to spend my last minutes reading about cryptography."+
+										"I should leave it be.");
 		
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
+		this.getParent().updateMessage("Oh right! I can use this to defuse the bomb!... Not.");
 		
 	}
 

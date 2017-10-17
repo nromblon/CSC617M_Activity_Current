@@ -27,43 +27,37 @@ public class BlueBook extends InteractableObject{
 		
 		this.setX(iX);
 		this.setY(iY);
-//		this.iiOpened = new ImageIcon("images/"+this.objectName+"_opened.png");
-//		this.iiClosed = new ImageIcon("images/"+this.objectName+"_closed.png");
-//		this.iiViewed = new ImageIcon("images/"+this.objectName+"_viewed.png");
-		
+
 		this.setCenterX(this.lblObject.getWidth()/2);
 		this.setCenterY(this.lblObject.getHeight()/2);
 	}
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		this.getParent().updateMessage("The All-New Puzzle Book by Mensa.");
 	}
 
 	@Override
 	public void open() {
-		
+		this.getParent().updateMessage("The pages contain puzzles that have been created by the intelligence experts at Mensa. "+
+										"The puzzles seem difficult, but all the pages have answers.");
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		this.getParent().updateMessage("It's already closed.");
 	}
 	@Override
 	public void update() {
-//		System.out.println("Drawer update");
+
 	}
 	@Override
 	public void take() {
-		// TODO Auto-generated method stub
-		
+		this.getParent().updateMessage("I don't need to take this. There's no time to answer it, and besides, all of the pages have been answered anyway.");
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
+		this.getParent().updateMessage("What am I supposed to use this for?");
 	}
 
 }

@@ -27,18 +27,14 @@ public class OrangeBook extends InteractableObject{
 		
 		this.setX(iX);
 		this.setY(iY);
-//		this.iiOpened = new ImageIcon("images/"+this.objectName+"_opened.png");
-//		this.iiClosed = new ImageIcon("images/"+this.objectName+"_closed.png");
-//		this.iiViewed = new ImageIcon("images/"+this.objectName+"_viewed.png");
-		
+
 		this.setCenterX(this.lblObject.getWidth()/2);
 		this.setCenterY(this.lblObject.getHeight()/2);
 	}
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		// TODO: A book about puzzle
 	}
 
 	@Override
@@ -48,21 +44,18 @@ public class OrangeBook extends InteractableObject{
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
 		
 	}
 	@Override
 	public void update() {
-//		System.out.println("Drawer update");
+		
 	}
 	@Override
 	public void take() {
-		// TODO Auto-generated method stub
 		
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
 		
 	}
 
