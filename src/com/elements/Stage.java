@@ -26,7 +26,7 @@ public class Stage extends JPanel {
 	public static final String DYNAMIC = "-";
 	
 	protected GameWorld parent;
-	protected String[][] blueprint; // TODO 21 x 14
+	protected String[][] blueprint; // 21 x 14
 	protected ArrayList<Platform> platforms;
 
 	protected ArrayList<InteractableObject> objects;
@@ -46,13 +46,9 @@ public class Stage extends JPanel {
 		this.repaint();
 		this.revalidate();
 		
-//		this.enemies = enemies;
-//		this.generateEnemies(enemies);	
 		this.setObjects(objects);
 		this.generateObjects(objects);
 		this.generateMap();
-
-//		this.setAllies(new ArrayList<GameObject>());
 		
 		this.setVisible(false);
 	}
@@ -72,35 +68,13 @@ public class Stage extends JPanel {
 			}
 		}
 	}
-	
-//	public void generateEnemies(ArrayList<GameObject> enemies) {
-//		this.setEnemies(enemies);
-//		ArrayList<Character> players = new ArrayList<Character>();
-//		players.add(parent.getPlayer());
-//		for(int i = 0; i < this.enemies.size(); i++) {
-//			this.enemies.get(i).setParent(this);
-//			this.enemies.get(i).setEnemies(players);
-//			this.add(this.enemies.get(i).getLblCharacter());
-//			this.add(this.enemies.get(i).getStatusbar());
-//		}
-//	}
 
 	public void generateObjects(ArrayList<InteractableObject> objects) {
 		this.setObjects(objects);
-//		ArrayList<Character> players = new ArrayList<Character>();
-//		players.add(parent.getPlayer());
-//		for(int i = 0; i < this.enemies.size(); i++) {
-//			this.enemies.get(i).setParent(this);
-//			this.enemies.get(i).setEnemies(players);
-//			this.add(this.enemies.get(i).getLblCharacter());
-//			this.add(this.enemies.get(i).getStatusbar());
-//		}
-		
+
 		for(int i = 0; i < this.objects.size(); i++) {
 			this.objects.get(i).setParent(this);
-//			this.enemies.get(i).setEnemies(players);
 			this.add(this.objects.get(i).getLblObject());
-//			this.add(this.enemies.get(i).getStatusbar());
 		}
 	}
 	
@@ -158,49 +132,11 @@ public class Stage extends JPanel {
 			this.objects.get(i).spawn();
 		}
 			
-//		for(int i = 0; i < this.enemies.size(); i++) {
-//			characters.add(this.enemies.get(i));
-//			this.enemies.get(i).setParent(this);
-//			this.enemies.get(i).spawn();
-//		}
-//		parent.getPlayer().setEnemies(characters);
 		this.add(parent.getPlayer().getLblCharacter(), 0);
-		System.out.println(parent.getPlayer().getLblCharacter().getBounds());
-		parent.setPrevDoorOpened(false);
-		parent.setNextDoorOpened(false);
-		
-
 		this.add(lblBackground);
 	}
 	
 	
-	
-//	public void addAllyElement(GameObject element) {
-//		element.setParent(this);
-//		
-////		if(!isInvulnerable) {
-//			for(int i = 0; i < this.getEnemies().size(); i++) {
-//				GameObject enemy = this.getEnemies().get(i);
-//				enemy.getEnemies().add(element);
-//			}
-////		}
-//		
-//		this.getAllies().add(element);		
-//		element.spawn();
-//		this.add(element.getLblCharacter(), 1);
-//	}
-//	public void addAllyElement(Character owner, GameObject element) {
-//		element.setParent(this);
-//		
-////		if(!isInvulnerable) {
-//			
-////		owner.getEnemies().get(0).getEnemies().add(element);
-////		element.setEnemies(owner.getEnemies());
-////		}
-//		
-//		element.spawn();
-//		this.add(element.getLblCharacter(), 1);
-//	}
 	public SearchPlatforms hasPlatform(int x, int y) {
 		int row = y/Stage.TILE_SIZE;
 		int col = x/Stage.TILE_SIZE;

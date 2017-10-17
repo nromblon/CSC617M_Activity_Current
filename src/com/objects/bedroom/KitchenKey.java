@@ -1,13 +1,13 @@
-package com.objects.kitchen;
+package com.objects.bedroom;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import com.elements.Game;
 import com.objects.InteractableObject;
 
-public class ToolBoxKey extends InteractableObject{
+public class KitchenKey extends InteractableObject{
 	
-	public ToolBoxKey() {
+	public KitchenKey() {
 		super(new String[]{"key", "tool box key", "toolbox key", "silver key", "grey key", "gray key"});
 		this.viewResponse = "A "+this.objectName+".";
 		this.openResponse = "The "+this.objectName+" can't be opened.";
@@ -55,7 +55,7 @@ public class ToolBoxKey extends InteractableObject{
 	public void take() {
 		if(!this.isTaken()) {
 			this.setTaken(true);
-			this.getParent().getParent().getInventory().addItem(this, "A key with a picture of a toolbox on the tag.");
+			this.getParent().getParent().getInventory().addItem(this, "A key with a chef's hat and fork on the tag.");
 			this.lblObject.setVisible(false);
 
 		}

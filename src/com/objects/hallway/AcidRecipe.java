@@ -55,7 +55,7 @@ public class AcidRecipe extends InteractableObject{
 	public void take() {
 		if(!this.isTaken()) {
 			this.setTaken(true);
-			this.getParent().getParent().getInventory().addItem(this);
+			this.getParent().getParent().getInventory().addItem(this, "A recipe for sulfuric acid.");
 			this.getParent().getParent().updateMessage("This should be useful.");
 			this.lblObject.setVisible(false);
 		}		

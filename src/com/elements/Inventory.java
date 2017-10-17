@@ -9,6 +9,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
 import com.characters.Character;
 
@@ -199,12 +200,18 @@ public class Inventory extends JPanel implements MouseListener {
 		
 	}
 	
+	public void addItem(InteractableObject item, String description) {
+		pnlInventory.add(createItem(item, description, pnlInventory), null, 0);
+		
+	}
+	
 	public void removeItem(InteractableObject item) {
 		this.removeItem(item.getObjectName());
 	}
 	
 	public void removeItem(String itemName) {
-		this.pnlInventory.remove(searchItem(itemName));
+		if(this.searchIfItemExists(itemName))
+			this.pnlInventory.remove(searchItem(itemName));
 	}
 
 	public Component searchItem(String text) {
@@ -227,6 +234,10 @@ public class Inventory extends JPanel implements MouseListener {
 	}
 
 	public JLabel createItem(InteractableObject item, JPanel parent) {
+		return createItem(item, "", parent);
+	}
+	
+	public JLabel createItem(InteractableObject item, String description, JPanel parent) {
 		
 		this.listInventory.add(item.getObjectName());
 		
@@ -236,7 +247,7 @@ public class Inventory extends JPanel implements MouseListener {
 
 		JLabel lblTitle = new JLabel(item.getObjectName());
 
-		JLabel lblDescriptionText = new JLabel();
+		JTextArea txtaDescriptionText = new JTextArea();
 
 		JLabel label = new JLabel();
 		JLabel labelBorder = new JLabel();
@@ -253,16 +264,19 @@ public class Inventory extends JPanel implements MouseListener {
 		Frame.initLabel(lblDescription, Frame.fntDefault13, Frame.clrAutomatic, Game.clrTransparent, lblDescriptionBorder.getWidth()-offset, lblDescriptionBorder.getHeight()-offset);
 		lblDescription.setVerticalAlignment(JLabel.TOP);
 
-		int titleHeight = width/3;
-		Frame.initLabel(lblTitle, Frame.fntDefault16, Frame.clrAutomatic, Color.WHITE, lblDescription.getWidth(), titleHeight);
-		Frame.initLabel(lblDescriptionText, Frame.fntDefault13, Frame.clrAutomatic, Color.WHITE, width, titleHeight);
+		int titleHeight = 23;
+		Frame.initLabel(lblTitle, Frame.fntDefault16Bold, Frame.clrAutomatic, Color.WHITE, lblDescription.getWidth(), titleHeight);
+		Frame.initTextArea(txtaDescriptionText, Frame.fntDefault14, Frame.clrAutomatic, lblDescription.getX(), titleHeight, width*3, titleHeight*2);
+		txtaDescriptionText.setEditable(false);
+		txtaDescriptionText.setLineWrap(true);
+		txtaDescriptionText.setWrapStyleWord(true);
+		txtaDescriptionText.setText(description);
 		lblDescription.add(lblTitle);
-		lblDescription.add(lblDescriptionText);
+		lblDescription.add(txtaDescriptionText);
 
 		lblDescriptionBorder.add(lblDescription);
 		lblDescription.setLocation(offsetLocation, offsetLocation);
 		Frame.initLabel(label, Frame.fntDefault13, Frame.clrAutomatic, Frame.clrLightGray, this.widthPnlScroll, width);
-//		label.addMouseListener(this);
 		Frame.initLabel(labelBorder, Frame.fntDefault13, Frame.clrAutomatic, pnlInventory.getBackground(), this.widthPnlScroll, width+1);
 		
 		label.setLayout(new BoxLayout(label, BoxLayout.X_AXIS));

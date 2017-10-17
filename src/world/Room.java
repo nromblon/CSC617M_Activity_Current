@@ -272,9 +272,7 @@ public class Room extends GameWorld {
 	}
 	
 	@Override
-	public void startWorld() {
-
-		
+	public void startWorld() {		
 		this.stage = this.stages.get(0);
 		player.setParent(stage);
 		player.setiX(INDEX_X);
@@ -282,20 +280,8 @@ public class Room extends GameWorld {
 		player.setX(player.getiX());
 		player.setY(player.getiY());
 		
-		
-//		player.replenishAll();
-//		for(int i = 0; i < stage.getEnemies().size(); i++) {
-//			stage.getEnemies().get(i).replenishAll();
-//		}
 		stage.start();
-		
 		swMoveListener.execute();
-//		swEnemyMoveListener.execute();
-//		swAllyMoveListener.execute();
-		
-//		swBulletListener.execute();
-//		swEnemyBulletListener.execute();
-//		swAllyBulletListener.execute();
 	}
 	
 	public void initBlueprints() {

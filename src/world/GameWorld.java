@@ -113,9 +113,6 @@ public abstract class GameWorld extends World {
 		
 		this.how2play = new How2PlayOverlay(this, this.player);
 		this.timer = new GameTimer(this, this.player, 30);
-		
-//		controls.setBounds(0, 0, controls.getWidth(), controls.getHeight());
-		
 		this.listOverlay = new ArrayList<OverlayObject>();
 
 		listOverlay.add(sliderGame);
@@ -163,7 +160,6 @@ public abstract class GameWorld extends World {
 		this.lblResult.setVisible(false);
 		
 		Game.initLabels(lblResult, iiResultWin, null);
-		
 		
 		this.btnCharacterSelect = new JButton("BACK");
 		Game.initButtons(this.btnCharacterSelect, Game.clrTransparent, (Stage.MAX_WIDTH-180)/2, Stage.MAX_HEIGHT-200, 180, 50, this);
@@ -250,8 +246,10 @@ public abstract class GameWorld extends World {
 			this.moveTimer.start();
 		}
 		private class MoveListener implements ActionListener {			
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+			
 				if(!IS_PAUSED) {
 					if(player.isBusy()) {
 						player.continueAction();
@@ -276,6 +274,8 @@ public abstract class GameWorld extends World {
 		}
 	   @Override
 	   protected void done() {
+		   getControls().getTxtfControls().requestFocus();
+			
 	   }
 	}
 	
@@ -288,14 +288,12 @@ public abstract class GameWorld extends World {
 	
 	public void update() {
 		// TODO END Update
-
 		if(!player.isBusy()){
 			Action a = controls.getActionQueue().poll();
 			if(a != null){
 				controls.processAction(a);
 			}
 		}
-
 	}
 
 	public void pause() {

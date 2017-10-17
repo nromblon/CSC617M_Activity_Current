@@ -18,6 +18,7 @@ import javax.swing.text.PlainDocument;
 import com.characters.Character;
 import com.elements.Game;
 import com.elements.Stage;
+import com.objects.bedroom.KitchenKey;
 
 import world.GameWorld;
 
@@ -33,21 +34,25 @@ public class VaultPassword extends OverlayObject implements ActionListener{
 	private JTextField txtf4;
 
 	private JButton btnEnter;
+	private boolean isOpened;
 	
 	public VaultPassword(GameWorld parent, Character player) {
 		this.parent = parent;
 		this.player = player;
+		this.setOpened(false);
+		
 		Game.initPanel(this, Game.clrTransparent, 0, 0, Stage.MAX_WIDTH, Game.MAX_HEIGHT);
 		
 		this.initComponents();
 		this.lblOverlay = new JLabel();
 		Game.initLabels(this.lblOverlay, new ImageIcon("images/bg_overlay.png"), null);
 		
+		
 		this.add(btnEnter);
 		this.add(lblCircle);
 		this.add(pnlCode);
 		this.add(lblOverlay);
-		
+
 		this.close();
 	}
 	
@@ -69,7 +74,7 @@ public class VaultPassword extends OverlayObject implements ActionListener{
 		
 		int offsetX = 14;
 		this.txtf1 = new JTextField();
-		Game.initTextField(txtf1, 0, 0, 87, 100, Game.fntConsolas30, Game.clrAutomatic);
+		Game.initTextField(txtf1, 0, 0, 87, 100, Game.fntArial100Bold, Game.clrAutomatic);
 		this.txtf1.setHorizontalAlignment(JTextField.CENTER);
 		
 		this.txtf2 = new JTextField();
@@ -136,14 +141,20 @@ public class VaultPassword extends OverlayObject implements ActionListener{
 		super.mouseReleased(e);
 		if(e.getSource() == this.btnEnter) {
 			this.correctPin();
-//			if(this.correctPin())
-//				this.close();
 		}
 	}
 	
 	private boolean correctPin() {
-		if(this.parsePin() == GameWorld.VAULT_PIN) {
+		if(!this.isOpened && this.parsePin() == GameWorld.VAULT_PIN) {
+			this.setOpened(true);
 			this.lblCircle.setIcon(new ImageIcon("images/VaultCircle_right.png"));
+			this.getParent().getInventory().addItem(new KitchenKey(), "A key with a chef's hat and fork on the tag.");
+			this.getParent().getInventory().removeItem("Vault");
+			this.getParent().updateMessage("It worked. There's a key inside.");
+			return true;
+		}
+		else if(this.isOpened) {
+			this.close();
 			return true;
 		}
 		else {
@@ -239,8 +250,16 @@ public class VaultPassword extends OverlayObject implements ActionListener{
 		}
 
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
+	public void actionPerformed(ActionEvent e) {
 		this.correctPin();
+	}
+
+	public boolean isOpened() {
+		return isOpened;
+	}
+
+	public void setOpened(boolean isOpened) {
+		this.isOpened = isOpened;
 	}
 
 	

@@ -28,7 +28,6 @@ public class GameBar extends JPanel {
 		this.player = player;
 		Game.initPanel(this, Game.clrTransparent, 0, 0, Stage.MAX_WIDTH, Game.MAX_HEIGHT);
 		
-//		this.type = 1;
 		this.initComponents();
 		this.lblGamebarOverlay = new JLabel();
 		Game.initLabels(this.lblGamebarOverlay, new ImageIcon("images/Gamebar_arcade.png"), null);
@@ -57,19 +56,19 @@ public class GameBar extends JPanel {
 		Game.initLabels(this.lblMessageOverlay, "lblMessage_trans", null);
 		this.lblMessageOverlay.setLocation(0, this.getHeight()-lblMessageOverlay.getHeight());
 		
-		
 		int offsetX = 34;
-		int offsetY = 20;
 
 		this.lblMessage = new JTextArea();
-		Frame.initTextArea(this.lblMessage, Game.fntConsolas20, Game.clrTransparent, 0, 0, lblMessageOverlay.getWidth()-(offsetX*2), lblMessageOverlay.getHeight()-(offsetY*2));
+		Frame.initTextArea(this.lblMessage, Game.fntConsolas20, Color.WHITE, 0, 0, lblMessageOverlay.getWidth(), lblMessageOverlay.getHeight());
+		this.lblMessage.setLineWrap(true);
+		this.lblMessage.setWrapStyleWord(true);
 		
 		this.lblMessage.setForeground(Color.WHITE);
 		this.lblMessage.setEditable(false);
 		
 		this.scrlMessage = new JScrollPane();
 		Game.initScrollPane(scrlMessage, lblMessage, lblMessage.getBounds());
-		this.scrlMessage.setLocation(offsetX, this.getHeight()-lblMessage.getHeight()-offsetY);
+		this.scrlMessage.setLocation(offsetX, this.getHeight()-lblMessage.getHeight()+25);
 		this.scrlMessage.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		this.scrlMessage.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
@@ -92,8 +91,6 @@ public class GameBar extends JPanel {
 //					lblMessage.setText(messageQueue.remove());
 //				}
 				player.setInAction(false);
-//				if(player.getParent().getParent().getControls().getActionQueue().isEmpty())
-//					nextBtn.setVisible(false);
 			}
 
 			@Override

@@ -60,7 +60,6 @@ public class Controls extends JPanel {
 		this.setVisible(true);
 		
 	  	this.txtfControls.addKeyListener(new TAdapter());	
-	  	
 	}
 	
 	public void initComponents() {
@@ -73,7 +72,8 @@ public class Controls extends JPanel {
 		
 		this.txtfControls = new JTextField();
 		Game.initTextField(txtfControls, 0, 0, this.getWidth()-50, 25, Game.fntDefault11, Game.clrAutomatic);
-		
+		txtfControls.setFocusable(true);
+
 		this.pnlControlLog = new JPanel();
 		pnlControlLog.setBackground(Color.WHITE);
 		pnlControlLog.setLayout(new BoxLayout(pnlControlLog, BoxLayout.Y_AXIS));

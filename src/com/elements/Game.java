@@ -67,7 +67,7 @@ public class Game extends JFrame implements MouseListener {
 	public static Font fntConsolas16 = new Font("Consolas", Font.PLAIN, 16);
 	public static Font fntConsolas20 = new Font("Consolas", Font.PLAIN, 20);
 
-	public static Font fntConsolas30 = new Font("Consolas", Font.PLAIN, 30);
+	public static Font fntArial100Bold = new Font("Arial", Font.BOLD, 100);
 
 	
 	public static Color clrBorderLine = new Color(122, 138, 158);
