@@ -7,6 +7,7 @@ import com.elements.Stage;
 import com.objects.InteractableObject;
 
 public class CarBattery extends InteractableObject{
+	private boolean isVisible;
 	
 	public CarBattery() {
 		super(new String[]{"battery", "car battery", "carbattery"});
@@ -16,6 +17,8 @@ public class CarBattery extends InteractableObject{
 		this.objectName = this.getClass().getSimpleName();
 		this.initComponents();
 		this.setTaken(false);
+		this.close();
+		this.setVisible(lblObject.isVisible());
 	}
 	private void initComponents() {
 
@@ -39,6 +42,7 @@ public class CarBattery extends InteractableObject{
 	public void spawn() {
 		super.spawn();
 		this.close();
+		this.lblObject.setVisible(this.isVisible());
 	}
 	
 	@Override
@@ -53,12 +57,14 @@ public class CarBattery extends InteractableObject{
 		}
 		else {
 			this.lblObject.setVisible(true);
+			this.setVisible(true);
 		}
 	}
 
 	@Override
 	public void close() {
 		this.lblObject.setVisible(false);
+		this.setVisible(false);
 	}
 	@Override
 	public void update() {
@@ -71,11 +77,18 @@ public class CarBattery extends InteractableObject{
 			this.setTaken(true);
 			this.getParent().getParent().getInventory().addItem(this);
 			this.lblObject.setVisible(false);
+			this.setVisible(false);
 		}
 	}
 	@Override
 	public void use() {
 		
+	}
+	public boolean isVisible() {
+		return isVisible;
+	}
+	public void setVisible(boolean isVisible) {
+		this.isVisible = isVisible;
 	}
 
 }

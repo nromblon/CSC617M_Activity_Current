@@ -1,14 +1,14 @@
 package com.elements;
 
 import java.awt.Color;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.*;
 
 import com.characters.Character;
 import com.frame.Frame;
-
-import world.Room;
 
 public class GameBar extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -104,6 +104,7 @@ public class GameBar extends JPanel {
 
 			}
 		});
+		
 		this.nextBtn.setVisible(false);
 
 	}

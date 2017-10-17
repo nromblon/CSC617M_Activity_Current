@@ -64,7 +64,6 @@ public abstract class GameWorld extends World {
 	protected BombClueOverlay bombClue;
 	protected How2PlayOverlay how2play;
 	
-//	protected Timer gameTimer;
 	protected GameTimer timer;
 	
 	protected JLabel lblResult;
@@ -89,7 +88,7 @@ public abstract class GameWorld extends World {
 		this.player = player;
 		this.stageIndex = 0;
 		this.stages = new ArrayList<Stage>();
-//		this.gameTimer = new Timer(0, this);	
+
 		this.setRight(isRight);
 		this.initComponents();
 
@@ -432,5 +431,13 @@ public abstract class GameWorld extends World {
 
 	public void setRight(boolean isRight) {
 		this.isRight = isRight;
+	}
+
+	public GameTimer getTimer() {
+		return timer;
+	}
+
+	public void setTimer(GameTimer timer) {
+		this.timer = timer;
 	}
 }

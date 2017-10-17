@@ -8,6 +8,7 @@ import com.objects.InteractableObject;
 
 public class Wrench extends InteractableObject{
 	
+	private boolean isVisible;
 	public Wrench() {
 		super(new String[]{"wrench", "dark grey tool", "third tool box item",
 				"third toolbox item", "3rd tool", "third tool", "3rd toolbox item",
@@ -20,7 +21,9 @@ public class Wrench extends InteractableObject{
 		this.setTaken(false);
 		this.setUsed(false);
 		this.close();
+		this.setVisible(lblObject.isVisible());
 	}
+	
 	private void initComponents() {
 
 		this.objectName = this.getClass().getSimpleName();
@@ -42,7 +45,7 @@ public class Wrench extends InteractableObject{
 	@Override
 	public void spawn() {
 		super.spawn();
-		this.close();
+		this.lblObject.setVisible(this.isVisible());
 	}
 	
 	@Override
@@ -57,12 +60,14 @@ public class Wrench extends InteractableObject{
 		}
 		else {
 			this.lblObject.setVisible(true);
+			this.setVisible(true);
 		}
 	}
 
 	@Override
 	public void close() {
 		this.lblObject.setVisible(false);
+		this.setVisible(false);
 	}
 	@Override
 	public void update() {
@@ -75,6 +80,7 @@ public class Wrench extends InteractableObject{
 			this.setTaken(true);
 			this.getParent().getParent().getInventory().addItem(this);
 			this.lblObject.setVisible(false);
+			this.setVisible(false);
 		}
 	}
 	@Override
@@ -82,4 +88,10 @@ public class Wrench extends InteractableObject{
 		this.setUsed(true);
 	}
 
+	public boolean isVisible() {
+		return isVisible;
+	}
+	public void setVisible(boolean isVisible) {
+		this.isVisible = isVisible;
+	}
 }

@@ -33,27 +33,38 @@ public class Bomb extends InteractableObject{
 		this.setX(iX);
 		this.setY(iY);
 		this.iiOpened = new ImageIcon("images/"+this.objectName+"_opened.png");
-//		this.iiClosed = new ImageIcon("images/"+this.objectName+"_closed.png");
-//		this.iiViewed = new ImageIcon("images/"+this.objectName+"_viewed.png");
-		
+	
 		this.setCenterX(this.lblObject.getWidth()/2);
 		this.setCenterY(this.lblObject.getHeight()/2);
 	}
 	
 	@Override
 	public void view() {
-//		if(getParent().getParent().getInventory().searchIfItemExists())
+		// TODO Responses
+		this.getParent().updateMessage("It appears to be bomb. There are explosives rigged on one side. The digital display says "+
+										this.getParent().getParent().getTimer().getTimeLbl().getText()+". Looks like that's how long I have left to live.");
+	
 	}
 
 	@Override
 	public void open() {
-		if(this.isOpened()) {
+		if(this.isOpened() &&
+				this.getParent().getParent().getInventory().searchIfItemExists("WireCutter") &&
+				this.getParent().getParent().getInventory().searchIfItemExists("BombClue")) {
 			this.getParent().getParent().openBombWiring();
 		}
-		else if(this.getParent().getParent().getInventory().searchIfItemExists("Wrench")) {
+		else if(this.isOpened() &&
+				this.getParent().getParent().getInventory().searchIfItemExists("WireCutter") &&
+				!this.getParent().getParent().getInventory().searchIfItemExists("BombClue")) {
+			this.getParent().updateMessage("I can now cut the wires but I don't know which one to cut! I don't think I can leave this to guess work. There has to be a clue here somewhere.");
+		}
+		else if(this.isOpened() &&
+				!this.getParent().getParent().getInventory().searchIfItemExists("WireCutter")) {
+				this.getParent().updateMessage("The wires are exposed, but I'll need something to cut it with.");
+		}
+		else if(!this.isOpened() && this.getParent().getParent().getInventory().searchIfItemExists("Wrench")) {
 			this.setOpened(true);
 			this.lblObject.setIcon(this.getIiOpened());
-			this.getParent().getParent().getInventory().removeItem("Wrench");
 			this.getParent().updateMessage("There, that should do it.");
 		}
 		else {
@@ -64,8 +75,7 @@ public class Bomb extends InteractableObject{
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		this.getParent().updateMessage("There's no point trying to close this thing.");
 	}
 	@Override
 	public void update() {
@@ -73,13 +83,11 @@ public class Bomb extends InteractableObject{
 	}
 	@Override
 	public void take() {
-		// TODO Auto-generated method stub
-		
+		this.getParent().updateMessage("I don't have a need to take this, I'm sure the explosion is enough to kill me no matter where I am in this house.");
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
+		this.getParent().updateMessage("It's currently being used-- to kill me, that is.");
 	}
 
 }

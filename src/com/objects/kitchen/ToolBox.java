@@ -48,8 +48,11 @@ public class ToolBox extends InteractableObject{
 	
 	@Override
 	public void view() {
-		if(this.getParent().lookupObject("ToolBoxKey").isTaken()) {
+		if(this.getParent().lookupObject("ToolBoxKey").isTaken() && this.isOpened()) {
 			this.getParent().updateMessage("A toolbox that contained a car battery, wire cutter, and wrench.");
+		}
+		else {
+			this.getParent().updateMessage("A locked toolbox. It's heavy.");
 
 		}
 	}
@@ -83,7 +86,7 @@ public class ToolBox extends InteractableObject{
 	}
 	@Override
 	public void take() {
-		this.getParent().updateMessage("This is heavy, I don't think I need to take the whole thing");
+		this.getParent().updateMessage("This is heavy, I don't think I need to take the whole thing.");
 	}
 	@Override
 	public void use() {

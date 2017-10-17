@@ -155,6 +155,7 @@ public class VaultPassword extends OverlayObject implements ActionListener{
 		}
 		else if(this.isOpened) {
 			this.close();
+			this.getParent().getControls().getTxtfControls().requestFocus();
 			return true;
 		}
 		else {

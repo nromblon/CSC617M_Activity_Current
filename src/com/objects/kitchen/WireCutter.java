@@ -7,7 +7,8 @@ import com.elements.Stage;
 import com.objects.InteractableObject;
 
 public class WireCutter extends InteractableObject{
-	
+
+	private boolean isVisible;
 	public WireCutter() {
 		super(new String[]{"cutter", "wirecutter", "wire cutter", "pliers", "silver tool", "light grey tool", "light gray tool"});
 		this.viewResponse = "A "+this.objectName+".";
@@ -17,6 +18,7 @@ public class WireCutter extends InteractableObject{
 		this.initComponents();
 		this.setTaken(false);
 		this.close();
+		this.setVisible(lblObject.isVisible());
 	}
 	private void initComponents() {
 
@@ -39,7 +41,7 @@ public class WireCutter extends InteractableObject{
 	@Override
 	public void spawn() {
 		super.spawn();
-		this.close();
+		this.lblObject.setVisible(this.isVisible());
 	}
 	
 	@Override
@@ -54,12 +56,14 @@ public class WireCutter extends InteractableObject{
 		}
 		else {
 			this.lblObject.setVisible(true);
+			this.setVisible(true);
 		}
 	}
 
 	@Override
 	public void close() {
 		this.lblObject.setVisible(false);
+		this.setVisible(false);
 	}
 	@Override
 	public void update() {
@@ -72,11 +76,18 @@ public class WireCutter extends InteractableObject{
 			this.setTaken(true);
 			this.getParent().getParent().getInventory().addItem(this);
 			this.lblObject.setVisible(false);
+			this.setVisible(false);
 		}
 	}
 	@Override
 	public void use() {
 		
+	}
+	public boolean isVisible() {
+		return isVisible;
+	}
+	public void setVisible(boolean isVisible) {
+		this.isVisible = isVisible;
 	}
 
 }

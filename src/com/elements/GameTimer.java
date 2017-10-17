@@ -85,5 +85,13 @@ public class GameTimer extends JPanel{
 	public void setPlayer(Character player) {
 		this.player = player;
 	}
+
+	public JLabel getTimeLbl() {
+		return timeLbl;
+	}
+
+	public void setTimeLbl(JLabel timeLbl) {
+		this.timeLbl = timeLbl;
+	}
 	
 }
