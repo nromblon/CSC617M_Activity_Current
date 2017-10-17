@@ -103,7 +103,6 @@ public class MainMenu extends JPanel implements ActionListener, MouseListener {
 		this.selectedClass = 1;
 	
 		this.selectedChara = selected;
-//		this.lblClass.setText(this.lblName.getText());
 		this.selectClass(1);
 		this.repaint();
 //		Game.M.stop();
@@ -114,8 +113,6 @@ public class MainMenu extends JPanel implements ActionListener, MouseListener {
 	}
 	
 	public void start() {
-//		this.mapSelect.setVisible(true);
-
 		this.tmrFocus.stop();
 		this.addPlayer();
 		this.parent.remove(this);
@@ -145,43 +142,22 @@ public class MainMenu extends JPanel implements ActionListener, MouseListener {
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-//		if(e.getSource() == this.btnChara1 ||
-//				e.getSource() == this.btnChara2 ||
-//				e.getSource() == this.btnChara3 ||
-//				e.getSource() == this.btnChara4 ||
-//				e.getSource() == this.btnChara5 ||
-//				e.getSource() == this.btnChara6 ||
-//				e.getSource() == this.btnChara7 ||
-//				e.getSource() == this.btnChara8 ||
-//				e.getSource() == this.btnChara9 ||
-//				e.getSource() == this.btnChara10 ||
-//				e.getSource() == this.btnChara11 ||
-//				e.getSource() == this.btnChara12 ||
-//				e.getSource() == this.btnClass1 ||
-//				e.getSource() == this.btnClass2 ||
-//				e.getSource() == this.btnClass3) {
-//			Game.M.stopSound();
-//			Game.M.sound("SE1.wav", Clip.LOOP_CONTINUOUSLY);
-//			Game.M.play("SE1.wav", 0);
-//		}
+		
 	}
 	
 	private class TAdapter extends KeyAdapter {	
