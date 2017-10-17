@@ -54,11 +54,11 @@ public class KitchenDoor extends InteractableObject{
 
 	@Override
 	public void open() {
-		if(this.isLocked() && !this.getParent().getParent().getInventory().searchIfItemExists("SulfuricAcid")) {
+		if(this.isLocked() && !this.getParent().getParent().getInventory().searchIfItemExists("KitchenKey")) {
 			this.getParent().updateMessage("It's locked. Maybe there's a key in here somewhere.");
 			
 		}
-		else if(this.isLocked() && this.getParent().getParent().getInventory().searchIfItemExists("SulfuricAcid")) {
+		else if(this.isLocked() && this.getParent().getParent().getInventory().searchIfItemExists("KitchenKey")) {
 			this.setLocked(false);
 			this.getParent().getParent().getInventory().removeItem("KitchenKey");
 			this.getParent().updateMessage("It's locked. I think this key should do the trick. There, it's open.");
