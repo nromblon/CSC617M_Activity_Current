@@ -3,8 +3,6 @@ package com.elements;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.LinkedList;
-import java.util.Queue;
 import javax.swing.*;
 
 import com.characters.Character;
@@ -71,11 +69,9 @@ public class GameBar extends JPanel {
 		
 		this.scrlMessage = new JScrollPane();
 		Game.initScrollPane(scrlMessage, lblMessage, lblMessage.getBounds());
-//		this.scrlMessage.setLocation(offsetX, 0);
 		this.scrlMessage.setLocation(offsetX, this.getHeight()-lblMessage.getHeight()-offsetY);
 		this.scrlMessage.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		this.scrlMessage.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-//		this.lblMessage.setText("This is a system message.");
 
 
 		this.nextBtn = new JButton();
