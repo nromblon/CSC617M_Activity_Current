@@ -8,6 +8,8 @@ import javax.swing.*;
 import com.characters.Character;
 import com.frame.Frame;
 
+import world.Room;
+
 public class GameBar extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
@@ -17,7 +19,7 @@ public class GameBar extends JPanel {
 	private JLabel lblGamebarOverlay;
 	private JLabel lblPlayer;
 	private JLabel lblMessageOverlay;
-	private JTextArea lblMessage;
+	private JTextArea txtaMessage;
 	private JScrollPane scrlMessage;
 
 	private JButton nextBtn;
@@ -58,17 +60,16 @@ public class GameBar extends JPanel {
 		
 		int offsetX = 34;
 
-		this.lblMessage = new JTextArea();
-		Frame.initTextArea(this.lblMessage, Game.fntConsolas20, Color.WHITE, 0, 0, lblMessageOverlay.getWidth(), lblMessageOverlay.getHeight());
-		this.lblMessage.setLineWrap(true);
-		this.lblMessage.setWrapStyleWord(true);
-		
-		this.lblMessage.setForeground(Color.WHITE);
-		this.lblMessage.setEditable(false);
+		this.txtaMessage = new JTextArea();
+		Frame.initTextArea(this.txtaMessage, Game.fntConsolas20, Color.WHITE, 0, 0, 1050-offsetX*2, 147);
+		this.txtaMessage.setLineWrap(true);
+		this.txtaMessage.setWrapStyleWord(true);
+		this.txtaMessage.setForeground(Color.WHITE);
+		this.txtaMessage.setEditable(false);
 		
 		this.scrlMessage = new JScrollPane();
-		Game.initScrollPane(scrlMessage, lblMessage, lblMessage.getBounds());
-		this.scrlMessage.setLocation(offsetX, this.getHeight()-lblMessage.getHeight()+25);
+		Game.initScrollPane(scrlMessage, txtaMessage, txtaMessage.getBounds());
+		this.scrlMessage.setLocation(offsetX, this.getHeight()-txtaMessage.getHeight()+25);
 		this.scrlMessage.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		this.scrlMessage.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
@@ -109,8 +110,8 @@ public class GameBar extends JPanel {
 	
 	public void update() {
 
-		lblMessage.repaint();
-		lblMessage.revalidate();
+		txtaMessage.repaint();
+		txtaMessage.revalidate();
 		scrlMessage.repaint();
 		scrlMessage.revalidate();
 		nextBtn.repaint();
@@ -130,15 +131,15 @@ public class GameBar extends JPanel {
 	}
 
 	public JTextArea getLblMessage() {
-		return lblMessage;
+		return txtaMessage;
 	}
 
 	public void setLblMessage(JTextArea lblMessage) {
-		this.lblMessage = lblMessage;
+		this.txtaMessage = lblMessage;
 	}
 
 	public void addMsgQueue(String message){
-		this.lblMessage.setText(message);
+		this.txtaMessage.setText(message);
 //		if(lblMessage.getText().equals(""))
 //			this.lblMessage.setText(message);
 //		else {
