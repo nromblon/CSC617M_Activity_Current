@@ -41,7 +41,6 @@ public class CarBattery extends InteractableObject{
 	@Override
 	public void spawn() {
 		super.spawn();
-		this.close();
 		this.lblObject.setVisible(this.isVisible());
 	}
 	
