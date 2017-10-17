@@ -18,6 +18,8 @@ public class KitchenDoor extends InteractableObject{
 		this.closeResponse = "The "+this.objectName+" can't be closed.";
 		this.objectName = this.getClass().getSimpleName();
 		this.initComponents();
+		this.setLocked(true);
+		this.setOpened(false);
 	}
 	private void initComponents() {
 
@@ -31,9 +33,6 @@ public class KitchenDoor extends InteractableObject{
 		
 		this.setX(iX);
 		this.setY(iY);
-//		this.iiOpened = new ImageIcon("images/"+this.objectName+"_opened.png");
-//		this.iiClosed = new ImageIcon("images/"+this.objectName+"_closed.png");
-//		this.iiViewed = new ImageIcon("images/"+this.objectName+"_viewed.png");
 		
 		this.setCenterX(this.lblObject.getWidth()/2);
 		this.setCenterY(this.lblObject.getHeight()/2);
@@ -41,35 +40,58 @@ public class KitchenDoor extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		if(this.isLocked()) {
+			this.getParent().updateMessage("A door. It looks like it leads to the kitchen, but it's locked.");
+			
+		}
+		else if(this.isOpened()) {
+			this.getParent().updateMessage("The kitchen door.");
+		}
+		else {
+			this.getParent().updateMessage("A previously locked door.");
+		}
 	}
 
 	@Override
 	public void open() {
-		// Assumes that the gameWorld is an instance of Room
-		this.getParent().getParent().toStage(Room.INDEX_KITCHEN,
-				Room.INDEX_X, 1);
+		if(this.isLocked() && !this.getParent().getParent().getInventory().searchIfItemExists("SulfuricAcid")) {
+			this.getParent().updateMessage("It's locked. Maybe there's a key in here somewhere.");
+			
+		}
+		else if(this.isLocked() && this.getParent().getParent().getInventory().searchIfItemExists("SulfuricAcid")) {
+			this.setLocked(false);
+			this.getParent().getParent().getInventory().removeItem("KitchenKey");
+			this.getParent().updateMessage("It's locked. I think this key should do the trick. There, it's open.");
+			
+		}
+		else {
+
+			this.setOpened(true);
+			// Assumes that the gameWorld is an instance of Room
+			this.getParent().getParent().toStage(Room.INDEX_KITCHEN,
+					Room.INDEX_X, 1);
+		}		
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		if(this.isLocked()) {
+			this.getParent().updateMessage("Guess what, it's locked.");	
+		}
+		else {
+			this.getParent().updateMessage("It's already closed.");
+		}
 	}
 	@Override
 	public void update() {
-//		System.out.println("Drawer update");
 	}
 	@Override
 	public void take() {
-		// TODO Auto-generated method stub
-		
+		this.getParent().updateMessage("Yeah, maybe I should take this home. If I survive, that is.");
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
+		this.open();
 	}
 
 }

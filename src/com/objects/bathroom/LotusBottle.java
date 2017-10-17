@@ -8,7 +8,9 @@ import com.objects.InteractableObject;
 public class LotusBottle extends InteractableObject{
 	
 	public LotusBottle() {
-		super(new String[]{"Lotus Bottle","violet bottle","purple bottle","third bottle","right bottle","last bottle","3rd bottle"});
+		super(new String[]{"lotus bottle", "violet bottle", "purple bottle",
+							"third bottle", "right bottle", "last bottle", "3rd bottle",
+							"bottle 3", "bottle3"});
 		this.viewResponse = "A "+this.objectName+".";
 		this.openResponse = "The "+this.objectName+" can't be opened.";
 		this.closeResponse = "The "+this.objectName+" can't be closed.";

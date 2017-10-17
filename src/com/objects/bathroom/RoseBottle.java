@@ -8,7 +8,9 @@ import com.objects.InteractableObject;
 public class RoseBottle extends InteractableObject{
 	
 	public RoseBottle() {
-		super(new String[]{"rose Bottle","red bottle","pink bottle","left bottle","first bottle","1st bottle"});
+		super(new String[]{"rose bottle", "red bottle", "pink bottle",
+							"left bottle", "first bottle", "1st bottle",
+							"bottle 1", "bottle1"});
 		this.viewResponse = "A "+this.objectName+".";
 		this.openResponse = "The "+this.objectName+" can't be opened.";
 		this.closeResponse = "The "+this.objectName+" can't be closed.";
