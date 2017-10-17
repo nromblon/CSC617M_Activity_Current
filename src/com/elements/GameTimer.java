@@ -14,7 +14,6 @@ import javax.swing.Timer;
 import com.characters.Character;
 
 import world.GameWorld;
-import world.World;
 
 public class GameTimer extends JPanel{
 	private static final long serialVersionUID = 1L;
@@ -29,6 +28,7 @@ public class GameTimer extends JPanel{
 	public GameTimer(GameWorld parent, Character player, int minutes) {
 		this.parent = parent;
 		this.player = player;
+		
 		
 		Game.initPanel(this, Game.clrTransparent, Stage.MAX_WIDTH, 70, parent.getWidth()-Stage.MAX_WIDTH, parent.getHeight());	
 		this.initComponents();
@@ -76,6 +76,14 @@ public class GameTimer extends JPanel{
 
 	public void setTimer(Timer timer) {
 		this.timer = timer;
+	}
+
+	public Character getPlayer() {
+		return player;
+	}
+
+	public void setPlayer(Character player) {
+		this.player = player;
 	}
 	
 }

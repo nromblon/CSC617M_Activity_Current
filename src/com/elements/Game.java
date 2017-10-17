@@ -79,7 +79,6 @@ public class Game extends JFrame implements MouseListener {
 		this.initComponents();
 		M = new Music();
 
-//		this.add(new Splash(this));
 		this.add(new MainMenu(this));
 		this.setVisible(true);
 	}
@@ -123,7 +122,7 @@ public class Game extends JFrame implements MouseListener {
 			button.setRolloverIcon(new ImageIcon("images/"+iconName+"_on.png"));
 			button.setPressedIcon(button.getRolloverIcon());
 		}
-//		button.setBackground(Game.clrBlack70);
+		
 		button.setBorder(null);
 		button.setFocusable(false);
 		
@@ -274,25 +273,21 @@ public class Game extends JFrame implements MouseListener {
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 }

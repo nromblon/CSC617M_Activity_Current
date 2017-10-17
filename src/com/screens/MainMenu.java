@@ -25,16 +25,9 @@ public class MainMenu extends JPanel implements ActionListener, MouseListener {
 	private static final long serialVersionUID = 1L;
 	
 	private JFrame parent;
-	
-	private boolean isSet;
 	private boolean isReady;
-	private boolean isEscape;
-	
-	private int selectedChara;
-	private int selectedClass;
 	
 	private JLabel gameTitle;
-	
 	private JButton btnStart;
 	private Timer tmrFocus;
 
@@ -43,21 +36,13 @@ public class MainMenu extends JPanel implements ActionListener, MouseListener {
 		this.parent = parent;
 		this.initComponents();		
 
-//		this.add(this.mapSelect);
 		this.add(btnStart);
 		this.add(gameTitle);
-//		this.add(startPrompt);
 		
 		this.parent.revalidate();
 		this.parent.repaint();
 		
-		this.selectedChara = 1;
-		this.selectedClass = 1;
-		this.select(this.selectedChara);
-		
-		this.isSet = false;
 		this.isReady = false;
-		this.isEscape = false;
 
 		this.tmrFocus = new Timer(0, this);
 		this.tmrFocus.start();
@@ -86,53 +71,23 @@ public class MainMenu extends JPanel implements ActionListener, MouseListener {
 		super.paintComponent(g);
 	}
 	
-	public void selectClass(int selected) {
-		this.deselectAllClass();		
-		
-		this.repaint();
-	}
-	
-	public void deselectAllClass() {
-
-	}
-	
-	public void select(int selected) {
-
-		Game.M.play("SE1.wav", 0);
-		this.deselectAll();
-		this.selectedClass = 1;
-	
-		this.selectedChara = selected;
-		this.selectClass(1);
-		this.repaint();
-//		Game.M.stop();
-//		Game.M.play("SE1.wav", 1);
-	}
-	
-	public void deselectAll() {
-	}
-	
 	public void start() {
 		this.tmrFocus.stop();
 		this.addPlayer();
 		this.parent.remove(this);
 	}
 	
-	public void addPlayer() {
+	public boolean randomSolution() {
 		Random random = new Random();
 		boolean randomWire = random.nextBoolean();
-		System.out.println(randomWire);
-		this.parent.add(new Room(parent, new Player(), randomWire));
+		return randomWire;
+	}
+	
+	public void addPlayer() {
+		boolean solution = randomSolution();
+		this.parent.add(new Room(parent, new Player(), solution));
 	}	
 	
-	public void toSplash() {
-//		this.setVisible(false);
-		this.tmrFocus.stop();
-		this.parent.add(new Splash(parent));
-		this.parent.remove(this);
-		this.parent.repaint();
-		this.parent.revalidate();
-	}
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		if(e.getSource() == this.btnStart) {
@@ -162,83 +117,10 @@ public class MainMenu extends JPanel implements ActionListener, MouseListener {
 	
 	private class TAdapter extends KeyAdapter {	
 		public void keyPressed(KeyEvent e) {
-			if(e.getKeyChar() == KeyEvent.VK_ESCAPE) {
-				isEscape = true;
-			}
-			else {
-				if(!isSet) {
-					switch (e.getKeyCode()) {
-					case KeyEvent.VK_UP:
-						setSelectedChara(selectedChara-3);
-						break;
-					case KeyEvent.VK_DOWN:
-						setSelectedChara(selectedChara+3);
-						break;
-					case KeyEvent.VK_LEFT:
-						setSelectedChara(selectedChara-1);
-						break;
-					case KeyEvent.VK_RIGHT:
-						setSelectedChara(selectedChara+1);
-						break;
-					case KeyEvent.VK_Z:
-						isSet = true;
-						break;
-					}		
-				}
-				else if(!isReady) {
-					switch (e.getKeyCode()) {
-					case KeyEvent.VK_UP:
-						setSelectedClass(selectedClass-1);
-						break;
-					case KeyEvent.VK_DOWN:
-						setSelectedClass(selectedClass+1);
-						break;
-					case KeyEvent.VK_LEFT:
-						setSelectedClass(selectedClass-1);
-						break;
-					case KeyEvent.VK_RIGHT:
-						setSelectedClass(selectedClass+1);
-						break;
-					case KeyEvent.VK_X:
-						isSet = false;
-						break;
-					case KeyEvent.VK_Z:
-						isReady = true;
-						break;
-					}	
-				}
-				else {
-					switch(e.getKeyCode()) {
-					case KeyEvent.VK_X:
-						isReady = false;
-						break;
-					}
-				}	
-			}			
+			if(e.getKeyChar() == KeyEvent.VK_ENTER) {
+				isReady = true;
+			}	
 		}		
-	}
-
-	public int getSelectedChara() {
-		return selectedChara;
-	}
-	
-	public void setSelectedChara(int selectedChara) {
-		if(selectedChara < 1)
-			selectedChara = 1;
-		if(selectedChara > 11)
-			selectedChara = 11;
-		this.selectedChara = selectedChara;
-		
-		this.selectedChara = selectedChara;
-		this.select(this.selectedChara);
-	}
-	
-	public int getSelectedClass() {
-		return selectedClass;
-	}
-	
-	public void setSelectedClass(int selectedClass) {
-		this.selectedClass = selectedClass;
 	}
 
 	@Override
@@ -246,8 +128,5 @@ public class MainMenu extends JPanel implements ActionListener, MouseListener {
 		requestFocus();
 		if(isReady)
 			this.start();
-		if(isEscape) {
-			this.toSplash();
-		}
 	}
 }
