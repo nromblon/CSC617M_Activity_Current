@@ -2,11 +2,12 @@ package com.elements.parser;
 
 public enum Commands {
     VIEW (new String[]{"view","check","inspect","observe"}),
-    OPEN (new String[]{"open","switch","turn","enter","exit"}),
+    OPEN (new String[]{"open","switch","turn","enter"}),
     CLOSE (new String[]{"close"}),
     TAKE (new String[]{"take","pick","remove","lift"}),
     USE (new String[]{"use"}),
-    MOVE (new String[]{"move","go","goto"}),
+    EXIT (new String[]{"exit","go back"}),
+    MOVE (new String[]{"move","go","goto", "go to"}),
     ERROR (new String[]{"error"});
     protected String[] synonyms;
 
@@ -29,6 +30,35 @@ public enum Commands {
                 }
             }
         }
+        return null;
+    }
+
+    public static Commands slookup(int index, String[] tokens){
+        for (Commands c : Commands.values()) {
+            for(String s : c.synonyms()) {
+                String[] ntokens = s.split(" ");
+                boolean isMismatch = false;
+                int i = index, j = 0;
+                while(j < ntokens.length && i < tokens.length){
+                    if(ntokens[j++].equalsIgnoreCase(tokens[i])) {
+                        i++;
+                    }
+                    else{
+                        isMismatch=true;
+                        break;
+                    }
+                }
+
+                if(j != ntokens.length)
+                    isMismatch = true;
+
+                if(!isMismatch) {
+                    ActionParser.index = index + (i - index) - 1;
+                    return c;
+                }
+            }
+        }
+
         return null;
     }
 }

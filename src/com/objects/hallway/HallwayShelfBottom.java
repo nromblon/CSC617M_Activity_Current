@@ -34,19 +34,17 @@ public class HallwayShelfBottom extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("The shelf holds 6 books, each with their own color: yellow, purple, green, blue, pink, and red.");
 	}
 
 	@Override
 	public void open() {
-		
+		this.parent.updateMessage("I don't think that's possible.");
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I don't think that's possible.");
 	}
 	@Override
 	public void update() {
@@ -54,13 +52,11 @@ public class HallwayShelfBottom extends InteractableObject{
 	}
 	@Override
 	public void take() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I don't think that's possible.");
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I don't think that's possible.");
 	}
 
 }

@@ -38,8 +38,10 @@ public class ActionParser {
         //Parsing process
         for(index=0; index<tokens.length;index++){
             System.out.println("token[#]: "+index+" -- "+tokens[index]);
-            if(cmd == null)
-                cmd = Commands.lookup(tokens[index]);
+            if(cmd == null) {
+                cmd = Commands.slookup(index, tokens);
+                System.out.println("CMD: "+cmd);
+            }
             else if(Linker.exists(tokens[index])) {
                 if(cmd != null && obj != null)
                     actions.add(new Action(cmd, obj));

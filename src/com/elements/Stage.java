@@ -95,16 +95,12 @@ public class Stage extends JPanel {
 	public InteractableObject slookupObject(int index, String[] tokens){
 		for (InteractableObject o : objects) {
 			for(String s : o.getSynonyms()) {
-			//String s = o.getObjectName(); //TODO remove this
 				String[] ntokens = s.split(" ");
 				boolean isMismatch = false;
 				int i = index, j = 0;
 				while(j < ntokens.length && i < tokens.length){
-					System.out.println("> "+ntokens[j]+"?="+tokens[i]);
 					if(ntokens[j++].equalsIgnoreCase(tokens[i])) {
 						i++;
-						if(j < ntokens.length && i < tokens.length)
-							System.out.println(">> "+ntokens[j]+"?="+tokens[i]);
 					}
 					else{
 						isMismatch=true;
