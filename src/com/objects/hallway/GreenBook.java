@@ -6,7 +6,7 @@ import com.objects.InteractableObject;
 
 public class GreenBook extends InteractableObject{
 	
-	private int viewCount;
+	
 	
 	public GreenBook() {
 		super(new String[]{"green book", "greenbook", "third book",
@@ -17,7 +17,6 @@ public class GreenBook extends InteractableObject{
 		this.closeResponse = "The "+this.objectName+" can't be closed.";
 		this.objectName = this.getClass().getSimpleName();
 		this.initComponents();
-		this.setViewCount(0);
 	}
 	private void initComponents() {
 
@@ -93,11 +92,4 @@ public class GreenBook extends InteractableObject{
 
 		
 	}
-	public int getViewCount() {
-		return viewCount;
-	}
-	public void setViewCount(int viewCount) {
-		this.viewCount = viewCount;
-	}
-
 }

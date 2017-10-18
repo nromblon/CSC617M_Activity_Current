@@ -25,6 +25,8 @@ public abstract class InteractableObject {
 	protected int centerX;
 	protected int centerY;
 	
+	protected int viewCount;
+	
 	protected JLabel lblObject;
 	protected Stage parent;
 	
@@ -34,9 +36,7 @@ public abstract class InteractableObject {
 	protected ImageIcon iiViewed;
 	protected ImageIcon iiClosed;
 	protected ImageIcon iiTaken;
-	/**
-	 * 
-	 */
+
 	protected ImageIcon iiUsed;
 	
 	public ImageIcon getIiUsed() {
@@ -90,6 +90,7 @@ public abstract class InteractableObject {
 	public InteractableObject(String[] synonyms) {
 		this.synonyms = synonyms;
 		this.setTarget(this);
+		this.setViewCount(0);
 	}
 	
 	public void spawn() {
@@ -332,5 +333,13 @@ public abstract class InteractableObject {
 
 	public void setCloseResponse(String closeResponse) {
 		this.closeResponse = closeResponse;
+	}
+
+	public int getViewCount() {
+		return viewCount;
+	}
+
+	public void setViewCount(int viewCount) {
+		this.viewCount = viewCount;
 	}
 }

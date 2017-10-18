@@ -34,12 +34,37 @@ public class OrangeBook extends InteractableObject{
 	
 	@Override
 	public void view() {
-		
+		this.getParent().updateMessage("A thick notebook. It looks like a scrapbook of some sorts.");
 	}
 
 	@Override
 	public void open() {
 		
+		switch(this.getViewCount()) {
+		case 0:
+			this.getParent().updateMessage("There are various newspaper clippings on each page. I should try reading some of them.");
+		
+			break;
+		case 1:
+		
+			this.getParent().updateMessage("Criminal Profiler Explains the Mind of a Kidnapper - "+
+					"\"The kidnappers may not be mentally ill, in "+
+					"the medical sense, but they are still sick people, "+
+					"whose feelings of powerlessness drive those weaker than them to suffer"+
+					"It's being in control, being the one who's on top, who can call the shots.\"");
+			break;
+		case 2:
+			this.getParent().updateMessage("How Does a Kidnapper Choose his Victim - "+
+					"\"Kidnappers tend to develop a profile of their likely target "+
+					"before making an abduction based upon their overall "+
+					"goals, which usually falls into one of three categories: "+
+					"financial gain, extremism or emotional disturbance.\"");
+			break;
+		default:
+			this.getParent().updateMessage("This is disturbing.");
+			this.setViewCount(-1);
+		}
+		this.setViewCount(this.getViewCount()+1);
 	}
 
 	@Override
