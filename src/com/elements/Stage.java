@@ -112,6 +112,9 @@ public class Stage extends JPanel {
 					}
 				}
 
+				if(j != ntokens.length)
+					isMismatch = true;
+
 				if(!isMismatch) {
 					ActionParser.index = index + (i - index) - 1;
 					return o;
