@@ -136,17 +136,18 @@ public class Room extends GameWorld {
 		objects.add(new BedroomDoor());
 		objects.add(new BathroomDoor());
 
-		stage = new Stage(this, this.basic, objects, "bg_hallway");
+		stage = new Stage(this, this.basic, objects, "bg_hallway",null);
 		this.stages.add(stage);		
 		this.add(stage);
-		
 
 		/*
 		 * ROOM 1 :: KITCHEN
 		 */		
 		objects = new ArrayList<InteractableObject>();
 
-		objects.add(new HallwayKitchenDoor());
+		InteractableObject kitchenDoor = new HallwayKitchenDoor();
+
+		objects.add(kitchenDoor);
 		objects.add(new KitchenLight());
 
 		objects.add(new CarBattery());
@@ -186,7 +187,7 @@ public class Room extends GameWorld {
 		objects.add(new Table());
 		objects.add(new KitchenShelf());
 		
-		stage = new Stage(this, this.basic, objects, "bg_kitchen");
+		stage = new Stage(this, this.basic, objects, "bg_kitchen", kitchenDoor);
 
 		
 		this.stages.add(stage);		
@@ -194,9 +195,11 @@ public class Room extends GameWorld {
 		
 		/*
 		 * ROOM 2 :: BEDROOM
-		 */		
+		 */
+
+		InteractableObject bedroomDoor = new HallwayBedroomDoor();
 		objects = new ArrayList<InteractableObject>();
-		objects.add(new HallwayBedroomDoor());
+		objects.add(bedroomDoor);
 		objects.add(new LampLight());
 		objects.add(new Floorboard());
 		objects.add(new Key());
@@ -215,15 +218,16 @@ public class Room extends GameWorld {
 		objects.add(new Shirt());
 		objects.add(new BedroomCloset());
 		objects.add(new BedroomWindow());
-		stage = new Stage(this, this.basic, objects, "bg_bedroom");
+		stage = new Stage(this, this.basic, objects, "bg_bedroom", bedroomDoor);
 		this.stages.add(stage);		
 		this.add(stage);
 		
 		/*
 		 * ROOM 3 :: BATHROOM
-		 */		
+		 */
+		InteractableObject bathroomDoor = new HallwayBathroomDoor();
 		objects = new ArrayList<InteractableObject>();
-		objects.add(new HallwayBathroomDoor());
+		objects.add(bathroomDoor);
 		objects.add(new BathroomLight());
 		objects.add(new BathroomWindow());
 		objects.add(new ToiletPaper());
@@ -256,7 +260,7 @@ public class Room extends GameWorld {
 		objects.add(new Mirror());
 		
 		
-		stage = new Stage(this, this.basic, objects, "bg_bathroom");
+		stage = new Stage(this, this.basic, objects, "bg_bathroom", bathroomDoor);
 		this.stages.add(stage);		
 		this.add(stage);
 		

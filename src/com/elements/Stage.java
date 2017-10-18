@@ -30,15 +30,19 @@ public class Stage extends JPanel {
 	protected ArrayList<Platform> platforms;
 
 	protected ArrayList<InteractableObject> objects;
-	
+
+	protected InteractableObject door;
+
 	protected JLabel lblBackground;
 	
-	public Stage(GameWorld parent, String[][] blueprint, ArrayList<InteractableObject> objects, String icon) {
+	public Stage(GameWorld parent, String[][] blueprint, ArrayList<InteractableObject> objects, String icon, InteractableObject door) {
 		this.parent = parent;
 		Game.initPanel(this, Color.WHITE, 0, 0, Stage.MAX_WIDTH, Stage.MAX_WIDTH);
 
 		this.platforms = new ArrayList<Platform>();
-		
+
+		this.door = door;
+
 		this.setBlueprint(blueprint);
 		this.lblBackground = new JLabel();
 		Game.initLabels(lblBackground, icon, null);
@@ -185,4 +189,13 @@ public class Stage extends JPanel {
 	public void setParent(GameWorld parent) {
 		this.parent = parent;
 	}
+
+	public InteractableObject getDoor() {
+		return door;
+	}
+
+	public void setDoor(InteractableObject door) {
+		this.door = door;
+	}
+
 }

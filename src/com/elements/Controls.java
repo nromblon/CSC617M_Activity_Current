@@ -89,30 +89,48 @@ public class Controls extends JPanel {
 		if(a.getCommand().equals(Commands.ERROR))
 			getParent().updateMessage("I don't know what you mean.");
 		else {
-			InteractableObject o = a.getObject();
+			InteractableObject o = null;
+			if(a.getObject() != null)
+				o = a.getObject();
+
 			switch (a.getCommand()) {
+
 				case MOVE:
-					if (!o.isTaken())
+					if (!o.isTaken() && o.getParent().equals(player.getParent()))
 						player.moveTo(o);
 					break;
 
 				case VIEW:
-					o.view();
+					if(o.getParent().equals(player.getParent()))
+						o.view();
 					break;
+
 				case OPEN:
-					o.open();
+					if(o.getParent().equals(player.getParent()))
+						o.open();
 					break;
+
 				case TAKE:
-					if (!o.isTaken())
+					if (!o.isTaken() && o.getParent().equals(player.getParent()))
 						o.take();
 					break;
 
 				case CLOSE:
-					o.close();
+					if(o.getParent().equals(player.getParent()))
+						o.close();
 					break;
+
 				case USE:
-					o.use();
+					if(o.getParent().equals(player.getParent()))
+						o.use();
 					break;
+
+				case EXIT:
+					if(player.getParent().getDoor() != null)
+						player.getParent().getDoor().open();
+					else
+						parent.updateMessage("I don't know what you're talking about");
+
 				default:
 					break;
 			}
@@ -137,7 +155,9 @@ public class Controls extends JPanel {
 		Action[] actions = ActionParser.parse(strAction,stage);
 
 		for (Action action : actions) {
-			if(!action.getCommand().equals(Commands.ERROR) && action.getObject().getTarget() != null)
+			if(action.getCommand().equals(Commands.EXIT) && player.getParent().getDoor() != null)
+				actionQueue.add(new Action(Commands.MOVE, player.getParent().getDoor().getTarget()));
+			else if(!action.getCommand().equals(Commands.ERROR) && !action.getCommand().equals(Commands.EXIT) && action.getObject().getTarget() != null)
 		  	  actionQueue.add(new Action(Commands.MOVE,action.getObject().getTarget()));
             actionQueue.add(action);
         }
