@@ -93,7 +93,7 @@ public abstract class InteractableObject {
 	}
 	
 	public void spawn() {
-		lblObject.setVisible(true);
+		lblObject.setVisible(lblObject.isVisible());
 		lblObject.setLocation(iX, iY);
 	}
 	

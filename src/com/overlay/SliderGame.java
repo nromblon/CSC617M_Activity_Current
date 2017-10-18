@@ -32,7 +32,7 @@ public class SliderGame extends OverlayObject {
 	private void initComponents() {		
 		this.pnlSlider = new SliderPanel(this);
 		int size = 400;
-		pnlSlider.getUI().setBounds((Stage.MAX_WIDTH-size)/2, (Stage.MAX_HEIGHT-size)/2, size, size);
+		pnlSlider.getUI().setBounds((Stage.MAX_WIDTH-size)/2, (Stage.MAX_HEIGHT-size)/2+30, size, size);
 		
 		this.lblOverlay = new JLabel();
 		Game.initLabels(this.lblOverlay, new ImageIcon("images/bg_overlay.png"), null);

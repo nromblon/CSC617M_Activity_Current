@@ -35,7 +35,7 @@ public class Game extends JFrame implements MouseListener {
 	public static final int NEXT_DOOR_X = 1045;
 	public static final int PREV_DOOR_X = 5;
 	
-	
+	public static final String DEFINED_SPACE = "    ";
 	
 	public static Color clrTransparent = new Color(1.0f, 1.0f, 1.0f, 0.0f);
 	public static Color clrBlack70 = new Color(0.0f, 0.0f, 0.0f, 0.7f);

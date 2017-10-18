@@ -18,7 +18,8 @@ public class SliderPanel implements ActionListener {
 	private ImageIcon blankSlot;
 	private Tile[][] tiles;
 	private SliderGame parent;
-
+	private boolean isSolved;
+	
 	public SliderPanel(SliderGame parent) {
 		this.setParent(parent);
 		this.sliderModel = new SliderModel();		
@@ -30,6 +31,7 @@ public class SliderPanel implements ActionListener {
 		
 		this.img = new ImageSplitter();
 		this.createTiles();
+		this.setSolved(false);
 	}
 	
 	private void createTiles() {
@@ -63,53 +65,57 @@ public class SliderPanel implements ActionListener {
 	}
 	
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		for(int i = 0; i < 4; i++) {
-			for(int j = 0; j < 4; j++) {				
-				if(arg0.getSource().equals(this.tiles[i][j].getBtnTile())) {
-					int x = this.tiles[i][j].getX();
-					int y = this.tiles[i][j].getY();
-					
-					switch(this.nextMove(x, y)) {
-						case UP: {
-							this.swapTiles(this.tiles[i][j], this.tiles[i][j-1]);
-							this.sliderModel.updateMap(Movement.UP, i, j);
-							break;
+	public void actionPerformed(ActionEvent e) {
+		if(!this.isSolved()) {
+		
+			for(int i = 0; i < 4; i++) {
+				for(int j = 0; j < 4; j++) {				
+					if(e.getSource().equals(this.tiles[i][j].getBtnTile())) {
+						int x = this.tiles[i][j].getX();
+						int y = this.tiles[i][j].getY();
+						
+						switch(this.nextMove(x, y)) {
+							case UP: {
+								this.swapTiles(this.tiles[i][j], this.tiles[i][j-1]);
+								this.sliderModel.updateMap(Movement.UP, i, j);
+								break;
+							}
+							case RIGHT: {
+								this.swapTiles(this.tiles[i][j], this.tiles[i+1][j]);
+								this.sliderModel.updateMap(Movement.RIGHT, i, j);
+								break;
+							}
+							case DOWN: {
+								this.swapTiles(this.tiles[i][j], this.tiles[i][j+1]);
+								this.sliderModel.updateMap(Movement.DOWN, i, j);
+								break;
+							}
+							case LEFT: {
+								this.swapTiles(this.tiles[i][j], this.tiles[i-1][j]);
+								this.sliderModel.updateMap(Movement.LEFT, i, j);
+								break;
+							}
+							default:
+								break;
 						}
-						case RIGHT: {
-							this.swapTiles(this.tiles[i][j], this.tiles[i+1][j]);
-							this.sliderModel.updateMap(Movement.RIGHT, i, j);
-							break;
-						}
-						case DOWN: {
-							this.swapTiles(this.tiles[i][j], this.tiles[i][j+1]);
-							this.sliderModel.updateMap(Movement.DOWN, i, j);
-							break;
-						}
-						case LEFT: {
-							this.swapTiles(this.tiles[i][j], this.tiles[i-1][j]);
-							this.sliderModel.updateMap(Movement.LEFT, i, j);
-							break;
-						}
-						default:
-							break;
 					}
 				}
 			}
-		}
-		
-		for(int m = 0; m < 4; m++) {
-			for(int n = 0; n < 4; n++)
-				System.out.print(this.sliderModel.getMap()[n][m]+"\t");
-			System.out.println();
-		}
-		
-		if(this.sliderModel.isGameOver()) {
-			for(int o = 0; o < 4; o++) {
-				for(int p = 0; p < 4; p++)
-					this.tiles[o][p].getBtnTile().setBorderPainted(false);
+			
+			for(int m = 0; m < 4; m++) {
+				for(int n = 0; n < 4; n++)
+					System.out.print(this.sliderModel.getMap()[n][m]+"\t");
+				System.out.println();
 			}
-			this.getParent().getParent().addPictureNote();
+			
+			if(this.sliderModel.isGameOver() && !this.isSolved()) {
+				this.setSolved(true);
+				for(int o = 0; o < 4; o++) {
+					for(int p = 0; p < 4; p++)
+						this.tiles[o][p].getBtnTile().setBorderPainted(false);
+				}
+				this.getParent().getParent().addPictureNote();
+			}
 		}
 	}
 	
@@ -157,6 +163,14 @@ public class SliderPanel implements ActionListener {
 
 	public void setParent(SliderGame parent) {
 		this.parent = parent;
+	}
+
+	public boolean isSolved() {
+		return isSolved;
+	}
+
+	public void setSolved(boolean isSolved) {
+		this.isSolved = isSolved;
 	}
 
 }

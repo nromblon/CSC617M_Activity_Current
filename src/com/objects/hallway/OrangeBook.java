@@ -34,7 +34,7 @@ public class OrangeBook extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO: A book about puzzle
+		
 	}
 
 	@Override
