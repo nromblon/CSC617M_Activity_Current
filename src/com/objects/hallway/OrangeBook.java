@@ -7,7 +7,7 @@ import com.objects.InteractableObject;
 public class OrangeBook extends InteractableObject{
 	
 	public OrangeBook() {
-		super(new String[]{"orange book", "orangebook", "first book",
+		super(new String[]{"yellow book", "yellowbook", "orange book", "orangebook", "first book",
 							"firstbook", "1st book", "book1", "book 1",
 							"book one", "bookone"});
 		this.viewResponse = "A "+this.objectName+".";
