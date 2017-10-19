@@ -57,7 +57,7 @@ public class Picture extends InteractableObject{
 	public void take() {
 		if(!isTaken()) {
 			this.setTaken(true);
-			this.getParent().getParent().getInventory().addItem(this);
+			this.getParent().getParent().getInventory().addItem(this, "A framed slider puzzle.");
 			this.lblObject.setVisible(false);
 			this.getParent().updateMessage("I should try solving this puzzle.");
 		}

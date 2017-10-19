@@ -60,7 +60,7 @@ public class Key extends InteractableObject{
 		if(getParent().lookupObject("Floorboard").isTaken()) {
 			if (!isTaken()) {
 				this.setTaken(true);
-				this.getParent().getParent().getInventory().addItem(this);
+				this.getParent().getParent().getInventory().addItem(this, "For opening something locked");
 				this.lblObject.setIcon(this.iiTaken);
 				this.parent.updateMessage("I took the key.");
 			} else
