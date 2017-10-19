@@ -9,7 +9,7 @@ public class Cheese extends InteractableObject{
 	private final String[] cheeseResponses = {"Good ol' cheese...", "What do you call a cheese that isn't yours? NACHO CHEESE",
 		"What music does cheese listen to? R & BRIE",
 			"What's always the last piece of cheese left? FOREVER PROVOLONE",
-			"Man, I had some bad cheese yesterday.  It was a Feta worse than death.",
+			"Man, I had some bad cheese yesterday. It was a Feta worse than death.",
 		"When a favourite lady cheese left the office they all sang \"For cheese a jolly good fellow.\""};
 
 	private static int cheeseResponseCount = 0;
@@ -34,10 +34,7 @@ public class Cheese extends InteractableObject{
 		
 		this.setX(iX);
 		this.setY(iY);
-//		this.iiOpened = new ImageIcon("images/"+this.objectName+"_opened.png");
-//		this.iiClosed = new ImageIcon("images/"+this.objectName+"_closed.png");
-//		this.iiViewed = new ImageIcon("images/"+this.objectName+"_viewed.png");
-		
+
 		this.setCenterX(this.lblObject.getWidth()/2);
 		this.setCenterY(this.lblObject.getHeight()/2);
 	}

@@ -30,10 +30,7 @@ public class PictureNote extends InteractableObject{
 		
 		this.iiDefault = new ImageIcon("images/"+this.objectName+"_default.png");
 		this.iiInventory = new ImageIcon("images/"+this.objectName+".png");
-//		this.iiTaken = new ImageIcon("images/"+this.objectName+"_taken.png");
-//		this.iiClosed = new ImageIcon("images/"+this.objectName+"_closed.png");
-//		this.iiViewed = new ImageIcon("images/"+this.objectName+"_viewed.png");
-		
+
 		this.setCenterX(this.lblObject.getWidth()/2);
 		this.setCenterY(this.lblObject.getHeight()/2);
 	}

@@ -83,7 +83,7 @@ public class CarBattery extends InteractableObject{
 			this.getParent().getParent().getInventory().addItem(this, "contains some interesting chemicals.");
 			this.lblObject.setVisible(false);
 			this.setVisible(false);
-			this.parent.updateMessage("I know it's heavy, but I my sixth sense tells me to carry it.");
+			this.parent.updateMessage("I know it's heavy, but my sixth sense tells me to carry it.");
 		}
 		else
 			this.parent.updateMessage("...");

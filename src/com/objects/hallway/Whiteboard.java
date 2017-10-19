@@ -72,7 +72,7 @@ public class Whiteboard extends InteractableObject{
 	}
 	@Override
 	public void take() {
-		this.getParent().updateMessage("This is heavy, I don't want to take it along with  me.");
+		this.getParent().updateMessage("This is heavy, I don't want to take it along with me.");
 		
 	}
 	@Override

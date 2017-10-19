@@ -7,7 +7,7 @@ import com.objects.InteractableObject;
 public class Goblet extends InteractableObject{
 	
 	public Goblet() {
-		super(new String[]{"goblet","chalice","glass"});
+		super(new String[]{"silver cup", "grey cup", "gray cup", "cup", "goblet", "chalice", "glass"});
 		this.viewResponse = "A "+this.objectName+".";
 		this.openResponse = "The "+this.objectName+" can't be opened.";
 		this.closeResponse = "The "+this.objectName+" can't be closed.";
@@ -25,9 +25,6 @@ public class Goblet extends InteractableObject{
 		
 		this.setX(iX);
 		this.setY(iY);
-//		this.iiOpened = new ImageIcon("images/"+this.objectName+"_opened.png");
-//		this.iiClosed = new ImageIcon("images/"+this.objectName+"_closed.png");
-//		this.iiViewed = new ImageIcon("images/"+this.objectName+"_viewed.png");
 		
 		this.setCenterX(this.lblObject.getWidth()/2);
 		this.setCenterY(this.lblObject.getHeight()/2);

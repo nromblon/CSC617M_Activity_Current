@@ -63,13 +63,37 @@ public class GreenBook extends InteractableObject{
 					this.getParent().updateMessage(Game.DEFINED_SPACE+"\"I learned my lesson from then. "+
 								"I now keep a copy in my room, but I made sure to keep it hidden. "+
 								"I keep important stuff in there after all.\"");
-
+					break;
+				case 4:
+					this.getParent().updateMessage(Game.DEFINED_SPACE+"\"" +
+							"I went to see my doctor yesterday. I complained that I was tired of "+
+							"having nothing fun to do. He recommended that I "+
+							"find myself a hobby. Puzzles are my favorite.\"");
+					break;
+					
+				case 5:
+					this.getParent().updateMessage(Game.DEFINED_SPACE+"\"" +
+							"A few days ago I shared this great idea for a "+
+							"game with my friends. They said I was sick and called me "+
+							"mentally unstable. I don’t think they mean it though. We "+
+							"probably just don’t share the same interests. I don’t have "+
+							"friends anymore\". This guy is sick.");
+					break;
+				case 6:
+					this.getParent().updateMessage(Game.DEFINED_SPACE+"\"" +
+							"I grew tired of puzzles. I have to find a new hobby.\". The next pages are complicated notes about designing a bomb...");
+					break;
+				case 7:
+					this.getParent().updateMessage(Game.DEFINED_SPACE+"\"" +
+							"The other day, my therapist said that I should try "+
+							"to interact with other people. She suggested that "+
+							"I could start by sharing my interests. I decided to "+
+							"share my interest of solving puzzles and bombs.\". Looks like I'm the lucky person.");
 					break;
 				default:
 					this.getParent().updateMessage("Some of the pages are missing.");
 					this.setViewCount(-1);
-			}
-		
+			}		
 		}
 		this.setViewCount(this.getViewCount()+1);
 	}

@@ -111,7 +111,7 @@ public abstract class GameWorld extends World {
 		this.bombClue = new BombClueOverlay(this, this.player, this.isRight);
 		
 		this.how2play = new How2PlayOverlay(this, this.player);
-		this.timer = new GameTimer(this, this.player, 20);
+		this.timer = new GameTimer(this, this.player, 30);
 		this.listOverlay = new ArrayList<OverlayObject>();
 
 		listOverlay.add(sliderGame);
@@ -322,7 +322,7 @@ public abstract class GameWorld extends World {
 
 	public void addPictureNote() {
 		PictureNote picturenote = new PictureNote();
-		this.getInventory().addItem(picturenote, "It looks like a clue");
+		this.getInventory().addItem(picturenote, "It looks like a clue.");
 	}
 	
 	public void updateMessage(String text){
