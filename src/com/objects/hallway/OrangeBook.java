@@ -67,7 +67,7 @@ public class OrangeBook extends InteractableObject{
 		this.setViewCount(this.getViewCount()+1);
 	}
 
-	@Override
+	@Override		
 	public void close() {
 		
 	}
