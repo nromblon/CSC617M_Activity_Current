@@ -67,7 +67,7 @@ public abstract class GameWorld extends World {
 	protected GameTimer timer;
 	
 	protected JLabel lblResult;
-	protected JButton btnCharacterSelect;
+	protected JButton btnMainMenu;
 	
 	protected ImageIcon iiResultWin;
 	protected ImageIcon iiResultLose;
@@ -111,7 +111,7 @@ public abstract class GameWorld extends World {
 		this.bombClue = new BombClueOverlay(this, this.player, this.isRight);
 		
 		this.how2play = new How2PlayOverlay(this, this.player);
-		this.timer = new GameTimer(this, this.player, 30);
+		this.timer = new GameTimer(this, this.player, 20);
 		this.listOverlay = new ArrayList<OverlayObject>();
 
 		listOverlay.add(sliderGame);
@@ -129,7 +129,7 @@ public abstract class GameWorld extends World {
 		this.add(line);
 		
 		this.add(timer);
-		this.add(btnCharacterSelect);
+		this.add(btnMainMenu);
 		this.add(menuOps);
 		this.add(inventory);
 		this.add(controls);
@@ -158,12 +158,12 @@ public abstract class GameWorld extends World {
 		this.lblResult = new JLabel();
 		this.lblResult.setVisible(false);
 		
-		Game.initLabels(lblResult, iiResultWin, null);
+		Game.initLabels(lblResult, iiResultLose, null);
 		
-		this.btnCharacterSelect = new JButton("BACK");
-		Game.initButtons(this.btnCharacterSelect, Game.clrTransparent, (Stage.MAX_WIDTH-180)/2, Stage.MAX_HEIGHT-200, 180, 50, this);
-		this.btnCharacterSelect.setFont(Game.fntGothamLight20);
-		this.btnCharacterSelect.setVisible(false);
+		this.btnMainMenu = new JButton("MAIN MENU");
+		Game.initButtons(this.btnMainMenu, Color.WHITE, 100, Stage.MAX_HEIGHT-110, 180, 50, this);
+		this.btnMainMenu.setFont(Game.fntGothamBook20);
+		this.btnMainMenu.setVisible(false);
 		
 		this.menuLbl = new JLabel();
 		Game.initLabels(menuLbl, "MenuLabel", null);
@@ -303,19 +303,19 @@ public abstract class GameWorld extends World {
 
 		this.timer.getTimer().stop();
 		if(isWin) {
-			this.btnCharacterSelect.setForeground(Color.WHITE);
-			this.btnCharacterSelect.setBackground(Color.BLACK);
+			this.btnMainMenu.setForeground(Color.WHITE);
+			this.btnMainMenu.setBackground(Color.BLACK);
 			this.lblResult.setIcon(this.iiResultWin);
 			Game.M.play("win.wav", 0);
 		}
 		else {
-			this.btnCharacterSelect.setForeground(Color.BLACK);
-			this.btnCharacterSelect.setBackground(Color.WHITE);
+			this.btnMainMenu.setForeground(Color.BLACK);
+			this.btnMainMenu.setBackground(Color.WHITE);
 			
 			this.lblResult.setIcon(this.iiResultLose);
 			Game.M.play("lose.wav", 0);
 		}
-		this.btnCharacterSelect.setVisible(true);
+		this.btnMainMenu.setVisible(true);
 		this.lblResult.setVisible(true);
 	}
 
@@ -340,7 +340,7 @@ public abstract class GameWorld extends World {
 	}
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		if(e.getSource() == this.btnCharacterSelect) {
+		if(e.getSource() == this.btnMainMenu) {
 			this.toCharacterSelect();
 		}
 	}

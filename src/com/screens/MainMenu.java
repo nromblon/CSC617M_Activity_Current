@@ -28,6 +28,9 @@ public class MainMenu extends JPanel implements ActionListener, MouseListener {
 	private boolean isReady;
 	
 	private JLabel gameTitle;
+	private JLabel gamePrologue;
+
+	private JButton btnEnter;
 	private JButton btnStart;
 	private Timer tmrFocus;
 
@@ -36,8 +39,10 @@ public class MainMenu extends JPanel implements ActionListener, MouseListener {
 		this.parent = parent;
 		this.initComponents();		
 
-		this.add(btnStart);
+		this.add(btnEnter);
 		this.add(gameTitle);
+		this.add(btnStart);
+		this.add(gamePrologue);
 		
 		this.parent.revalidate();
 		this.parent.repaint();
@@ -51,15 +56,25 @@ public class MainMenu extends JPanel implements ActionListener, MouseListener {
 	public void initComponents() {
 		Game.initPanel(this, Color.BLACK, 0, 0, Game.MAX_WIDTH, Game.MAX_WIDTH);
 		
+		this.btnEnter = new JButton();
+		Game.initButtons(this.btnEnter, "startbtn", 0, 0, true, this);
+		this.btnEnter.setBounds(600, 600, btnEnter.getWidth(), btnEnter.getHeight());
+		this.btnEnter.setOpaque(false);
+		this.btnEnter.setContentAreaFilled(false);
+
 		this.btnStart = new JButton();
 		Game.initButtons(this.btnStart, "startbtn", 0, 0, true, this);
 		this.btnStart.setBounds(600, 600, btnStart.getWidth(), btnStart.getHeight());
 		this.btnStart.setOpaque(false);
 		this.btnStart.setContentAreaFilled(false);
+
 		
 		this.gameTitle = new JLabel();
 		Game.initLabels(gameTitle, "Game_title", null);
 		
+		this.gamePrologue = new JLabel();
+		Game.initLabels(gamePrologue, "bg_prologue", null);
+	
 		this.setVisible(true);
 		this.setFocusable(true);
 		this.addKeyListener(new TAdapter());
@@ -88,8 +103,15 @@ public class MainMenu extends JPanel implements ActionListener, MouseListener {
 		this.parent.add(new Room(parent, new Player(), solution));
 	}	
 	
+	public void showPrologue() {
+		gameTitle.setVisible(false);
+		btnEnter.setVisible(false);
+	}
 	@Override
 	public void mouseClicked(MouseEvent e) {
+		if(e.getSource() == this.btnEnter) {
+			showPrologue();
+		}
 		if(e.getSource() == this.btnStart) {
 			this.start();
 		}
@@ -118,7 +140,12 @@ public class MainMenu extends JPanel implements ActionListener, MouseListener {
 	private class TAdapter extends KeyAdapter {	
 		public void keyPressed(KeyEvent e) {
 			if(e.getKeyChar() == KeyEvent.VK_ENTER) {
-				isReady = true;
+				if(gameTitle.isVisible()) {
+					showPrologue();
+				}
+				else {
+					isReady = true;
+				}
 			}	
 		}		
 	}
