@@ -36,17 +36,26 @@ public class Pot extends InteractableObject{
 	
 	@Override
 	public void view() {
-		this.parent.updateMessage("I could cook something with this...");
+		if(isUsed)
+			this.parent.updateMessage("It reeks of acid.");
+		else
+			this.parent.updateMessage("I could cook something with this...");
 	}
 
 	@Override
 	public void open() {
-		this.parent.updateMessage("It's empty.");
+		if(isUsed)
+			this.parent.updateMessage("I probably shouldn't touch that.");
+		else
+			this.parent.updateMessage("It's empty.");
 	}
 
 	@Override
 	public void close() {
-		this.parent.updateMessage("It's already closed.");
+		if(isUsed)
+			this.parent.updateMessage("I probably shouldn't touch that");
+		else
+			this.parent.updateMessage("It's already closed.");
 		
 	}
 	@Override

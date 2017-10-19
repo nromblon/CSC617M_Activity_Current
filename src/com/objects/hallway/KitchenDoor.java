@@ -70,6 +70,8 @@ public class KitchenDoor extends InteractableObject{
 			// Assumes that the gameWorld is an instance of Room
 			this.getParent().getParent().toStage(Room.INDEX_KITCHEN,
 					Room.INDEX_X, 1);
+
+			this.parent.updateMessage("Plenty of things in this kitchen.");
 		}		
 	}
 
