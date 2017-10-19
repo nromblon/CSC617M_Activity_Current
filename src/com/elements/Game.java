@@ -58,9 +58,13 @@ public class Game extends JFrame implements MouseListener {
 	public static Font fntGothamLight20 = new Font("GOTHAM-LIGHT", Font.PLAIN, 20);
 	public static Font fntGothamLight29 = new Font("GOTHAM-LIGHT", Font.PLAIN, 29);
 
+	public static Font fntGothamBook20 = new Font("GOTHAM-BOOK", Font.PLAIN, 20);
+
+	
 	public static Font fntDefault12 = new Font("Arial", Font.PLAIN, 12);
 	public static Font fntDefault11 = new Font("Arial", Font.PLAIN, 11);
 	public static Font fntDefault10 = new Font("Arial", Font.PLAIN, 10);
+	public static Font fntDefault20 = new Font("Arial", Font.PLAIN, 20);
 	public static Font fntDefault50 = new Font("Arial", Font.PLAIN, 50);
 
 	public static Font fntConsolas12 = new Font("Consolas", Font.PLAIN, 12);
