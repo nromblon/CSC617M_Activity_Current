@@ -80,7 +80,7 @@ public class CarBattery extends InteractableObject{
 		if(!isTaken() &&
 				this.getParent().lookupObject("ToolBox").isOpened()) {
 			this.setTaken(true);
-			this.getParent().getParent().getInventory().addItem(this);
+			this.getParent().getParent().getInventory().addItem(this, "contains some interesting chemicals.");
 			this.lblObject.setVisible(false);
 			this.setVisible(false);
 			this.parent.updateMessage("I know it's heavy, but I my sixth sense tells me to carry it.");

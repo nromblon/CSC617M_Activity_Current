@@ -81,7 +81,7 @@ public class Wrench extends InteractableObject{
 		if(!isTaken() &&
 				this.getParent().lookupObject("ToolBox").isOpened()) {
 			this.setTaken(true);
-			this.getParent().getParent().getInventory().addItem(this);
+			this.getParent().getParent().getInventory().addItem(this, "could be used for opening stuff.");
 			this.lblObject.setVisible(false);
 			this.setVisible(false);
 			this.parent.updateMessage("I took the wrench.");

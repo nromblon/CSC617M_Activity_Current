@@ -72,7 +72,7 @@ public class Flask extends InteractableObject{
 			if(!isTaken() &&
 					this.getParent().lookupObject("FridgeDoor").isOpened()) {
 				this.setTaken(true);
-				this.getParent().getParent().getInventory().addItem(this);
+				this.getParent().getParent().getInventory().addItem(this, "Used for holding potentially harmful chemicals.");
 				this.lblObject.setVisible(false);
 				this.getParent().updateMessage("This could probably come in handy.");
 			}

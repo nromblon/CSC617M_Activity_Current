@@ -57,7 +57,7 @@ public class LotusBottle extends InteractableObject{
 	public void take() {
 		if(!this.isTaken()) {
 			this.lblObject.setVisible(false);
-			this.getParent().getParent().getInventory().addItem(this);
+			this.getParent().getParent().getInventory().addItem(this, "Lotus Fragrance. Usually used on bath tubs.");
 			this.setTarget(this.getParent().lookupObject("LotusBubbles"));
 			this.setTaken(true);
 			this.parent.updateMessage("I took the lotus bottle.");

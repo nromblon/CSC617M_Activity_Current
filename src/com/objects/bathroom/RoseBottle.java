@@ -57,7 +57,7 @@ public class RoseBottle extends InteractableObject{
 	public void take() {
 		if(!this.isTaken) {
 			this.lblObject.setVisible(false);
-			this.getParent().getParent().getInventory().addItem(this);
+			this.getParent().getParent().getInventory().addItem(this, "Rose Fragrance. Usually used on bath tubs.");
 			this.setTarget(this.getParent().lookupObject("RoseBubbles"));
 			this.setTaken(true);
 			this.parent.updateMessage("I took the rose bottle.");

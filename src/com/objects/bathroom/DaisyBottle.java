@@ -57,7 +57,7 @@ public class DaisyBottle extends InteractableObject{
 	public void take() {
 		if(!this.isTaken) {
 			this.lblObject.setVisible(false);
-			this.getParent().getParent().getInventory().addItem(this);
+			this.getParent().getParent().getInventory().addItem(this, "Daisy fragrance. Usually used on bath tubs");
 			this.setTarget(this.getParent().lookupObject("DaisyBubbles"));
 			this.setTaken(true);
 			this.parent.updateMessage("I took the daisy bottle.");

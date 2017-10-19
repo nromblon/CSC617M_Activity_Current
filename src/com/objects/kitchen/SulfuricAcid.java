@@ -63,7 +63,7 @@ public class SulfuricAcid extends InteractableObject{
 		if(!isTaken() &&
 				this.getParent().lookupObject("FridgeDoor").isOpened()) {
 			this.setTaken(true);
-			this.getParent().getParent().getInventory().addItem(this);
+			this.getParent().getParent().getInventory().addItem(this, "Highly corrosive substance.");
 			this.lblObject.setVisible(false);
 		}
 	}

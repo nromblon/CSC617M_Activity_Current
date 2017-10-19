@@ -173,7 +173,7 @@ public class MedicineCabinet extends OverlayObject {
 		if(e.getSource() == this.btnEnter) {
 			if(this.checkPin() && !this.isOpened()) {
 				this.setOpened(true);
-				this.getParent().getInventory().addItem(new BombClue());
+				this.getParent().getInventory().addItem(new BombClue(), "could help in stopping the bomb.");
 				this.getParent().updateMessage("It worked! There's a note inside.");
 				this.close();
 			}

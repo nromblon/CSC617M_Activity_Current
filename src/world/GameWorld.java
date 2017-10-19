@@ -322,7 +322,7 @@ public abstract class GameWorld extends World {
 
 	public void addPictureNote() {
 		PictureNote picturenote = new PictureNote();
-		this.getInventory().addItem(picturenote);
+		this.getInventory().addItem(picturenote, "It looks like a clue");
 	}
 	
 	public void updateMessage(String text){

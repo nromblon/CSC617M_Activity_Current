@@ -61,7 +61,7 @@ public class BathroomNote extends InteractableObject{
 	public void take() {
 		if(!this.isTaken) {
 			this.setTaken(true);
-			this.getParent().getParent().getInventory().addItem(this);
+			this.getParent().getParent().getInventory().addItem(this,"A note that says something about a bath tub and roses.");
 			this.lblObject.setVisible(false);
 			this.parent.updateMessage("I took the note.");
 		}

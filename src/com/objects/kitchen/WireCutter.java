@@ -79,7 +79,7 @@ public class WireCutter extends InteractableObject{
 		if(!isTaken() &&
 				this.getParent().lookupObject("ToolBox").isOpened()) {
 			this.setTaken(true);
-			this.getParent().getParent().getInventory().addItem(this);
+			this.getParent().getParent().getInventory().addItem(this, "As its name suggests, it's used for cutting wires.");
 			this.lblObject.setVisible(false);
 			this.setVisible(false);
 			this.parent.updateMessage("I took the wire cutters");

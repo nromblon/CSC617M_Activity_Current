@@ -68,7 +68,7 @@ public class Vault extends InteractableObject{
 	public void take() {
 		if(parent.lookupObject("TopDrawer").isOpened()) {
 			if(!this.isTaken) {
-				this.getParent().getParent().getInventory().addItem(this);
+				this.getParent().getParent().getInventory().addItem(this, "It has 4-digit PIN code");
 				this.setTaken(true);
 				this.parent.updateMessage("I took the vault.");
 			}

@@ -48,7 +48,7 @@ public class Stove extends InteractableObject{
 			this.setUsed(true);
 			
 			this.getParent().getParent().getInventory().removeItem("Flask");
-			this.getParent().getParent().getInventory().addItem(new SulfuricAcid());
+			this.getParent().getParent().getInventory().addItem(new SulfuricAcid(), "Highly corrosive substance.");
 			this.getParent().updateMessage("I now have a flask full of sulfuric acid. This is strong enough to corrode metal.");
 		}
 		else {
