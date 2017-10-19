@@ -7,7 +7,7 @@ import com.objects.InteractableObject;
 public class LotusBubbles extends InteractableObject{
 	
 	public LotusBubbles() {
-		super(new String[]{"lotus bubbles","purple bubbles","violet bubbles","violet bubble","purple bubble","bubbles","bubble"});
+		super(new String[]{"OOOOOOOOOOOOOOOOOOOOOOOO"});
 		this.viewResponse = "A "+this.objectName+".";
 		this.openResponse = "The "+this.objectName+" can't be opened.";
 		this.closeResponse = "The "+this.objectName+" can't be closed.";

@@ -37,17 +37,17 @@ public class BathroomSink extends InteractableObject{
 	@Override
 	public void view() {
 		this.getParent().getParent().openOverlaySink();
+		this.parent.updateMessage("The sink has flowers engraved on it.");
 	}
 
 	@Override
 	public void open() {
-		
+		this.parent.updateMessage("Water's not coming out.");
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("It's already closed.");
 	}
 	@Override
 	public void update() {
@@ -55,13 +55,11 @@ public class BathroomSink extends InteractableObject{
 	}
 	@Override
 	public void take() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I don't think I want to do that...");
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("Water's not coming out.");
 	}
 
 }

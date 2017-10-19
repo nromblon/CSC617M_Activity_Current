@@ -40,10 +40,21 @@ public class Bomb extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Responses
-		this.getParent().updateMessage("It appears to be bomb. There are explosives rigged on one side. The digital display says "+
-										this.getParent().getParent().getTimer().getTimeLbl().getText()+". Looks like that's how long I have left to live.");
-	
+		switch(++resCount) {
+			case 1: this.parent.updateMessage("OH SHIT IS THAT A BOMB??");
+				break;
+			case 2: this.parent.updateMessage("WHAT SHOULD I DO TO STOP THIS BOMB.");
+				break;
+			case 3: this.parent.updateMessage("WHAT DID I DO TO DESERVE THIS.");
+				break;
+			case 4: this.parent.updateMessage("I need to calm down and find a way to stop this bomb...");
+				break;
+			case 5: this.parent.updateMessage("What an explosive start to my day.");
+				break;
+			default: this.getParent().updateMessage("Upon several inspection, it appears to be a bomb. There are explosives rigged on one side. The digital display says " +
+					this.getParent().getParent().getTimer().getTimeLbl().getText() + ". Looks like that's how long I have left to live.");
+			break;
+		}
 	}
 
 	@Override

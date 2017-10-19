@@ -7,7 +7,7 @@ import com.objects.InteractableObject;
 public class DaisyBubbles extends InteractableObject{
 	
 	public DaisyBubbles() {
-		super(new String[]{"daisy bubbles","yellow bubbles","yellow bubble","bubbles","bubble"});
+		super(new String[]{"OOOOOOOOOOOOOOOOOOOOOOOO"});
 		this.viewResponse = "A "+this.objectName+".";
 		this.openResponse = "The "+this.objectName+" can't be opened.";
 		this.closeResponse = "The "+this.objectName+" can't be closed.";
@@ -38,7 +38,7 @@ public class DaisyBubbles extends InteractableObject{
 	
 	@Override
 	public void view() {
-		
+
 	}
 
 	@Override
@@ -55,6 +55,7 @@ public class DaisyBubbles extends InteractableObject{
 	}
 	@Override
 	public void update() {
+		this.parent.updateMessage("");
 		
 	}
 	@Override

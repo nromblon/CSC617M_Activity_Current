@@ -28,9 +28,7 @@ public class HallwayBathroomDoor extends InteractableObject{
 		
 		this.setX(iX);
 		this.setY(iY);
-//		this.iiOpened = new ImageIcon("images/"+this.objectName+"_opened.png");
-//		this.iiClosed = new ImageIcon("images/"+this.objectName+"_closed.png");
-//		this.iiViewed = new ImageIcon("images/"+this.objectName+"_viewed.png");
+
 		
 		this.setCenterX(this.lblObject.getWidth()/2);
 		this.setCenterY(this.lblObject.getHeight()/2);
@@ -38,8 +36,7 @@ public class HallwayBathroomDoor extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("This door leads back to the hallway.");
 	}
 
 	@Override
@@ -47,26 +44,24 @@ public class HallwayBathroomDoor extends InteractableObject{
 		// Assumes that the gameWorld is an instance of Room
 		this.getParent().getParent().toStage(Room.INDEX_HALLWAY,
 				Room.INDEX_BATHROOM_X, -1);
+		this.parent.updateMessage("I'm back in the hallway.");
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("It's already closed.");
 	}
 	@Override
 	public void update() {
-//		System.out.println("Drawer update");
+
 	}
 	@Override
 	public void take() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I don't think it's productive to carry a door around.");
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
+		open();
 	}
 
 }

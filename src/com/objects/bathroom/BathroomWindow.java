@@ -33,23 +33,20 @@ public class BathroomWindow extends InteractableObject{
 		this.setCenterX(this.lblObject.getWidth()/2);
 		this.setCenterY(this.lblObject.getHeight()/2);
 	}
-	
+
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("Looks like an unbreakable window. Don't ask me why I know this.");
 	}
 
 	@Override
 	public void open() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("The window is jammed.");
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("It is already closed.");
 	}
 	@Override
 	public void update() {
@@ -57,13 +54,12 @@ public class BathroomWindow extends InteractableObject{
 	}
 	@Override
 	public void take() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I don't think that's a good decision.");
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("The window is jammed.");
 	}
+
 
 }

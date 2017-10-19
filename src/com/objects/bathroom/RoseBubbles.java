@@ -6,8 +6,8 @@ import com.objects.InteractableObject;
 
 public class RoseBubbles extends InteractableObject{
 	
-	public RoseBubbles() {
-		super(new String[]{"rose bubbles","pink bubbles","red bubbles","pink bubble","red bubble","bubbles","bubble"});
+	public RoseBubbles(){
+		super(new String[]{"OOOOOOOOOOOOOOOOOOOOOOOO"});
 		this.viewResponse = "A "+this.objectName+".";
 		this.openResponse = "The "+this.objectName+" can't be opened.";
 		this.closeResponse = "The "+this.objectName+" can't be closed.";
@@ -38,8 +38,6 @@ public class RoseBubbles extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override

@@ -40,15 +40,12 @@ public class Bathtub extends InteractableObject{
 	@Override
 	public void view() {
 		if(this.isUsed()) {
-			// TODO:  A Rose/Daisy/Lotus bath.
 			this.getParent().updateMessage("A scented bath.");
 		}
 		else if(this.isOpened) {
-			// TODO: A bathtub filled with water.
 			this.getParent().updateMessage("A bathtub filled with water.");
 		}
 		else {
-			// TODO: An empty bathtub.
 			this.getParent().updateMessage("An empty bathtub.");
 		}
 	}
@@ -56,11 +53,9 @@ public class Bathtub extends InteractableObject{
 	@Override
 	public void open() {
 		if(this.isUsed()) {
-			// TODO: I should drain the water first.
 			this.getParent().updateMessage("I should drain the water first.");
 		}
 		else {
-			// TODO: I filled the tub with water
 			this.getParent().updateMessage("I filled the bathtub with water.");
 			this.setOpened(true);
 		}
@@ -68,19 +63,16 @@ public class Bathtub extends InteractableObject{
 
 	@Override
 	public void close() {
-		// <drain>
 		if(this.isUsed()) {
-			// TODO: I drained the bathtub.
 			this.getParent().updateMessage("I drained the bathtub. It's empty now.");
 			this.getParent().lookupObject("RoseBubbles").close();
 			this.getParent().lookupObject("DaisyBubbles").close();
 			this.getParent().lookupObject("LotusBubbles").close();
-			
+
 			this.setOpened(false);
 			this.setUsed(false);
 		}
 		else {
-			// The bathtub is empty.
 			this.getParent().updateMessage("An empty bathtub.");
 		}		
 	}
@@ -90,11 +82,11 @@ public class Bathtub extends InteractableObject{
 	}
 	@Override
 	public void take() {
-		
+		this.parent.updateMessage("I think that's physically impossible");
 	}
 	@Override
 	public void use() {
-		this.setUsed(true);
+		this.parent.updateMessage("I don't have time to take a bath. But on the bright side, I have enough time to open and close the bathtub.");
 	}
 
 }

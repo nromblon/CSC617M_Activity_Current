@@ -20,7 +20,7 @@ public class BathroomDoor extends InteractableObject{
 		this.closeResponse = "The "+this.objectName+" can't be closed.";
 		this.objectName = this.getClass().getSimpleName();
 		this.initComponents();
-		this.setLocked(true);
+		this.setLocked(false);
 		this.setOpened(false);
 	}
 	private void initComponents() {

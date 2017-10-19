@@ -37,17 +37,17 @@ public class DaisyBottle extends InteractableObject{
 	
 	@Override
 	public void view() {
-			
+		this.parent.updateMessage("A fragrance bottle that contains the scent of daisies. I could use this onto the bath tub.");
 	}
 
 	@Override
 	public void open() {
-		
+		this.parent.updateMessage("It sure does smell like daisies.");
 	}
 
 	@Override
 	public void close() {
-			
+		this.parent.updateMessage("It's already closed.");
 	}
 	@Override
 	public void update() {
@@ -60,29 +60,29 @@ public class DaisyBottle extends InteractableObject{
 			this.getParent().getParent().getInventory().addItem(this);
 			this.setTarget(this.getParent().lookupObject("DaisyBubbles"));
 			this.setTaken(true);
-		}		
+			this.parent.updateMessage("I took the daisy bottle.");
+		}
+		else
+			this.parent.updateMessage("I already took the bottle.");
 	}
 	@Override
 	public void use() {
 		if(this.isTaken()) {
 			if(this.getParent().lookupObject("Bathtub").isOpened()) {
 				if(this.getParent().lookupObject("Bathtub").isUsed()) {
-					// TODO: I should drain the bathtub first.
 					this.getParent().updateMessage("I should drain the bathtub first.");
 				}
 				else {
-					// TODO: I poured daisy essence in the bathttub
 					this.getParent().updateMessage("I poured the Daisy essence in the bathtub."+
 													"The room smells like Daisies.");
 					this.setUsed(true);
-					this.getParent().lookupObject("Bathtub").use();
+					this.getParent().lookupObject("Bathtub").setUsed(true);
 					
 					this.getParent().getParent().getInventory().removeItem(this);
 					this.getParent().lookupObject("DaisyBubbles").open();
 				}
 			}
 			else {
-				// TODO: I should fill the bathtub with water first.
 				this.getParent().updateMessage("I should fill the bathtub with water first.");	
 			}
 		}

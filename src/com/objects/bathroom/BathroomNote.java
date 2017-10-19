@@ -40,31 +40,37 @@ public class BathroomNote extends InteractableObject{
 	@Override
 	public void view() {
 		this.getParent().getParent().openOverlayNote();
+		this.parent.updateMessage("looks like two gigantic roses taking a bath.");
 	}
 
 	@Override
 	public void open() {
+		this.parent.updateMessage("I don't know what you want me to do.");
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I don't know what you want me to do.");
 	}
 	@Override
 	public void update() {
-//		System.out.println("Drawer update");
+
 	}
+
 	@Override
 	public void take() {
 		if(!this.isTaken) {
 			this.setTaken(true);
 			this.getParent().getParent().getInventory().addItem(this);
 			this.lblObject.setVisible(false);
+			this.parent.updateMessage("I took the note.");
 		}
+		else
+			this.parent.updateMessage("I already took the note.");
 	}
 	@Override
 	public void use() {
+		view();
 	}
 
 }

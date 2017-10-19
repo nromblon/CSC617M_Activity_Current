@@ -35,20 +35,18 @@ public class ToiletPaper extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
+		this.parent.updateMessage("At least they have the decency to stock up on toilet papers.");
 		
 	}
 
 	@Override
 	public void open() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I don't know how would you open a toilet paper.");
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("How do you close a toilet paper?");
 	}
 	@Override
 	public void update() {
@@ -56,13 +54,11 @@ public class ToiletPaper extends InteractableObject{
 	}
 	@Override
 	public void take() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("It's rude to steal somebody's toilet paper... even if its from your kidnapper.");
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I'm not hearing the nature's call right now...");
 	}
 
 }

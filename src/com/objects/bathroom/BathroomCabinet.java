@@ -36,20 +36,17 @@ public class BathroomCabinet extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		parent.updateMessage("A bathroom cabinet. Looks pretty sturdy.");
 	}
 
 	@Override
 	public void open() {
-		// TODO Auto-generated method stub
-		
+		parent.updateMessage("A stack of clean towels is placed inside it.");
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		parent.updateMessage("It's already closed.");
 	}
 	@Override
 	public void update() {
@@ -57,13 +54,11 @@ public class BathroomCabinet extends InteractableObject{
 	}
 	@Override
 	public void take() {
-		// TODO Auto-generated method stub
-		
+		parent.updateMessage("Sure, the towels inside it are light but I doubt that I could carry the cabinet itself.");
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
+		open();
 	}
 
 }

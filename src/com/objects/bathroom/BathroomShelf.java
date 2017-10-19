@@ -36,20 +36,17 @@ public class BathroomShelf extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("The shelf has three bottles with flower labels on it. I believe the flowers portrayed on the labels are Rose, Daisy, and Lotus.");
 	}
 
 	@Override
 	public void open() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I don't know what you mean.");
 	}
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I don't know what you mean.");
 	}
 	@Override
 	public void update() {
@@ -57,13 +54,11 @@ public class BathroomShelf extends InteractableObject{
 	}
 	@Override
 	public void take() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I can't do that.");
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("??");
 	}
 
 }

@@ -37,18 +37,17 @@ public class RoseBottle extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("A Rose-scented fragrance bottle. Usually used for bathtubs.");
 	}
 
 	@Override
 	public void open() {
-		
+		this.parent.updateMessage("Definitely smells like roses.");
 	}
 
 	@Override
 	public void close() {
-		
+		this.parent.updateMessage("It's already closed.");
 	}
 	@Override
 	public void update() {
@@ -61,31 +60,31 @@ public class RoseBottle extends InteractableObject{
 			this.getParent().getParent().getInventory().addItem(this);
 			this.setTarget(this.getParent().lookupObject("RoseBubbles"));
 			this.setTaken(true);
-		}		
+			this.parent.updateMessage("I took the rose bottle.");
+		}
+		else
+			this.parent.updateMessage("I already took it.");
 	}
 	@Override
 	public void use() {
 		if(this.isTaken()) {
 			if(this.getParent().lookupObject("Bathtub").isOpened()) {
 				if(this.getParent().lookupObject("Bathtub").isUsed()) {
-					// TODO: I should drain the bathtub first.
 					this.getParent().updateMessage("I should drain the bathtub first.");
 					}
 				else {
-					// TODO: I poured rose essence in the bathttub
 					this.getParent().updateMessage("I poured the Rose essence in the bathtub."+
 													"The room is filled with the scent of Roses.");
 					this.getParent().updateMessage("... What was that noise? I think I heard something click.");
 
 					this.setUsed(true);
-					this.getParent().lookupObject("Bathtub").use();
+					this.getParent().lookupObject("Bathtub").setUsed(true);
 					
 					this.getParent().getParent().getInventory().removeItem(this);
 					this.getParent().lookupObject("RoseBubbles").open();
 				}
 			}
 			else {
-				// TODO: I should fill the bathtub with water first.
 				this.getParent().updateMessage("I should fill the bathtub with water first.");	
 			}
 				

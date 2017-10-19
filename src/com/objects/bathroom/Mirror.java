@@ -73,6 +73,8 @@ public class Mirror extends InteractableObject{
 		if(this.isOpened()) {
 			this.getParent().updateMessage("I probably shouldn't close it, it might automatically get locked.");
 		}
+		else
+			this.parent.updateMessage("It's already closed.");
 	}
 	
 	@Override
