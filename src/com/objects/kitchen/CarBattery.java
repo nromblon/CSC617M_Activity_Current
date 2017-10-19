@@ -47,8 +47,10 @@ public class CarBattery extends InteractableObject{
 	@Override
 	public void view() {
 		if(this.isVisible){
-			this.parent.updateMessage("A car battery.");
+			this.parent.updateMessage("A car battery. Might come in handy. Probably.");
 		}
+		else
+			this.parent.updateMessage("...");
 	}
 
 	@Override
@@ -81,12 +83,16 @@ public class CarBattery extends InteractableObject{
 			this.getParent().getParent().getInventory().addItem(this);
 			this.lblObject.setVisible(false);
 			this.setVisible(false);
+			this.parent.updateMessage("I know it's heavy, but I my sixth sense tells me to carry it.");
 		}
+		else
+			this.parent.updateMessage("...");
 	}
 	@Override
 	public void use() {
 		
 	}
+
 	public boolean isVisible() {
 		return isVisible;
 	}

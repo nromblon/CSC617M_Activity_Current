@@ -71,6 +71,7 @@ public class BathroomDoor extends InteractableObject{
 			// Assumes that the gameWorld is an instance of Room
 			this.getParent().getParent().toStage(Room.INDEX_BATHROOM,
 					Room.INDEX_X, 1);
+			this.parent.updateMessage("What a nice bathroom.");
 		}
 	}
 

@@ -8,8 +8,7 @@ import com.objects.InteractableObject;
 public class AcidRecipe extends InteractableObject{
 	
 	public AcidRecipe() {
-		super(new String[]{"acid recipe", "recipe", "sulfuric acid recipe",
-							"acid instructions"});
+		super(new String[]{"untypeable string"});
 		this.viewResponse = "A "+this.objectName+".";
 		this.openResponse = "The "+this.objectName+" can't be opened.";
 		this.closeResponse = "The "+this.objectName+" can't be closed.";

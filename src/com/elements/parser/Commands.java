@@ -6,7 +6,7 @@ public enum Commands {
     CLOSE (new String[]{"close"}),
     TAKE (new String[]{"take","pick","remove","lift"}),
     USE (new String[]{"use"}),
-    EXIT (new String[]{"exit","go back"}),
+    EXIT (new String[]{"exit","go back", "leave"}),
     MOVE (new String[]{"move","go","goto", "go to"}),
     ERROR (new String[]{"error"});
     protected String[] synonyms;

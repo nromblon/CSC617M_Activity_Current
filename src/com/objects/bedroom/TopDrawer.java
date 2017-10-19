@@ -34,7 +34,10 @@ public class TopDrawer extends InteractableObject{
 	
 	@Override
 	public void view() {
-		
+		if(this.isOpened)
+			parent.updateMessage("It's unlocked");
+		else
+			parent.updateMessage("It's locked");
 	}
 
 	@Override
@@ -52,6 +55,7 @@ public class TopDrawer extends InteractableObject{
 				this.setOpened(true);
 				parent.updateMessage(this.openResponse+" Used the key. There's a small vault inside.");
 				this.getParent().getParent().getInventory().removeItem(parent.lookupObject("Key"));
+				parent.lookupObject("Vault").setTarget(parent.lookupObject("Vault"));
 			}
 			else {
 				parent.updateMessage(this.openResponse);
@@ -61,8 +65,7 @@ public class TopDrawer extends InteractableObject{
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I might lock it again if I close it.");
 	}
 	@Override
 	public void update() {
@@ -70,13 +73,11 @@ public class TopDrawer extends InteractableObject{
 	}
 	@Override
 	public void take() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("I can't do that.");
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
+		this.parent.updateMessage("You mean 'open'?");
 	}
 
 }

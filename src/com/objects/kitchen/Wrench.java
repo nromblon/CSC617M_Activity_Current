@@ -50,7 +50,8 @@ public class Wrench extends InteractableObject{
 	
 	@Override
 	public void view() {
-	
+		if(isVisible)
+			this.parent.updateMessage("A wrench.");
 	}
 
 	@Override
@@ -83,7 +84,10 @@ public class Wrench extends InteractableObject{
 			this.getParent().getParent().getInventory().addItem(this);
 			this.lblObject.setVisible(false);
 			this.setVisible(false);
+			this.parent.updateMessage("I took the wrench.");
 		}
+		else
+			parent.updateMessage("...");
 	}
 	@Override
 	public void use() {

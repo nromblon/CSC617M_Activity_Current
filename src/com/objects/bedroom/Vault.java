@@ -15,6 +15,7 @@ public class Vault extends InteractableObject{
 		this.closeResponse = "The "+this.objectName+" can't be closed.";
 		this.objectName = this.getClass().getSimpleName();
 		this.initComponents();
+		this.target = null;
 	}
 	private void initComponents() {
 		
@@ -31,9 +32,6 @@ public class Vault extends InteractableObject{
 		this.setY(iY);
 		this.iiInventory = new ImageIcon("images/"+this.objectName+".png");
 
-//		this.iiOpened = new ImageIcon("images/"+this.objectName+"_opened.png");
-//		this.iiClosed = new ImageIcon("images/"+this.objectName+"_closed.png");
-//		this.iiViewed = new ImageIcon("images/"+this.objectName+"_viewed.png");
 		
 		this.setCenterX(this.lblObject.getWidth()/2);
 		this.setCenterY(this.lblObject.getHeight()/2);
@@ -41,17 +39,26 @@ public class Vault extends InteractableObject{
 	
 	@Override
 	public void view() {
-		this.parent.updateMessage("The vault is locked with a 4-digit code.");
+		if(parent.lookupObject("TopDrawer").isOpened())
+			this.parent.updateMessage("The vault is locked with a 4-digit code.");
+		else
+			this.parent.updateMessage("What vault?");
 	}
 
 	@Override
 	public void open() {
-		this.parent.updateMessage("I need to unlock it by entering the PIN code");
+		if(parent.lookupObject("TopDrawer").isOpened())
+			this.parent.updateMessage("I need to unlock it by entering the PIN code");
+		else
+			this.parent.updateMessage("What vault?");
 	}
 
 	@Override
 	public void close() {
-		this.parent.updateMessage("I don't know what you're talking about.");
+		if(parent.lookupObject("TopDrawer").isOpened())
+			this.parent.updateMessage("I don't know what you're talking about.");
+		else
+			this.parent.updateMessage("What vault?");
 	}
 	@Override
 	public void update() {
@@ -73,7 +80,16 @@ public class Vault extends InteractableObject{
 	}
 	@Override
 	public void use() {
-		//TODO: open overlay
+		if(parent.lookupObject("TopDrawer").isOpened()) {
+			if(isTaken)
+				parent.getParent().openOverlayVault();
+			else
+				parent.updateMessage("I should take it first.");
+		}
+		else{
+			parent.updateMessage("What vault?");
+		}
+
 	}
 
 }

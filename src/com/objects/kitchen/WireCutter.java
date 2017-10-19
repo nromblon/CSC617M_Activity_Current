@@ -46,7 +46,10 @@ public class WireCutter extends InteractableObject{
 	
 	@Override
 	public void view() {
-
+		if(isVisible)
+			this.parent.updateMessage("A regular wire-cutter. This could come in handy.");
+		else
+			this.parent.updateMessage("...");
 	}
 
 	@Override
@@ -79,7 +82,10 @@ public class WireCutter extends InteractableObject{
 			this.getParent().getParent().getInventory().addItem(this);
 			this.lblObject.setVisible(false);
 			this.setVisible(false);
+			this.parent.updateMessage("I took the wire cutters");
 		}
+		else
+			this.parent.updateMessage("...");
 	}
 	@Override
 	public void use() {
