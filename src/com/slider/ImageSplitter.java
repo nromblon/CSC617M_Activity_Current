@@ -7,8 +7,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
-import javafx.scene.image.Image;
-
 public class ImageSplitter {
 	
 	private BufferedImage[][] imgs;
