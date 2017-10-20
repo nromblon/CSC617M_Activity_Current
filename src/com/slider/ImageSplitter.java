@@ -17,7 +17,7 @@ public class ImageSplitter {
 	
 	private void splitImage() {
 		try {
-//			this.getClass().getResource("/images/RoseSlider.png")
+
 			BufferedImage image = ImageIO.read(new File("images/RoseSlider.png"));
 			int rows = 4;
 			int cols = 4;
