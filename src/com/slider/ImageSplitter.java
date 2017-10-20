@@ -2,9 +2,12 @@ package com.slider;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+
+import javafx.scene.image.Image;
 
 public class ImageSplitter {
 	
@@ -16,7 +19,8 @@ public class ImageSplitter {
 	
 	private void splitImage() {
 		try {
-			BufferedImage image = ImageIO.read(this.getClass().getResource("/images/RoseSlider.png"));
+//			this.getClass().getResource("/images/RoseSlider.png")
+			BufferedImage image = ImageIO.read(new File("images/RoseSlider.png"));
 			int rows = 4;
 			int cols = 4;
 			this.imgs = new BufferedImage[4][4];
