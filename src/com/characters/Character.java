@@ -245,64 +245,6 @@ public abstract class Character {
 			return false;
 	}
 	
-//	public class ShootTimer implements ActionListener {
-//		public ShootTimer() {
-////			time = bulletInterval;
-//		}
-//		@Override
-//
-//		public void actionPerformed(ActionEvent e) {
-////			if(time == 0) {
-////				time = bulletInterval;
-////			tmrShoot.stop();
-//			setAtkShoot(false); // TODO Remove this for continuous shot.
-////			}
-////			time -= 1;
-//		}
-//	}
-//	
-////	public class MagicGainTimer implements ActionListener {
-////		public MagicGainTimer() {
-////		}
-////		@Override
-////		public void actionPerformed(ActionEvent e) {
-////			setMagic(magic+magicGain);
-////		}
-////	}
-////	public class BlinkTimer implements ActionListener {
-//////		private int time;
-////		public BlinkTimer() {
-//////			time = 2;
-////		}
-////		@Override
-////		public void actionPerformed(ActionEvent e) {
-//////			if(time == 0) {
-//////				time = bulletInterval;
-////			setCharacterImage(getName());
-////			tmrIconBlink.stop();
-//////			}
-//////			time -= 1;
-////		}
-////	}
-////	public class StunTimer implements ActionListener {
-////		public StunTimer() {
-////		}
-////		@Override
-////		public void actionPerformed(ActionEvent e) {
-////			setStunned(false);
-////			tmrStun.stop();
-//////			}
-//////			time -= 1;
-////		}
-////	}
-////	public void shoot() {
-////		if(isActive() && atkShoot && !tmrShoot.isRunning() && this.magic >= Projectile.BASIC_COST) {
-////			this.projectiles.add(new Projectile(this.parent, this, this.direction, this.x, this.y, this.bulletSpeed, this.magicDamage, this.enemies));
-////
-////			tmrShoot.start();
-////		}
-////	}
-	
 	public boolean isActive() {
 		if(!isAlive || GameWorld.IS_PAUSED) {
 			return false;

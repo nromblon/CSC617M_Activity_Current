@@ -32,9 +32,6 @@ public class GameBar extends JPanel {
 		this.lblGamebarOverlay = new JLabel();
 		Game.initLabels(this.lblGamebarOverlay, new ImageIcon("images/Gamebar_arcade.png"), null);
 
-		//TODO
-//		this.messageQueue = new LinkedList<>();
-
 		this.add(nextBtn);
 		this.add(scrlMessage);
 		this.add(lblMessageOverlay);

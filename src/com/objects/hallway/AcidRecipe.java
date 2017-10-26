@@ -60,7 +60,6 @@ public class AcidRecipe extends InteractableObject{
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
 		
 	}
 

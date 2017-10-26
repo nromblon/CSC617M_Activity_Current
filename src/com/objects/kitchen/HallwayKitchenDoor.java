@@ -51,7 +51,6 @@ public class HallwayKitchenDoor extends InteractableObject{
 			// Assumes that the gameWorld is an instance of Room
 			this.getParent().getParent().toStage(Room.INDEX_HALLWAY,
 					Room.INDEX_KITCHEN_X, -1);
-			// TODO Set player iX iY to Bedroom Door
 			this.parent.updateMessage("I'm back in the hallway.");
 		}
 	}
@@ -76,7 +75,6 @@ public class HallwayKitchenDoor extends InteractableObject{
 			// Assumes that the gameWorld is an instance of Room
 			this.getParent().getParent().toStage(Room.INDEX_HALLWAY,
 					Room.INDEX_KITCHEN_X, -1);
-			// TODO Set player iX iY to Bedroom Door
 			this.parent.updateMessage("I'm back in the hallway.");
 		}
 	}

@@ -285,7 +285,6 @@ public abstract class GameWorld extends World {
 	}
 	
 	public void update() {
-		// TODO END Update
 		if(!player.isBusy()){
 			Action a = controls.getActionQueue().poll();
 			if(a != null){
@@ -303,8 +302,8 @@ public abstract class GameWorld extends World {
 
 		this.timer.getTimer().stop();
 		if(isWin) {
-			this.btnMainMenu.setForeground(Color.WHITE);
-			this.btnMainMenu.setBackground(Color.BLACK);
+			this.btnMainMenu.setForeground(Color.BLACK);
+			this.btnMainMenu.setBackground(Color.WHITE);
 			this.lblResult.setIcon(this.iiResultWin);
 			Game.M.play("win.wav", 0);
 		}

@@ -46,17 +46,13 @@ public class Lamp extends InteractableObject{
 	}
 	@Override
 	public void update() {
-//		System.out.println("Drawer update");
 	}
 	@Override
 	public void take() {
-		// TODO Auto-generated method stub
 		
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

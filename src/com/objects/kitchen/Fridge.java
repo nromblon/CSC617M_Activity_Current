@@ -68,7 +68,6 @@ public class Fridge extends InteractableObject{
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
 		if(!this.getParent().lookupObject("FridgeDoor").isOpened()) {
 			this.getParent().lookupObject("FridgeDoor").open();
 		}

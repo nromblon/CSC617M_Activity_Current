@@ -35,7 +35,6 @@ public class HallwayShelfTop extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -46,22 +45,17 @@ public class HallwayShelfTop extends InteractableObject{
 
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
 		
 	}
 	@Override
 	public void update() {
-//		System.out.println("Drawer update");
 	}
 	@Override
 	public void take() {
-		// TODO Auto-generated method stub
 		
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

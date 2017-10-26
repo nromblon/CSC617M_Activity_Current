@@ -65,8 +65,6 @@ public class PurpleBook extends InteractableObject{
 	}
 	@Override
 	public void use() {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

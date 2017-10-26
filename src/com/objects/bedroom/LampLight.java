@@ -39,7 +39,6 @@ public class LampLight extends InteractableObject{
 	
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
 		
 	}
 
